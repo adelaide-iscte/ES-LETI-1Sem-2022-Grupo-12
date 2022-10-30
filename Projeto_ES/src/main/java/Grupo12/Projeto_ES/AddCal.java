@@ -5,12 +5,22 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+
 
 public class AddCal {
 	private JFrame frame;
@@ -33,7 +43,35 @@ public class AddCal {
 		frame.setLocation((width/2)-frame.getWidth()+300, (height/2)-frame.getHeight());
 		
 		addFrameContents();
-
+		
+		File lista = new File("calendarios.txt");
+		if (!lista.exists()) {
+			try {
+				PrintWriter printWriter;
+				printWriter = new PrintWriter("calendarios.txt");
+				printWriter.println("Nome:" + textFieldName.getText());
+				printWriter.println("URI:" + textFieldURI.getText());
+				printWriter.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				List<String> nova_pessoa = new ArrayList<String>();
+				nova_pessoa.add("Nome:" + textFieldName.getText() + "\r\n" + "URI:" + textFieldURI.getText() + "\r\n" );
+				Scanner texto = new Scanner(new File("calendarios.txt"));
+				while (texto.hasNextLine()) {
+					String aux = texto.nextLine();
+					nova_pessoa.add(aux);
+				}
+				PrintWriter printWriter = new PrintWriter ("calendarios.txt");
+				printWriter.println(texto);
+				texto.close();
+				printWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}		
 	}
 	
 	public void addFrameContents() {
