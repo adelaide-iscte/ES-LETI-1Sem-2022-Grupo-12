@@ -15,8 +15,10 @@ import javax.swing.WindowConstants;
 public class AddCal {
 	private JFrame frame;
 	private JButton addUrl;
-	private JLabel label;
-	private JTextField textField;
+	private JLabel labelURI;
+	private JLabel labelName;
+	private JTextField textFieldURI;
+	private JTextField textFieldName;
 	private final int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	private final int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	
@@ -36,13 +38,19 @@ public class AddCal {
 	
 	public void addFrameContents() {
 		
-		frame.setLayout(new GridLayout(3,1));
+		frame.setLayout(new GridLayout(5,1));
 		
-		label = new JLabel ("Coloque o URL na caixa");
-		frame.add(label);
+		labelName = new JLabel ("Coloque o nome de quem pertenceo calendario");
+		frame.add(labelName);
 		
-		textField = new JTextField("Coloque aqui o URL");
-		frame.add(textField);
+		textFieldName = new JTextField ("Coloque o nome aqui");
+		frame.add(textFieldName);
+		
+		labelURI = new JLabel ("Coloque o URI na caixa");
+		frame.add(labelURI);
+		
+		textFieldURI = new JTextField("Coloque aqui o URI");
+		frame.add(textFieldURI);
 		
 		addUrl = new JButton ("Adicionar calendario");
 		addUrl.addActionListener(new ActionListener(){
