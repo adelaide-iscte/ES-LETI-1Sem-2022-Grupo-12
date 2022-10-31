@@ -25,14 +25,28 @@
 			<version>3.8.1</version>
 		</dependency>
 
-		
-		
+		<!-- https://mvnrepository.com/artifact/com.damnhandy/handy-uri-templates -->
+<dependency>
+    <groupId>com.damnhandy</groupId>
+    <artifactId>handy-uri-templates</artifactId>
+    <version>2.1.8</version>
+</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 <dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
     <version>2.10</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/it.sauronsoftware.cron4j/cron4j -->
+<!-- https://mvnrepository.com/artifact/eu.mindfusion/diagramming -->
+<dependency>
+    <groupId>eu.mindfusion</groupId>
+    <artifactId>diagramming</artifactId>
+    <version>4.6.2</version>
+</dependency>
+
+
+
 
 
 
