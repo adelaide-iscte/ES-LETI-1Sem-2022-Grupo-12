@@ -26,7 +26,7 @@ public class CalDisp {
 
 		cal.setSize(300, 200);
 
-		cal.setLocation((width / 2) - cal.getWidth() + 100, (height / 2) - cal.getHeight() - 300);
+		cal.setLocation((width / 2) - cal.getWidth() + 100, (height / 2) - cal.getHeight() - 100);
 
 		readCalendario();
 	}
@@ -46,7 +46,6 @@ public class CalDisp {
 			while (sc.hasNextLine()) {
 				num++;
 				String[] aux = sc.nextLine().split(":");
-				System.out.println(aux[0]);
 				if (aux[0].equals("Nome")) {
 					contents.add(aux[1]);
 

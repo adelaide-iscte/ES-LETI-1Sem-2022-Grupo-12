@@ -44,35 +44,9 @@ public class AddCal {
 		
 		addFrameContents();
 		
-		File lista = new File("calendarios.txt");
-		if (!lista.exists()) {
-			try {
-				PrintWriter printWriter;
-				printWriter = new PrintWriter("calendarios.txt");
-				printWriter.println("Nome:" + textFieldName.getText());
-				printWriter.println("URI:" + textFieldURI.getText());
-				printWriter.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				List<String> nova_pessoa = new ArrayList<String>();
-				nova_pessoa.add("Nome:" + textFieldName.getText() + "\r\n" + "URI:" + textFieldURI.getText() + "\r\n" );
-				Scanner texto = new Scanner(new File("calendarios.txt"));
-				while (texto.hasNextLine()) {
-					String aux = texto.nextLine();
-					nova_pessoa.add(aux);
-				}
-				PrintWriter printWriter = new PrintWriter ("calendarios.txt");
-				printWriter.println(texto);
-				texto.close();
-				printWriter.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		
 		}		
-	}
+	
 	
 	public void addFrameContents() {
 		
@@ -95,6 +69,7 @@ public class AddCal {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				calendarList(textFieldName.getText(), textFieldURI.getText());
 				//frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 				frame.dispose();
 				
@@ -111,7 +86,45 @@ public class AddCal {
 		frame.setVisible(true);
 	}
 	
-	
+	public void calendarList(String nome, String uri) {
+		File lista = new File("calendarios.txt");
+		if (!lista.exists()) {
+			try {
+				PrintWriter printWriter;
+				printWriter = new PrintWriter("calendarios.txt");
+				printWriter.println("Nome:" + textFieldName.getText());
+				printWriter.println("URI:" + textFieldURI.getText());
+				printWriter.close();
+				System.out.println("criei o novo file");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				List<String> nova_pessoa = new ArrayList<String>();
+				nova_pessoa.add("Nome:" + textFieldName.getText() + "\r\n" + "URI:" + textFieldURI.getText()  );
+				Scanner texto = new Scanner(lista);
+				while (texto.hasNextLine()) {
+					String aux = texto.nextLine();
+					System.out.println(aux);
+					nova_pessoa.add(aux);
+				}
+				PrintWriter printWriter = new PrintWriter (lista);
+				
+				for (String i : nova_pessoa) {
+					printWriter.println(i);
+				}
+				
+				texto.close();
+				printWriter.close();
+				System.out.println("modifiquei");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
 	
 	
 
