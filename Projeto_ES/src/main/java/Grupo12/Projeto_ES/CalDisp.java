@@ -30,7 +30,7 @@ public class CalDisp {
 
 		readCalendario();
 	
-		readOneClass ("URI_teste.txt");
+		readFirstClass ("URI_teste.txt");
 		
 	}
 
