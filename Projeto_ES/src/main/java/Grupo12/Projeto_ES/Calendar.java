@@ -136,6 +136,51 @@ public class Calendar {
 		}
 
 	}
+	
+	public static void readDay (String string, int day){
+
+		File file = new File(string);
+
+		
+		try { 
+			Scanner sc = new Scanner (file);
+			while (sc.hasNextLine()) {
+				String [] aux = sc.nextLine().split(":|\\ - ");
+
+				if(aux[0].equals("X-WR-CALNAME")||aux[0].equals("SUMMARY")||aux[0].equals("LOCATION")){
+					System.out.println(aux[1]);
+				}
+				if(aux[0].equals("END")){
+					sc.close();
+					break;
+				}
+				if(aux[0].equals("DTSTART")){
+					String unOrganizedDate = aux[1];
+					String organizedDate;
+
+					if(unOrganizedDate.length() >8){
+						organizedDate = unOrganizedDate.substring(0,8);
+						String startTime =unOrganizedDate.substring(9,13);
+						System.out.println("data aula: " + organizedDate);
+						System.out.println("hora aula: " +startTime);
+					}
+				}
+				if(aux[0].equals("DTEND")){
+					String endTime = aux[1];
+
+					if(endTime.length() >8){
+						endTime = endTime.substring(9,13);
+						System.out.println("hora fim: " + endTime);
+					}
+				}		
+			}
+			sc.close();
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("Não é possivel aceder ao ficheiro");
+		}
+	}
+
 
 	public static void main(String[] args) {
 
@@ -171,6 +216,8 @@ public class Calendar {
 		System.out.println(d[0].equals("DTSTART"));
 		
 		workWeek("Luis Fraga", 20221010);
+		
+		readDay ("URI_teste.txt", 20221010);
 
 	}
 
