@@ -106,7 +106,7 @@ public class CalDisp {
 				String [] aux = sc.nextLine().split(":|\\ - ");
 
 				if(aux[0].equals("X-WR-CALNAME")||aux[0].equals("SUMMARY")||aux[0].equals("LOCATION")){
-					System.out.println("nome do aluno: " + aux[1]);
+					System.out.println(aux[1]);
 				}
 				if(aux[0].equals("END")){
 					sc.close();
@@ -130,12 +130,10 @@ public class CalDisp {
 						endTime = endTime.substring(9,13);
 						System.out.println("hora fim: " + endTime);
 					}
-				}
-				
+				}		
 			}
 			sc.close();
 		}
-
 		catch (FileNotFoundException e) {
 			System.out.println("Não é possivel aceder ao ficheiro");
 		}
