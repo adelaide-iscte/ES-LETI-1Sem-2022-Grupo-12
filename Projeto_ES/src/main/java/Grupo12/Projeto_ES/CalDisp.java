@@ -3,11 +3,14 @@ package Grupo12.Projeto_ES;
 
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
@@ -24,9 +27,9 @@ public class CalDisp {
 
 		cal.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-		cal.setSize(300, 200);
+		cal.setSize(800, 500);
 
-		cal.setLocation((width / 2) - cal.getWidth() + 100, (height / 2) - cal.getHeight() - 100);
+		cal.setLocation((width / 2)-300, (height / 2)-500);
 
 		readCalendario();
 	
@@ -43,7 +46,7 @@ public class CalDisp {
 
 			contents = new ArrayList<String>();
 
-			int num = 1;
+			int num = 2;
 
 			while (sc.hasNextLine()) {
 				num++;
@@ -54,15 +57,40 @@ public class CalDisp {
 				}
 			}
 
-			cal.setLayout(new GridLayout(num, 1));
+			cal.setLayout(new GridLayout(0, 3));
 
 			JLabel nomes = new JLabel("Nome");
 			cal.add(nomes);
+			cal.add(new JLabel());
+			cal.add(new JLabel());
 
 			for (String i : contents) {
 				JLabel nome = new JLabel(i);
 				cal.add(nome);
+				JButton semestre1 = new JButton("Semestre 1");
+				JButton semestre2 = new JButton("Semestre 2");
+				cal.add(semestre1);
+				cal.add(semestre2);
 			}
+			
+			cal.add(new JLabel());
+			cal.add(new JLabel());
+			cal.add(new JLabel());
+			
+			cal.add(new JLabel());
+			
+			JButton ok = new JButton("OK");
+			ok.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					cal.dispose();
+				}
+			});
+			
+			cal.add(ok);
+			
 
 			sc.close();
 		} catch (FileNotFoundException e) {
@@ -73,7 +101,6 @@ public class CalDisp {
 
 	}
 	
-
 
 
 
