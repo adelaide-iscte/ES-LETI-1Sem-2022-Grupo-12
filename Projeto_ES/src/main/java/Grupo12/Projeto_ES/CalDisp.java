@@ -73,27 +73,7 @@ public class CalDisp {
 
 	}
 	
-	public static String getURI (String name) {
-		File file = new File ("calendarios.txt");
-		
-		try {
-			Scanner sc = new Scanner (file);
-			while (sc.hasNextLine()) {
-				String [] aux = sc.nextLine().split(":");
-				if (aux[1].equals(name)) {
-					return sc.nextLine();
-				}
-			}
-			
-			sc.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("Não é possivel aceder ao ficheiro");
-		}
-		
-		System.out.println("Nome introduzido não econtrado");
-		return null;
-	}
-	////
+
 
 
 
