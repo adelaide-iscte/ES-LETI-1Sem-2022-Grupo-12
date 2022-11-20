@@ -29,6 +29,9 @@ public class CalDisp {
 		cal.setLocation((width / 2) - cal.getWidth() + 100, (height / 2) - cal.getHeight() - 100);
 
 		readCalendario();
+	
+		readOneClass ("URI_teste.txt");
+		
 	}
 
 	public void readCalendario() {
@@ -91,8 +94,55 @@ public class CalDisp {
 		System.out.println("Nome introduzido não econtrado");
 		return null;
 	}
-	
-	
+	////
+	public void readFirstClass (String string){
+
+		File file = new File(string);
+
+		
+		try { 
+			Scanner sc = new Scanner (file);
+			while (sc.hasNextLine()) {
+				String [] aux = sc.nextLine().split(":|\\ - ");
+
+				if(aux[0].equals("X-WR-CALNAME")||aux[0].equals("SUMMARY")||aux[0].equals("LOCATION")){
+					System.out.println("nome do aluno: " + aux[1]);
+				}
+				if(aux[0].equals("END")){
+					sc.close();
+					break;
+				}
+				if(aux[0].equals("DTSTART")){
+					String unOrganizedDate = aux[1];
+					String organizedDate;
+
+					if(unOrganizedDate.length() >8){
+						organizedDate = unOrganizedDate.substring(0,8);
+						String startTime =unOrganizedDate.substring(9,13);
+						System.out.println("data aula: " + organizedDate);
+						System.out.println("hora aula: " +startTime);
+					}
+				}
+				if(aux[0].equals("DTEND")){
+					String endTime = aux[1];
+
+					if(endTime.length() >8){
+						endTime = endTime.substring(9,13);
+						System.out.println("hora fim: " + endTime);
+					}
+				}
+				
+			}
+			sc.close();
+		}
+
+		catch (FileNotFoundException e) {
+			System.out.println("Não é possivel aceder ao ficheiro");
+		}
+	}
+
+
+
 	
 
 	public void open() {
