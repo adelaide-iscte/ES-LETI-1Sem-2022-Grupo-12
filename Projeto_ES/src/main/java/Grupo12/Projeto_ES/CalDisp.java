@@ -68,6 +68,15 @@ public class CalDisp {
 				JLabel nome = new JLabel(i);
 				cal.add(nome);
 				JButton semestre1 = new JButton("Semestre 1");
+				semestre1.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						cal.dispose();
+
+					}
+				});
 				JButton semestre2 = new JButton("Semestre 2");
 				cal.add(semestre1);
 				cal.add(semestre2);
@@ -84,7 +93,6 @@ public class CalDisp {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
 					cal.dispose();
 				}
 			});
