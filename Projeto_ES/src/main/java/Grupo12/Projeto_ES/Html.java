@@ -10,8 +10,18 @@ public class Html {
 	public static void main(String[] args) {
 		File file = new File("agenda.html");
 		try {
-
+        String hora = null;
 		PrintWriter printWriter = new PrintWriter(file);
+		String cadeira ="<tr>\r\n"
+				+ "<td align=\"center\" height=\"50\">\r\n"
+				+ "<b>" + hora + "</b></td>\r\n"
+				+ "<td align=\"center\" height=\"50\">cadeira</td>\r\n"
+				+ "<td align=\"center\" height=\"50\">cadeira</td>\r\n"
+				+ "<td align=\"center\" height=\"50\">cadeira</td>\r\n"
+				+ "<td align=\"center\" height=\"50\">cadeira</td>\r\n"
+				+ "<td align=\"center\" height=\"50\">cadeira</td>\r\n"
+				+ "</tr>\r\n";
+				
 		String html = " <!DOCTYPE html>\r\n"
 				+ "<html>\r\n"
 				+ " \r\n"
@@ -325,7 +335,14 @@ public class Html {
 	        {  
 	            e.printStackTrace();  
 	        }  
+	     try {
+	    	    Thread.sleep(2 * 1000);
+	    	} catch (InterruptedException e) {
+	    	    e.printStackTrace();
+	    	}
+	     file.delete();
 	}
+	
 }
 
 
