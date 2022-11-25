@@ -60,7 +60,7 @@ public class Calendar {
 		File file = new File(string);
 		List<String> aulas = new ArrayList<String>();
 		String organizedDate = null;
-		String disciplina=null;
+		String disciplina = null;
 		int startTime = 0;
 
 		try {
@@ -90,7 +90,12 @@ public class Calendar {
 						if (sala.split(":|\\ - |\\,").length > 1) {
 							aulas.add(disciplina);
 							aulas.add(sala.split(":|\\ - |\\,")[1]);
-							aulas.add(Integer.toString((startTime + 100)));
+							if (day < 20221031) {
+								aulas.add(Integer.toString((startTime + 100)));
+							}
+							else {
+								aulas.add(Integer.toString(startTime));
+							}
 						}
 					}
 
@@ -145,33 +150,32 @@ public class Calendar {
 			}
 		}
 	}
-	
-	public static int nextDay (int day) {
-		if (day==20220930)
+
+	public static int nextDay(int day) {
+		if (day == 20220930)
 			return 20221001;
-		if (day==20221031)
+		if (day == 20221031)
 			return 20221101;
-		if (day==20221130)
+		if (day == 20221130)
 			return 20221201;
-		if (day==20221231)
+		if (day == 20221231)
 			return 20230101;
-		if (day==20230131)
+		if (day == 20230131)
 			return 20230201;
-		if (day==20230228)
+		if (day == 20230228)
 			return 20230301;
-		if (day==20230331)
+		if (day == 20230331)
 			return 20230401;
-		if (day==20230430)
+		if (day == 20230430)
 			return 20230501;
-		if (day==20230531)
+		if (day == 20230531)
 			return 20230601;
-		if (day==20230630)
+		if (day == 20230630)
 			return 20230701;
-		if (day==20230731)
+		if (day == 20230731)
 			return 20230801;
-		return day+1;
+		return day + 1;
 	}
-	
 
 	public static JSONObject getJsonWeek(String uri, int fistDay) {
 
@@ -187,7 +191,7 @@ public class Calendar {
 			e.printStackTrace();
 		}
 		JSONObject semana = new JSONObject();
-		int inicioSemana = 20221017;
+		int inicioSemana = 20221010;
 		int diaDaSemana = inicioSemana;
 		int j = 0;
 
@@ -215,11 +219,11 @@ public class Calendar {
 					semana.put(day.get(day.size() - 1), hora);
 			}
 			j++;
-			diaDaSemana=nextDay(diaDaSemana);
+			diaDaSemana = nextDay(diaDaSemana);
 		}
-		
+		System.out.println(semana);
+
 		Html.main(inicioSemana, semana);
-		
 
 	}
 
