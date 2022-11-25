@@ -11,11 +11,12 @@ import java.io.FileNotFoundException;
 
 
 public class Html {
-	public static void main(String[] args) {
+	public static void main(int day, JSONObject semana) {
 		File file = new File("agenda.html");
 		try {
-        int hour = 8;
-        int day = 20221213;
+        int horaCerta = 8;
+        int horaEmeia = 0;
+        int diaSeguinte = day;
 		PrintWriter printWriter = new PrintWriter(file);				
 		String html = "<!DOCTYPE html>\r\n"
 				+ "<html>\r\n"
@@ -51,90 +52,90 @@ public class Html {
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>" + hour + ":00-" + (hour+=1) + ":30</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + horaCerta + ":00-" + (horaEmeia=horaCerta+1) + ":30</b></td>\r\n"
+				+ bloco((horaCerta*100),(diaSeguinte=day), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>9:30-11:00</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + horaEmeia + ":30-" + (horaCerta=horaEmeia+2) + ":00</b></td>\r\n"
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=day), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>11:00-12:30</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + horaCerta + ":00-" + (horaEmeia=horaCerta+1) + ":30</b></td>\r\n"
+				+ bloco((horaCerta*100),(diaSeguinte=day), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
                 + blocoVazio(12,13)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>13:00-14:30</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + (horaCerta+=2) + ":00-" + (horaEmeia=horaCerta+1) + ":30</b></td>\r\n"
+				+ bloco((horaCerta*100),(diaSeguinte=day), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>14:30-16:00</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + horaEmeia + ":30-" + (horaCerta=horaEmeia+2) + ":00</b></td>\r\n"
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=day), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>16:00-17:30</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + horaCerta + ":00-" + (horaEmeia=horaCerta+1) + ":30</b></td>\r\n"
+				+ bloco((horaCerta*100),(diaSeguinte=day), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
                 + blocoVazio(17,18)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>18:00-19:30</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + (horaCerta+=2) + ":00-" + (horaEmeia=horaCerta+1) + ":30</b></td>\r\n"
+				+ bloco((horaCerta*100),(diaSeguinte=day), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>19:30-21:00</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + horaEmeia + ":30-" + (horaCerta=horaEmeia+2) + ":00</b></td>\r\n"
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=day), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco(((horaEmeia*100)+30),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "        <tr>\r\n"
 				+ "            <td align=\"center\" height=\"100\">\r\n"
-				+ "                <b>21:00-22:30</b></td>\r\n"
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
-				+ bloco(hour,day, null)
+				+ "                <b>" + horaCerta + ":00-" + (horaEmeia=horaCerta+1) + ":30</b></td>\r\n"
+				+ bloco((horaCerta*100),(diaSeguinte=day), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
+				+ bloco((horaCerta*100),(diaSeguinte=Calendar.nextDay(diaSeguinte)), semana)
 				+ "        </tr>\r\n"
 				+ "    </table>\r\n"
 				+ "</body>\r\n"
@@ -163,6 +164,7 @@ public class Html {
 	     file.delete();
 	}
 	public static String blocoVazio(int hora1, int hora2) {
+		System.out.println("atum tuna");
 		return  "<td align=\"center\" height=\"50\">\r\n"
 				+ "                <b>" + hora1 +":30-" + hora2 + ":00</b></td>\r\n"
 				+ "            <td align=\"center\" height=\"50\"></td>\r\n"
@@ -175,14 +177,27 @@ public class Html {
 		
 		
 	}
-		public static String bloco(int hour, int day, JSONObject obj) {		
+		public static String bloco(int hour, int day, JSONObject semana) {
+			System.out.println(hour);
+			System.out.println(day);
 		String hora = Integer.toString(hour);
 		String dia = Integer.toString(day);
 		
-		
+		try {
 		return "<td align=\"center\" height=\"100\"><font color=\"blue\">Cadeira: </font>"
-				+ "Engenharia Software<br><font color=\"blue\">Sala:</font> "
-				+ "B206<br><font color=\"blue\">Professor:</font> Atum Tuna</td>\r\n";
+				+ ((JSONObject)(((JSONObject)(semana.get(dia))).get(hora))).get("Disciplina") 
+				+ "<br><font color=\"blue\">Sala:</font> "
+				+ ((JSONObject)(((JSONObject)(semana.get(dia))).get(hora))).get("Sala")
+				+ "<br><font color=\"blue\"></td>\r\n";
+		}catch (org.json.JSONException e) {
+			return "<td align=\"center\" height=\"50\">\r\n</td>\r\n"
+					+ "            <td align=\"center\" height=\"50\"></td>\r\n"
+					+ "            <td align=\"center\" height=\"50\"></td>\r\n"
+					+ "            <td align=\"center\" height=\"50\"></td>\r\n"
+					+ "            <td align=\"center\" height=\"50\"></td>\r\n"
+					+ "            <td align=\"center\" height=\"50\"></td>\r\n";
+
+		}
 		
 //		return "<td align=\"center\" height=\"100\"><font color=\"blue\">Cadeira: </font>"
 //		+ ((((JSONObject) obj.get(dia).get(hora)).get("Cadeira"))) + "<br><font color=\"blue\">Sala:</font> "

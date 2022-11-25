@@ -145,6 +145,33 @@ public class Calendar {
 			}
 		}
 	}
+	
+	public static int nextDay (int day) {
+		if (day==20220930)
+			return 20221001;
+		if (day==20221031)
+			return 20221101;
+		if (day==20221130)
+			return 20221201;
+		if (day==20221231)
+			return 20230101;
+		if (day==20230131)
+			return 20230201;
+		if (day==20230228)
+			return 20230301;
+		if (day==20230331)
+			return 20230401;
+		if (day==20230430)
+			return 20230501;
+		if (day==20230531)
+			return 20230601;
+		if (day==20230630)
+			return 20230701;
+		if (day==20230731)
+			return 20230801;
+		return day+1;
+	}
+	
 
 	public static JSONObject getJsonWeek(String uri, int fistDay) {
 
@@ -153,53 +180,20 @@ public class Calendar {
 
 	public static void main(String[] args) {
 
-//		JSONObject json = new JSONObject();
-//		JSONObject dia = new JSONObject();
-//		JSONArray jArray = new JSONArray();
-//
-//		dia.put("disciplina", "PCD");
-//		dia.put("horaInicio", "13:00");
-//
-//		jArray.put(2, dia);
-//
-//		json.put("2022/10/10", jArray);
-//		json.put("atum", "tuna");
-//		json.put("20221011", "PCD;1330;C405");
-//		json.put("vvv", dia);
-//
-//		System.out.println(json.get("20221011").toString().split(";")[0]);
-//		System.out.println((((JSONObject) json.get("vvv")).get("disciplina")));
-//
-//		String s = "aa:ss:aa";
-//		String[] f = s.split("#");
-//		System.out.println(f[0]);
-//
-//		String a = "DTSTART:20221010T100000Z";
-//		String[] d = a.split(":");
-//		String[] ab = a.split("T");
-//		String[] abc = ab[3].split(":");
-//		int week = 20221010;
-//
-//		System.out.println(abc[1]);
-//		System.out.println((Integer.toString(week).equals(abc[1])));
-//		System.out.println(d[0].equals("DTSTART"));
-
 		try {
 			createURIFile("Luis Fraga",
 					"//fenix.iscte-iul.pt/publico/publicPersonICalendar.do?method=iCalendar&username=ldmfa@iscte.pt&password=WO0G8YATTP1tDnHcsadLlOXY7DVzzCFtAWEPoynnnwrrXisaK5XWziFEPrQWRBumQEpCAyhUtOLfEs9Q1qQncKseCMnNMVAf6LZd71erh2tDbygT5lJ9TENQKdiepPlN");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		JSONObject semana = new JSONObject();
 		int inicioSemana = 20221010;
+		int diaDaSemana = inicioSemana;
 		int j = 0;
 
 		while (j <= 4) {
-			System.out.println(inicioSemana);
-			System.out.println(j);
 			if (readDay("Luis FragaURI.txt", inicioSemana) != null) {
-				List<String> day = new ArrayList<String>(readDay("Luis FragaURI.txt", inicioSemana));
+				List<String> day = new ArrayList<String>(readDay("Luis FragaURI.txt", diaDaSemana));
 				JSONObject info = new JSONObject();
 				JSONObject hora = new JSONObject();
 				int i = 0;
@@ -221,9 +215,11 @@ public class Calendar {
 					semana.put(day.get(day.size() - 1), hora);
 			}
 			j++;
-			inicioSemana += 1;
+			diaDaSemana=nextDay(diaDaSemana);
 		}
-		System.out.println(semana);
+		
+		Html.main(inicioSemana, semana);
+		
 
 	}
 
