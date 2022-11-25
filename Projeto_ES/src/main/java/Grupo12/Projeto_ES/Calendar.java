@@ -187,7 +187,7 @@ public class Calendar {
 			e.printStackTrace();
 		}
 		JSONObject semana = new JSONObject();
-		int inicioSemana = 20221010;
+		int inicioSemana = 20221017;
 		int diaDaSemana = inicioSemana;
 		int j = 0;
 
