@@ -15,7 +15,7 @@ public class GetURIFile {
 		File file = new File("URI" + name);
 		PrintWriter printWriter = new PrintWriter(file);
 		String httpsURL = "https://fenix.iscte-iul.pt/publico/publicPersonICalendar.do?method=iCalendar&username=aadoa@iscte.pt&password=alBC2CS6FVNgaUMbGgW2vihBSUO2yX9lfTjOPAcz06DRY7QkFrrnzsQweRkuXfCPMMAlBEtcye1jSaRgEPeCFjOXwEzITQvi3GhMM2rYp21wKDTXk8ATzbUNtwK1N6Xz";
-		URL myUrl = new URL(httpsURL);
+		URL myUrl = new URL(httpsURL); 
 		HttpsURLConnection conn = (HttpsURLConnection)myUrl.openConnection();
 		InputStream is = conn.getInputStream();
 		InputStreamReader isr = new InputStreamReader(is, "UTF-8");
