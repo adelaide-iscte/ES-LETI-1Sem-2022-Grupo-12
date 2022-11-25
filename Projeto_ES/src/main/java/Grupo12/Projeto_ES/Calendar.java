@@ -39,9 +39,10 @@ public class Calendar {
 				while (sc.hasNextLine()) {
 					String[] aux = sc.nextLine().split(":");
 					if (aux[1].equals(name)) {
-						String aeiou = sc.nextLine();
-						System.out.println(aeiou);
-						return aeiou;
+						String [] uri = sc.nextLine().split(":");
+						if (uri[1].equals("webcal"))
+							return uri[2];
+						return uri[1];
 					}
 				}
 				sc.close();
@@ -185,8 +186,7 @@ public class Calendar {
 	public static void main(String[] args) {
 
 		try {
-			createURIFile("Luis Fraga",
-					"//fenix.iscte-iul.pt/publico/publicPersonICalendar.do?method=iCalendar&username=ldmfa@iscte.pt&password=WO0G8YATTP1tDnHcsadLlOXY7DVzzCFtAWEPoynnnwrrXisaK5XWziFEPrQWRBumQEpCAyhUtOLfEs9Q1qQncKseCMnNMVAf6LZd71erh2tDbygT5lJ9TENQKdiepPlN");
+			createURIFile("Luis Fraga", getURI("Luis Fraga"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
