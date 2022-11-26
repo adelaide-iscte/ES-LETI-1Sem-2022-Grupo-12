@@ -91,7 +91,7 @@ public class Calendar {
 						if (sala.split(":|\\ - |\\,").length > 1) {
 							aulas.add(disciplina);
 							aulas.add(sala.split(":|\\ - |\\,")[1]);
-							if (day < 20221031) {
+							if (day < 20221031 || day>=20230327) {
 								aulas.add(Integer.toString((startTime + 100)));
 							}
 							else {
@@ -177,27 +177,55 @@ public class Calendar {
 			return 20230801;
 		return day + 1;
 	}
+	
+	public static int nextWeek(int day) {
+		int nextWeek=day+7;
+		
+		if (nextWeek > 20220930 && nextWeek < 20221001)
+			return 20221001+(nextWeek-20220930-1);
+		if (nextWeek > 20221031 && nextWeek < 20221101)
+			return 20221101+(nextWeek-20221031-1);
+		if (nextWeek > 20221130 && nextWeek < 20221201)
+			return 20221201+(nextWeek-20221130-1);
+		if (nextWeek > 20221231 && nextWeek < 20230101)
+			return 20230101+(nextWeek-20221231-1);
+		if (nextWeek > 20230131 && nextWeek < 20230201)
+			return 20230201+(nextWeek-20230131-1);
+		if (nextWeek > 20230228 && nextWeek < 20230301)
+			return 20230301+(nextWeek-20230228-1);
+		if (nextWeek > 20230331 && nextWeek < 20230401)
+			return 20230401+(nextWeek-20230331-1);
+		if (nextWeek > 20230430 && nextWeek < 20230501)
+			return 20230501+(nextWeek-20230430-1);
+		if (nextWeek > 20230531 && nextWeek < 20230601)
+			return 20230601+(nextWeek-20230531-1);
+		if (nextWeek > 20230630 && nextWeek < 20230701)
+			return 20230701+(nextWeek-20230630-1);
+		if (nextWeek > 20230731 && nextWeek < 20230801)
+			return 20230801+(nextWeek-20230731-1);
+		return nextWeek;
+	}
 
 	public static JSONObject getJsonWeek(String uri, int fistDay) {
 
 		return null;
 	}
 
-	public static void main(String[] args) {
+	public static void gerarHorario(String nome, int inicioSemana) {
 
+		
 		try {
-			createURIFile("Luis Fraga", getURI("Luis Fraga"));
+			createURIFile(nome, getURI(nome));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		JSONObject semana = new JSONObject();
-		int inicioSemana = 20221010;
 		int diaDaSemana = inicioSemana;
 		int j = 0;
 
 		while (j <= 4) {
-			if (readDay("Luis FragaURI.txt", inicioSemana) != null) {
-				List<String> day = new ArrayList<String>(readDay("Luis FragaURI.txt", diaDaSemana));
+			if (readDay(nome + "URI.txt", diaDaSemana) != null) {
+				List<String> day = new ArrayList<String>(readDay(nome + "URI.txt", diaDaSemana));
 				JSONObject info = new JSONObject();
 				JSONObject hora = new JSONObject();
 				int i = 0;

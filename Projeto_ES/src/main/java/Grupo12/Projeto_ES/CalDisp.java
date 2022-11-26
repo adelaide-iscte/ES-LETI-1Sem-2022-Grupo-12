@@ -1,6 +1,5 @@
 package Grupo12.Projeto_ES;
 
-
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -29,15 +28,13 @@ public class CalDisp {
 
 		cal.setSize(800, 500);
 
-		cal.setLocation((width / 2)-300, (height / 2)-500);
+		cal.setLocation((width / 2) - 300, (height / 2) - 500);
 
 		readCalendario();
-	
-		
+
 	}
 
 	public void readCalendario() {
-
 
 		File file = new File("calendarios.txt");
 
@@ -64,41 +61,49 @@ public class CalDisp {
 			cal.add(new JLabel());
 			cal.add(new JLabel());
 
-			for (String i : contents) {
+			for (final String i : contents) {
 				JLabel nome = new JLabel(i);
 				cal.add(nome);
 				JButton semestre1 = new JButton("Semestre 1");
 				semestre1.addActionListener(new ActionListener() {
-					
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						cal.dispose();
+						Semanas semana = new Semanas(1, i);
+						semana.open();
 
 					}
 				});
 				JButton semestre2 = new JButton("Semestre 2");
+				semestre2.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Semanas semana = new Semanas(2, i);
+						semana.open();
+
+					}
+				});
 				cal.add(semestre1);
 				cal.add(semestre2);
 			}
-			
+
 			cal.add(new JLabel());
 			cal.add(new JLabel());
 			cal.add(new JLabel());
-			
+
 			cal.add(new JLabel());
-			
+
 			JButton ok = new JButton("OK");
 			ok.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					cal.dispose();
 				}
 			});
-			
+
 			cal.add(ok);
-			
 
 			sc.close();
 		} catch (FileNotFoundException e) {
@@ -108,16 +113,9 @@ public class CalDisp {
 		}
 
 	}
-	
-
-
-
-	
 
 	public void open() {
 		cal.setVisible(true);
 	}
-	
 
 }
-

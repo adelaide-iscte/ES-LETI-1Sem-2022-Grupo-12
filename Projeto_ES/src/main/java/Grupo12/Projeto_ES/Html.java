@@ -114,7 +114,7 @@ public class Html {
 			e.printStackTrace();
 		}
 		try {
-			Thread.sleep(10 * 1000);
+			Thread.sleep(3 * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -136,14 +136,10 @@ public class Html {
 	}
 
 	public static String bloco(int hour, int day, JSONObject semana) {
-			System.out.println(day);
-			System.out.println(hour);
 		String hora = Integer.toString(hour);
 		String dia = Integer.toString(day);
 		
 		try {
-			System.out.println("Aula de " + ((JSONObject)(((JSONObject)(semana.get(dia))).get(hora))).get("Disciplina") 
-					+ "na sala " + ((JSONObject)(((JSONObject)(semana.get(dia))).get(hora))).get("Sala"));
 		return "<td align=\"center\" height=\"100\"><font color=\"blue\">Cadeira:</font>"
 				+ ((JSONObject)(((JSONObject)(semana.get(dia))).get(hora))).get("Disciplina") 
 				+ "<br><font color=\"blue\">Sala:</font> "
@@ -153,14 +149,7 @@ public class Html {
 		
 		
 		}catch (org.json.JSONException e) {
-//			System.out.println("deu treta");
-			return umBlocoVazio();
-//			return "<td align=\"center\" height=\"50\">\r\n</td>\r\n"
-//					+ "            <td align=\"center\" height=\"50\"></td>\r\n"
-//					+ "            <td align=\"center\" height=\"50\"></td>\r\n"
-//					+ "            <td align=\"center\" height=\"50\"></td>\r\n"
-//					+ "            <td align=\"center\" height=\"50\"></td>\r\n"
-//					+ "            <td align=\"center\" height=\"50\"></td>\r\n";
+			return "<td align=\"center\" height=\"100\"\r\n></td>\r\n";
 		}
 	}
 
