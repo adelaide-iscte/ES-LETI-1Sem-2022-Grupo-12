@@ -39,9 +39,15 @@ public class Calendar {
 				while (sc.hasNextLine()) {
 					String[] aux = sc.nextLine().split(":");
 					if (aux[1].equals(name)) {
-						String [] uri = sc.nextLine().split(":");
+						String[] uri = sc.nextLine().split(":");
 						if (uri[1].equals("webcal"))
-							return uri[2];
+							if (uri[2].split("//").length > 1) {
+								return uri[2].split("//")[1];
+							}else {
+								return uri[2];
+							}
+						if (uri[1].split("//").length > 1)
+							return uri[1].split("//")[1];
 						return uri[1];
 					}
 				}
@@ -91,10 +97,9 @@ public class Calendar {
 						if (sala.split(":|\\ - |\\,").length > 1) {
 							aulas.add(disciplina);
 							aulas.add(sala.split(":|\\ - |\\,")[1]);
-							if (day < 20221031 || day>=20230327) {
+							if (day < 20221031 || day >= 20230327) {
 								aulas.add(Integer.toString((startTime + 100)));
-							}
-							else {
+							} else {
 								aulas.add(Integer.toString(startTime));
 							}
 						}
@@ -133,7 +138,7 @@ public class Calendar {
 			try {
 
 				PrintWriter printWriter = new PrintWriter(fileName + "URI.txt");
-				String httpsURL = "https:" + uri;
+				String httpsURL = "https://" + uri;
 				URL myUrl = new URL(httpsURL);
 				HttpsURLConnection conn = (HttpsURLConnection) myUrl.openConnection();
 				InputStream is = conn.getInputStream();
@@ -177,32 +182,32 @@ public class Calendar {
 			return 20230801;
 		return day + 1;
 	}
-	
+
 	public static int nextWeek(int day) {
-		int nextWeek=day+7;
-		
+		int nextWeek = day + 7;
+
 		if (nextWeek > 20220930 && nextWeek < 20221001)
-			return 20221001+(nextWeek-20220930-1);
+			return 20221001 + (nextWeek - 20220930 - 1);
 		if (nextWeek > 20221031 && nextWeek < 20221101)
-			return 20221101+(nextWeek-20221031-1);
+			return 20221101 + (nextWeek - 20221031 - 1);
 		if (nextWeek > 20221130 && nextWeek < 20221201)
-			return 20221201+(nextWeek-20221130-1);
+			return 20221201 + (nextWeek - 20221130 - 1);
 		if (nextWeek > 20221231 && nextWeek < 20230101)
-			return 20230101+(nextWeek-20221231-1);
+			return 20230101 + (nextWeek - 20221231 - 1);
 		if (nextWeek > 20230131 && nextWeek < 20230201)
-			return 20230201+(nextWeek-20230131-1);
+			return 20230201 + (nextWeek - 20230131 - 1);
 		if (nextWeek > 20230228 && nextWeek < 20230301)
-			return 20230301+(nextWeek-20230228-1);
+			return 20230301 + (nextWeek - 20230228 - 1);
 		if (nextWeek > 20230331 && nextWeek < 20230401)
-			return 20230401+(nextWeek-20230331-1);
+			return 20230401 + (nextWeek - 20230331 - 1);
 		if (nextWeek > 20230430 && nextWeek < 20230501)
-			return 20230501+(nextWeek-20230430-1);
+			return 20230501 + (nextWeek - 20230430 - 1);
 		if (nextWeek > 20230531 && nextWeek < 20230601)
-			return 20230601+(nextWeek-20230531-1);
+			return 20230601 + (nextWeek - 20230531 - 1);
 		if (nextWeek > 20230630 && nextWeek < 20230701)
-			return 20230701+(nextWeek-20230630-1);
+			return 20230701 + (nextWeek - 20230630 - 1);
 		if (nextWeek > 20230731 && nextWeek < 20230801)
-			return 20230801+(nextWeek-20230731-1);
+			return 20230801 + (nextWeek - 20230731 - 1);
 		return nextWeek;
 	}
 
@@ -213,7 +218,6 @@ public class Calendar {
 
 	public static void gerarHorario(String nome, int inicioSemana) {
 
-		
 		try {
 			createURIFile(nome, getURI(nome));
 		} catch (Exception e) {
@@ -249,7 +253,6 @@ public class Calendar {
 			j++;
 			diaDaSemana = nextDay(diaDaSemana);
 		}
-		System.out.println(semana);
 
 		Html.main(inicioSemana, semana);
 
