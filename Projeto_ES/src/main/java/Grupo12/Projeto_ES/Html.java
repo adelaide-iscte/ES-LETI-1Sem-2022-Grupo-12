@@ -23,16 +23,18 @@ public class Html {
 					+ "        <tr>\r\n" + "            <td align=\"center\" height=\"50\"\r\n"
 					+ "                width=\"300\"><br>\r\n" + "                <b>Hora/Dia</b></br>\r\n"
 					+ "            </td>\r\n" + "            <td align=\"center\" height=\"50\"\r\n"
-					+ "                width=\"300\">\r\n" + "                <b>Segunda</b>\r\n"
-					+ "            </td>\r\n" + "            <td align=\"center\" height=\"50\"\r\n"
-					+ "                width=\"300\">\r\n" + "                <b>Terça</b>\r\n"
-					+ "            </td>\r\n" + "            <td align=\"center\" height=\"50\"\r\n"
-					+ "                width=\"300\">\r\n" + "                <b>Quarta</b>\r\n"
+					+ "                width=\"300\">\r\n" + "                <b>Segunda(" + (diaSeguinte = day)
+					+ ")</b>\r\n" + "            </td>\r\n" + "            <td align=\"center\" height=\"50\"\r\n"
+					+ "                width=\"300\">\r\n" + "                <b>Terça("
+					+ (diaSeguinte = Calendar.nextDay(diaSeguinte)) + ")</b>\r\n" + "            </td>\r\n"
+					+ "            <td align=\"center\" height=\"50\"\r\n" + "                width=\"300\">\r\n"
+					+ "                <b>Quarta(" + (diaSeguinte = Calendar.nextDay(diaSeguinte)) + ")</b>\r\n"
 					+ "            </td>\r\n" + "            \r\n"
 					+ "            <td align=\"center\" height=\"50\"\r\n" + "                width=\"300\">\r\n"
-					+ "                <b>Quinta</b>\r\n" + "            </td>\r\n"
-					+ "            <td align=\"center\" height=\"50\"\r\n" + "                width=\"300\">\r\n"
-					+ "                <b>Sexta</b>\r\n" + "        </tr>\r\n" + "        <tr>\r\n"
+					+ "                <b>Quinta(" + (diaSeguinte = Calendar.nextDay(diaSeguinte)) + ")</b>\r\n"
+					+ "            </td>\r\n" + "            <td align=\"center\" height=\"50\"\r\n"
+					+ "                width=\"300\">\r\n" + "                <b>Sexta("
+					+ (diaSeguinte = Calendar.nextDay(diaSeguinte)) + ")</b>\r\n        </tr>\r\n" + "        <tr>\r\n"
 					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + horaCerta
 					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n"
 					+ bloco((horaCerta * 100), (diaSeguinte = day), semana)
@@ -138,17 +140,15 @@ public class Html {
 	public static String bloco(int hour, int day, JSONObject semana) {
 		String hora = Integer.toString(hour);
 		String dia = Integer.toString(day);
-		
+
 		try {
-		return "<td align=\"center\" height=\"100\"><font color=\"blue\">Cadeira:</font>"
-				+ ((JSONObject)(((JSONObject)(semana.get(dia))).get(hora))).get("Disciplina") 
-				+ "<br><font color=\"blue\">Sala:</font> "
-				+ ((JSONObject)(((JSONObject)(semana.get(dia))).get(hora))).get("Sala")
-				+ "<br><font color=\"blue\"></td>\r\n";
-		
-		
-		
-		}catch (org.json.JSONException e) {
+			return "<td align=\"center\" height=\"100\"><font color=\"blue\">Cadeira:</font>"
+					+ ((JSONObject) (((JSONObject) (semana.get(dia))).get(hora))).get("Disciplina")
+					+ "<br><font color=\"blue\">Sala:</font> "
+					+ ((JSONObject) (((JSONObject) (semana.get(dia))).get(hora))).get("Sala")
+					+ "<br><font color=\"blue\"></td>\r\n";
+
+		} catch (org.json.JSONException e) {
 			return "<td align=\"center\" height=\"100\"\r\n></td>\r\n";
 		}
 	}
