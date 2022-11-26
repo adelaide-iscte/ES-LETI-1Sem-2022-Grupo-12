@@ -253,6 +253,7 @@ public class Calendar {
 			j++;
 			diaDaSemana = nextDay(diaDaSemana);
 		}
+		System.out.println(semana);
 
 		Html.main(inicioSemana, semana);
 
