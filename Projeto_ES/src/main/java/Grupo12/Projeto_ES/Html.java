@@ -10,7 +10,7 @@ import java.awt.Desktop;
 import java.io.FileNotFoundException;
 
 public class Html {
-	public static void visualizarSemana(int day, JSONObject semana) {
+	public static void visualizarSemana(int numeroSemana, int day, JSONObject semana) {
 		File file = new File("agenda.html");
 		try {
 			int horaCerta = 8;
@@ -18,7 +18,7 @@ public class Html {
 			int diaSeguinte = day;
 			PrintWriter printWriter = new PrintWriter(file);
 			String html = "<!DOCTYPE html>\r\n" + "<html>\r\n" + " \r\n" + "<body>\r\n"
-					+ "    <h1>Horário Semana 1</h1>\r\n"
+					+ "    <h1>Horário Semana " + numeroSemana +"</h1>\r\n"
 					+ "    <table border=\"8\" cellspacing=\"0\" align=\"center\" bordercolor=\"blue\">\r\n"
 					+ "        <tr>\r\n" + "            <td align=\"center\" height=\"50\"\r\n"
 					+ "                width=\"300\"><br>\r\n" + "                <b>Hora/Dia</b></br>\r\n"

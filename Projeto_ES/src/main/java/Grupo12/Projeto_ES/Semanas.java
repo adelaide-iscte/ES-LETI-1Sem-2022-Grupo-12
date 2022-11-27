@@ -47,13 +47,15 @@ public class Semanas {
 		
 		for (int i=1;i<=14;i++) {
 			final int day = dia;
+			final int numeroSemana=i;
+
 			
 			JButton semana = new JButton(Integer.toString(i));
 			semana.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Calendar.gerarHorarioSemana(nome, day);
+					Calendar.gerarHorarioSemana(nome, day, numeroSemana);
 				}
 				
 			});
@@ -69,6 +71,7 @@ public class Semanas {
 			
 			for (int i=1;i<=16;i++) {
 				final int day = dia;
+				final int numeroSemana=i;
 				
 				JButton semana = new JButton(Integer.toString(i));
 				semana.addActionListener(new ActionListener() {
@@ -76,7 +79,7 @@ public class Semanas {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println(day);
-						Calendar.gerarHorarioSemana(nome, day);
+						Calendar.gerarHorarioSemana(nome, day, numeroSemana);
 					}
 					
 				});
@@ -111,7 +114,7 @@ public class Semanas {
 						if (check.isSelected()) {
 							Calendar.gerarHoarioDia(nome, Integer.parseInt(data.getText()));
 						}else {
-							Calendar.gerarHorarioSemana(nome, Integer.parseInt(data.getText()));
+							Calendar.gerarHorarioSemana(nome, Integer.parseInt(data.getText()), Integer.parseInt(data.getText()));
 						}
 						frame.dispose();
 					}

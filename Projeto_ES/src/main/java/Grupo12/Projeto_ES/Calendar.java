@@ -216,7 +216,7 @@ public class Calendar {
 		return null;
 	}
 
-	public static void gerarHorarioSemana(String nome, int inicioSemana) {
+	public static void gerarHorarioSemana(String nome, int inicioSemana, int numeroSemana) {
 
 		try {
 			createURIFile(nome, getURI(nome));
@@ -254,7 +254,7 @@ public class Calendar {
 			diaDaSemana = nextDay(diaDaSemana);
 		}
 
-		Html.visualizarSemana(inicioSemana, semana);
+		Html.visualizarSemana(numeroSemana, inicioSemana, semana);
 
 	}
 	
