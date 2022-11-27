@@ -6,8 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class Semanas {
@@ -34,7 +37,8 @@ public class Semanas {
 			addPrimeiroSemestre ();
 		if (this.semestre==2)
 			addSegundoSemestre ();
-		
+		if (this.semestre==3)
+			addPesquisar();
 	}
 	
 	private void addPrimeiroSemestre () {
@@ -49,7 +53,7 @@ public class Semanas {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Calendar.gerarHorario(nome, day);
+					Calendar.gerarHorarioSemana(nome, day);
 				}
 				
 			});
@@ -72,7 +76,7 @@ public class Semanas {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println(day);
-						Calendar.gerarHorario(nome, day);
+						Calendar.gerarHorarioSemana(nome, day);
 					}
 					
 				});
@@ -83,6 +87,43 @@ public class Semanas {
 		
 		
 	}
+		
+		private void addPesquisar () {
+			frame.setLayout(new GridLayout(0,1));
+			
+			JLabel info = new JLabel("Colocque o dia em que a semana começa(Ex. 20221010)");
+			frame.add(info);
+			
+			final JTextField data = new JTextField("");
+			frame.add(data);
+			
+			final JCheckBox check = new JCheckBox("Pesquisar dia");
+			frame.add(check);
+			
+			JButton pesquisar = new JButton("Pesquisar");
+			pesquisar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if (data.getText().equals("")) { 
+						JOptionPane.showMessageDialog(frame, "Nehuma data foi selecionada");
+					}else {
+						if (check.isSelected()) {
+							Calendar.gerarHoarioDia(nome, Integer.parseInt(data.getText()));
+						}else {
+							Calendar.gerarHorarioSemana(nome, Integer.parseInt(data.getText()));
+						}
+						frame.dispose();
+					}
+					
+				}
+			});
+			
+			frame.add(pesquisar);
+			
+		}
+		
+		
 	
 		public void open() {
 			frame.setVisible(true);

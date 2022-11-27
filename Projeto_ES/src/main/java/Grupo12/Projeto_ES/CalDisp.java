@@ -54,10 +54,11 @@ public class CalDisp {
 				}
 			}
 
-			cal.setLayout(new GridLayout(0, 3));
+			cal.setLayout(new GridLayout(0, 4));
 
 			JLabel nomes = new JLabel("Nome");
 			cal.add(nomes);
+			cal.add(new JLabel());
 			cal.add(new JLabel());
 			cal.add(new JLabel());
 
@@ -84,10 +85,24 @@ public class CalDisp {
 
 					}
 				});
+				
+				JButton pesquisar = new JButton ("Pesquisar");
+				pesquisar.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Semanas semana = new Semanas (3,i);
+						semana.open();
+						
+					}
+				});
+				
 				cal.add(semestre1);
 				cal.add(semestre2);
+				cal.add(pesquisar);
 			}
 
+			cal.add(new JLabel());
 			cal.add(new JLabel());
 			cal.add(new JLabel());
 			cal.add(new JLabel());

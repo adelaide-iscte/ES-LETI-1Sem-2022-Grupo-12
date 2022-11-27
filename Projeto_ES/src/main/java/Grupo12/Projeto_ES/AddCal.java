@@ -66,7 +66,6 @@ public class AddCal {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				calendarList(textFieldName.getText(), textFieldURI.getText());
-				// frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 				frame.dispose();
 
 			}
