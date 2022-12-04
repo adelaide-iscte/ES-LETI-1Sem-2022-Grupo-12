@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -126,9 +127,32 @@ public class Calendar {
 		} catch (FileNotFoundException e) {
 			System.out.println("Não é possivel aceder ao ficheiro");
 		}
+		
 		if (organizedDate != null)
 			aulas.add(organizedDate);
+		System.out.println(Arrays.toString(aulas.toArray()));
 		return aulas;
+	}
+	
+	public static List<String> searchAvailability(List<String> Day){
+		List<String> availableTimes = new ArrayList<String>();
+		int availableBlock;
+		int i= 0;
+		if(Day!=null){
+			for(String str:Day){
+				if(i==3)
+					i=0;
+				if(i==2){
+					availableTimes.add(str);
+				}
+				
+				i++;
+				
+			}
+		}
+		System.out.println(Arrays.toString(availableTimes.toArray()));
+		return availableTimes;
+
 	}
 
 	public static void createURIFile(String name, String uri) throws Exception {
@@ -255,6 +279,12 @@ public class Calendar {
 		}
 
 		Html.visualizarSemana(numeroSemana, inicioSemana, semana);
+		System.out.println("..........");
+		readDay(nome + "URI.txt", 20220929);
+		System.out.println("..........");
+
+		searchAvailability(readDay(nome + "URI.txt", 20220929));
+		System.out.println("..........");
 
 	}
 	
