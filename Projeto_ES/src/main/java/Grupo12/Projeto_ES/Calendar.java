@@ -136,24 +136,36 @@ public class Calendar {
 	
 	public static List<String> searchAvailability(List<String> Day){
 		List<String> availableTimes = new ArrayList<String>();
+		availableTimes.add("800");
+		availableTimes.add("930");
+		availableTimes.add("1100");
+		availableTimes.add("1300");
+		availableTimes.add("1430");
+		availableTimes.add("1600");
+		availableTimes.add("1730");
+		availableTimes.add("1800");
+		availableTimes.add("1930");
+		availableTimes.add("2100");
 		int availableBlock;
 		int i= 0;
 		if(Day!=null){
 			for(String str:Day){
 				if(i==3)
 					i=0;
-				if(i==2){
-					availableTimes.add(str);
+				if(i==2 ){
+					if(availableTimes.contains(str)){
+
+						availableTimes.remove(str);
+						availableBlock =Integer.parseInt(str);
+					}
 				}
-				
 				i++;
-				
 			}
 		}
 		System.out.println(Arrays.toString(availableTimes.toArray()));
 		return availableTimes;
-
 	}
+
 
 	public static void createURIFile(String name, String uri) throws Exception {
 		String fileName = name;
@@ -180,6 +192,7 @@ public class Calendar {
 			}
 		}
 	}
+	
 
 	public static int nextDay(int day) {
 		if (day == 20220930)
