@@ -363,14 +363,14 @@ public class Calendar {
 				day.put(listaDia.get(listaDia.size() - 1), horaDisp);
 			
 		}
-		System.out.println(day.get(20220929));
+		System.out.println(day.get(Integer.toString(dia)));
 		
 		//Html.visualizarDia(dia, day);  
 		
 	}
 	
 	public static void main(String[] args) {
-		DisponibilidadeSemana("gr",20220929);
+		DisponibilidadeSemana("Luis Fraga",20220929);
 	}
 
 
