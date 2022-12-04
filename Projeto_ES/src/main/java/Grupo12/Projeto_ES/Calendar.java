@@ -20,6 +20,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -295,7 +296,6 @@ public class Calendar {
 		
 		//searchAvailability(readDay(nome + "URI.txt", 20220929));
 		
-
 	}
 	
 	public static void gerarHoarioDia (String nome, int dia) {
@@ -333,5 +333,45 @@ public class Calendar {
 		Html.visualizarDia(dia, day);
 		
 	}
+	public static void DisponibilidadeSemana (String nome, int dia) {
+		try {
+			createURIFile(nome, getURI(nome));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		JSONObject day = new JSONObject();
+
+		if (readDay(nome + "URI.txt", dia) != null) {
+			List<String> listaDia = new ArrayList<String>(readDay(nome + "URI.txt", dia));
+			List<String> listaHorasLivres = new ArrayList<String>(searchAvailability(listaDia));
+			
+			JSONObject horaDisp = new JSONObject();
+			
+			for (String objects : listaHorasLivres) {
+				
+				
+					
+				
+					
+					horaDisp.put(objects, "");
+					
+
+			
+			}
+			if (listaDia.size() > 0)
+				day.put(listaDia.get(listaDia.size() - 1), horaDisp);
+			
+		}
+		System.out.println(day.get(20220929));
+		
+		//Html.visualizarDia(dia, day);  
+		
+	}
+	
+	public static void main(String[] args) {
+		DisponibilidadeSemana("gr",20220929);
+	}
+
 
 }
