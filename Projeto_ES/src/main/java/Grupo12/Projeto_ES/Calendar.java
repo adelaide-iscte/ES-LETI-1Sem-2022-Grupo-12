@@ -134,7 +134,7 @@ public class Calendar {
 		return aulas;
 	}
 	
-	public static List<String> searchAvailability(List<String> Day){
+	public static List<String> searchAvailability(List<String> ReadDay){
 		List<String> availableTimes = new ArrayList<String>();
 		availableTimes.add("800");
 		availableTimes.add("930");
@@ -148,8 +148,8 @@ public class Calendar {
 		availableTimes.add("2100");
 		int availableBlock;
 		int i= 0;
-		if(Day!=null){
-			for(String str:Day){
+		if(ReadDay!=null){
+			for(String str:ReadDay){
 				if(i==3)
 					i=0;
 				if(i==2 ){
@@ -292,12 +292,9 @@ public class Calendar {
 		}
 
 		Html.visualizarSemana(numeroSemana, inicioSemana, semana);
-		System.out.println("..........");
-		readDay(nome + "URI.txt", 20220929);
-		System.out.println("..........");
-
-		searchAvailability(readDay(nome + "URI.txt", 20220929));
-		System.out.println("..........");
+		
+		//searchAvailability(readDay(nome + "URI.txt", 20220929));
+		
 
 	}
 	
