@@ -66,6 +66,7 @@ public class CalDisp {
 				JLabel nome = new JLabel(i);
 				cal.add(nome);
 				JButton semestre1 = new JButton("Semestre 1");
+
 				semestre1.addActionListener(new ActionListener() {
 
 					@Override
@@ -96,10 +97,12 @@ public class CalDisp {
 						
 					}
 				});
-				
+
+
 				cal.add(semestre1);
 				cal.add(semestre2);
 				cal.add(pesquisar);
+				
 			}
 
 			cal.add(new JLabel());
@@ -117,8 +120,16 @@ public class CalDisp {
 					cal.dispose();
 				}
 			});
+			JButton marcarreunioes = new JButton("Data/Hora Reunião");
+			marcarreunioes.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					cal.dispose();					
+				}
+			});
 
 			cal.add(ok);
+			cal.add(marcarreunioes);
 
 			sc.close();
 		} catch (FileNotFoundException e) {
