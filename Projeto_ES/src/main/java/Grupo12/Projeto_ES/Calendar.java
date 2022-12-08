@@ -30,8 +30,6 @@ import javax.net.ssl.HttpsURLConnection;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
-
 import java.lang.Object;
 
 public class Calendar {
@@ -49,7 +47,7 @@ public class Calendar {
 						if (uri[1].equals("webcal"))
 							if (uri[2].split("//").length > 1) {
 								return uri[2].split("//")[1];
-							}else {
+							} else {
 								return uri[2];
 							}
 						if (uri[1].split("//").length > 1)
@@ -132,14 +130,14 @@ public class Calendar {
 		} catch (FileNotFoundException e) {
 			System.out.println("Não é possivel aceder ao ficheiro");
 		}
-		
+
 		if (organizedDate != null)
 			aulas.add(organizedDate);
 		System.out.println(Arrays.toString(aulas.toArray()));
 		return aulas;
 	}
-	
-	public static List<String> searchAvailability(List<String> ReadDay){
+
+	public static List<String> searchAvailability(List<String> ReadDay) {
 		List<String> availableTimes = new ArrayList<String>();
 		availableTimes.add("800");
 		availableTimes.add("930");
@@ -148,20 +146,20 @@ public class Calendar {
 		availableTimes.add("1430");
 		availableTimes.add("1600");
 		availableTimes.add("1730");
-		availableTimes.add("1800");
-		availableTimes.add("1930");
-		availableTimes.add("2100");
+		
+		availableTimes.add("1900");
+		availableTimes.add("2030");
 		int availableBlock;
-		int i= 0;
-		if(ReadDay!=null){
-			for(String str:ReadDay){
-				if(i==3)
-					i=0;
-				if(i==2 ){
-					if(availableTimes.contains(str)){
+		int i = 0;
+		if (ReadDay != null) {
+			for (String str : ReadDay) {
+				if (i == 3)
+					i = 0;
+				if (i == 2) {
+					if (availableTimes.contains(str)) {
 
 						availableTimes.remove(str);
-						availableBlock =Integer.parseInt(str);
+						availableBlock = Integer.parseInt(str);
 					}
 				}
 				i++;
@@ -170,27 +168,48 @@ public class Calendar {
 		System.out.println(Arrays.toString(availableTimes.toArray()));
 		return availableTimes;
 	}
-	public static List<String> compare2Days(List<String> day1List , List<String> day2List){
+
+	public static List<String> compareAvailable2Days(List<String> day1List, List<String> day2List) {
 		List<String> availableHoursList = new ArrayList<String>();
 		List<String> finalList = new ArrayList<String>();
 		availableHoursList.addAll(day1List);
 		availableHoursList.addAll(day2List);
 		Set<String> set1 = new HashSet<>();
-		for(String s : availableHoursList){
-			if(!set1.add(s)){
+		for (String s : availableHoursList) {
+			if (!set1.add(s)) {
 				finalList.add(s);
-			}	
-			
+			}
+
 		}
-		
+
 		System.out.println(finalList);
 		return finalList;
-		
-		
+
 	}
 
+	public static List<String> availabilityOneWeek(String name, int weekStart) {
+		List<String> availableDates = new ArrayList<String>();
+		List<String> availableHours = new ArrayList<String>();
+		int weekDay = weekStart;
+		int j = 0;
+		while (j <= 4) {
+			if (readDay(name + "URI.txt", weekDay) != null) {
+				List<String> day = new ArrayList<String>(readDay(name + "URI.txt", weekDay));
+				availableHours = searchAvailability(day);
+				availableDates.add(Integer.toString(weekDay));
 
+				availableDates.addAll(availableHours);
+				System.out.println(availableHours);
 
+			}
+			j++;
+			weekDay = nextDay(weekDay);
+
+		}
+		System.out.println(availableDates);
+		return availableDates;
+	}
+	
 	public static void createURIFile(String name, String uri) throws Exception {
 		String fileName = name;
 		File file = new File(fileName + "URI.txt");
@@ -216,7 +235,6 @@ public class Calendar {
 			}
 		}
 	}
-	
 
 	public static int nextDay(int day) {
 		if (day == 20220930)
@@ -316,18 +334,18 @@ public class Calendar {
 		}
 
 		Html.visualizarSemana(numeroSemana, inicioSemana, semana);
-		
-		//searchAvailability(readDay(nome + "URI.txt", 20220929));
-		
+
+		// searchAvailability(readDay(nome + "URI.txt", 20220929));
+
 	}
-	
-	public static void gerarHoarioDia (String nome, int dia) {
+
+	public static void gerarHoarioDia(String nome, int dia) {
 		try {
 			createURIFile(nome, getURI(nome));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		JSONObject day = new JSONObject();
 
 		if (readDay(nome + "URI.txt", dia) != null) {
@@ -352,66 +370,66 @@ public class Calendar {
 			if (listaDia.size() > 0)
 				day.put(listaDia.get(listaDia.size() - 1), hora);
 		}
-		
+
 		Html.visualizarDia(dia, day);
-		
+
 	}
-	public static void DisponibilidadeSemana (String nome, int dia) {
+
+	public static void DisponibilidadeSemana(String nome, int dia) {
 		try {
 			createURIFile(nome, getURI(nome));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		JSONObject day = new JSONObject();
 
 		if (readDay(nome + "URI.txt", dia) != null) {
 			List<String> listaDia = new ArrayList<String>(readDay(nome + "URI.txt", dia));
 			List<String> listaHorasLivres = new ArrayList<String>(searchAvailability(listaDia));
-			
-			JSONObject horaDisp = new JSONObject();
-			
-			for (String objects : listaHorasLivres) {
-				
-				
-					
-				
-					
-					horaDisp.put(objects, "");
-					
 
-			
+			JSONObject horaDisp = new JSONObject();
+
+			for (String objects : listaHorasLivres) {
+
+				horaDisp.put(objects, "");
+
 			}
 			if (listaDia.size() > 0)
 				day.put(listaDia.get(listaDia.size() - 1), horaDisp);
-			
+
 		}
 		System.out.println(day.get(Integer.toString(dia)));
-		
-		//Html.visualizarDia(dia, day);  
-		
-	}
-	
-	public static void main(String[] args) {
-		
-		DisponibilidadeSemana("gr",20220929);
-		String job= "1000";
-		String job1= "1500";
-		String job2= "1600";
-		String job3= "1700";
-		String job4= "1100";
-		List<String> oi = new ArrayList<String>();
-		oi.add(job);
-		oi.add(job2);
-		List<String> ola = new ArrayList<String>();
-		ola.add(job3);
-		ola.add(job4);
-		ola.add(job);
-		ola.add(job2);
-		compare2Days(oi,ola);
-		
-		
+
+		// Html.visualizarDia(dia, day);
+
 	}
 
+	public static void main(String[] args) {
+
+//		// DisponibilidadeSemana("gr",20220929);
+//		String job= "1000";
+//		String job1= "1500";
+//		String job2= "1600";
+//		String job3= "1700";
+//		String job4= "1100";
+//		List<String> oi = new ArrayList<String>();
+//		oi.add(job);
+//		oi.add(job2);
+//		List<String> ola = new ArrayList<String>();
+//		ola.add(job3);
+//		ola.add(job4);
+//		ola.add(job);
+//		ola.add(job2);
+//		compareAvailable2Days(oi,ola);
+//		// List<String> i =readDay("grURI.txt",20220926);
+//		// searchAvailability(i);
+		List<String> i = availabilityOneWeek("gr", 20220926);
+//		List<String> j = new ArrayList<String>(Arrays.asList("20220926", "800", "930", "1100", "1730", "1800", "1930",
+//				"20220927", "800", "930", "1800", "1930"));
+//		System.out.println("_____________________________");
+//		
+
+	}
 
 }
