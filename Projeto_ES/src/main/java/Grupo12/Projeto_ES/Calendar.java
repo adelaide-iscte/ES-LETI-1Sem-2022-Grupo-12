@@ -19,14 +19,18 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Set;
 
 import javax.net.ssl.HttpsURLConnection;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+
 
 import java.lang.Object;
 
@@ -166,6 +170,25 @@ public class Calendar {
 		System.out.println(Arrays.toString(availableTimes.toArray()));
 		return availableTimes;
 	}
+	public static List<String> compare2Days(List<String> day1List , List<String> day2List){
+		List<String> availableHoursList = new ArrayList<String>();
+		List<String> finalList = new ArrayList<String>();
+		availableHoursList.addAll(day1List);
+		availableHoursList.addAll(day2List);
+		Set<String> set1 = new HashSet<>();
+		for(String s : availableHoursList){
+			if(!set1.add(s)){
+				finalList.add(s);
+			}	
+			
+		}
+		
+		System.out.println(finalList);
+		return finalList;
+		
+		
+	}
+
 
 
 	public static void createURIFile(String name, String uri) throws Exception {
@@ -370,7 +393,24 @@ public class Calendar {
 	}
 	
 	public static void main(String[] args) {
-		DisponibilidadeSemana("Luis Fraga",20220929);
+		
+		DisponibilidadeSemana("gr",20220929);
+		String job= "1000";
+		String job1= "1500";
+		String job2= "1600";
+		String job3= "1700";
+		String job4= "1100";
+		List<String> oi = new ArrayList<String>();
+		oi.add(job);
+		oi.add(job2);
+		List<String> ola = new ArrayList<String>();
+		ola.add(job3);
+		ola.add(job4);
+		ola.add(job);
+		ola.add(job2);
+		compare2Days(oi,ola);
+		
+		
 	}
 
 
