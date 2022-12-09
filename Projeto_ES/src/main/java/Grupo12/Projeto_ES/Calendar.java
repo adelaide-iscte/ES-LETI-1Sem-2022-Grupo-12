@@ -146,9 +146,9 @@ public class Calendar {
 		availableTimes.add("1430");
 		availableTimes.add("1600");
 		availableTimes.add("1730");
-		
-		availableTimes.add("1900");
-		availableTimes.add("2030");
+		availableTimes.add("1800");
+		availableTimes.add("1930");
+		availableTimes.add("2100");
 		int availableBlock;
 		int i = 0;
 		if (ReadDay != null) {
@@ -187,19 +187,28 @@ public class Calendar {
 
 	}
 
-	public static List<String> availabilityOneWeek(String name, int weekStart) {
+	public static List<String> availabilityOneWeek(String calName1,String calName2, int weekStart) {
 		List<String> availableDates = new ArrayList<String>();
-		List<String> availableHours = new ArrayList<String>();
+		List<String> availableHoursCal1 = new ArrayList<String>();
+		List<String> availableHoursCal2 = new ArrayList<String>();
+		List<String> aux = new ArrayList<String>();
+		
 		int weekDay = weekStart;
 		int j = 0;
 		while (j <= 4) {
-			if (readDay(name + "URI.txt", weekDay) != null) {
-				List<String> day = new ArrayList<String>(readDay(name + "URI.txt", weekDay));
-				availableHours = searchAvailability(day);
+			if (readDay(calName1 + "URI.txt", weekDay) != null && readDay(calName2 + "URI.txt",weekDay)!= null) {
+				List<String> calDay1 = new ArrayList<String>(readDay(calName1 + "URI.txt", weekDay));
+				List<String> calDay2 = new ArrayList<String>(readDay(calName2 + "URI.txt", weekDay));
+				
+				availableHoursCal1 = searchAvailability(calDay1);
+				availableHoursCal2 = searchAvailability(calDay2);
+				aux =compareAvailable2Days(availableHoursCal1,availableHoursCal2);
+				
+				
+				
 				availableDates.add(Integer.toString(weekDay));
-
-				availableDates.addAll(availableHours);
-				System.out.println(availableHours);
+				availableDates.addAll(aux);
+				System.out.println(aux);
 
 			}
 			j++;
@@ -294,6 +303,8 @@ public class Calendar {
 
 		return null;
 	}
+	
+
 
 	public static void gerarHorarioSemana(String nome, int inicioSemana, int numeroSemana) {
 
@@ -424,11 +435,12 @@ public class Calendar {
 //		compareAvailable2Days(oi,ola);
 //		// List<String> i =readDay("grURI.txt",20220926);
 //		// searchAvailability(i);
-		List<String> i = availabilityOneWeek("gr", 20220926);
+		List<String> i = availabilityOneWeek("gr","Luis", 20220926);
 //		List<String> j = new ArrayList<String>(Arrays.asList("20220926", "800", "930", "1100", "1730", "1800", "1930",
 //				"20220927", "800", "930", "1800", "1930"));
 //		System.out.println("_____________________________");
 //		
+		System.out.println(i);
 
 	}
 
