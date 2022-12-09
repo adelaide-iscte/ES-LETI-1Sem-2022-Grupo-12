@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
 public class MainWindow {
@@ -34,7 +35,7 @@ public class MainWindow {
 	
 	public void addFrameContents() {
 		
-		frame.setLayout(new GridLayout(3,1));
+		frame.setLayout(new GridLayout(0,1));
 		
 		viewCalendario = new JButton("Vizualizar calendarios");
 		viewCalendario.addActionListener(new ActionListener() {
@@ -63,6 +64,20 @@ public class MainWindow {
 		
 		frame.add(addCalendario);
 		
+		frame.add(new JLabel());
+		
+		JButton terminar = new JButton("Terminar");
+		
+		terminar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}
+		});
+		
+		frame.add(terminar);
 		
 		
 		

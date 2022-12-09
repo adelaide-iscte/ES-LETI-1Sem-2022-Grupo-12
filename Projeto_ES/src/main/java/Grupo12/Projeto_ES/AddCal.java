@@ -1,5 +1,8 @@
 package Grupo12.Projeto_ES;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,6 +20,7 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -45,8 +49,10 @@ public class AddCal {
 	}
 
 	public void addFrameContents() {
+		
+		Container painel = new Container();
 
-		frame.setLayout(new GridLayout(5, 1));
+		frame.setLayout(new GridLayout(7, 1));
 
 		labelName = new JLabel("Coloque o nome de quem pertenceo calendario");
 		frame.add(labelName);
@@ -59,14 +65,21 @@ public class AddCal {
 
 		textFieldURI = new JTextField();
 		frame.add(textFieldURI);
+		
+		frame.add(new JLabel());
+		
 
 		addUrl = new JButton("Adicionar calendario");
 		addUrl.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				calendarList(textFieldName.getText(), textFieldURI.getText());
-				frame.dispose();
+				if (textFieldURI.getText().equals("") || textFieldName.getText().equals("")) {
+					JOptionPane.showMessageDialog(frame, "Um ou ambos os campos não estão preenchidos");
+				} else {
+					calendarList(textFieldName.getText(), textFieldURI.getText());
+					frame.dispose();
+				}
 
 			}
 
@@ -74,6 +87,17 @@ public class AddCal {
 
 		frame.add(addUrl);
 
+		JButton cancelar = new JButton("Cancelar");
+		cancelar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+
+			}
+		});
+		frame.add(cancelar);
+		
 	}
 
 	public void open() {

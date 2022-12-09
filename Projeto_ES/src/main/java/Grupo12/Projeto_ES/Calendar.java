@@ -34,6 +34,7 @@ import java.lang.Object;
 
 public class Calendar {
 
+	//Metodo a testar
 	public static String getURI(String name) {
 		File file = new File("calendarios.txt");
 
@@ -133,15 +134,16 @@ public class Calendar {
 
 		if (organizedDate != null)
 			aulas.add(organizedDate);
-		System.out.println(Arrays.toString(aulas.toArray()));
 		return aulas;
 	}
 
+	//Metodo a testar
 	public static List<String> searchAvailability(List<String> ReadDay) {
 		List<String> availableTimes = new ArrayList<String>();
 		availableTimes.add("800");
 		availableTimes.add("930");
 		availableTimes.add("1100");
+		
 		availableTimes.add("1300");
 		availableTimes.add("1430");
 		availableTimes.add("1600");
@@ -149,7 +151,7 @@ public class Calendar {
 		availableTimes.add("1800");
 		availableTimes.add("1930");
 		availableTimes.add("2100");
-		int availableBlock;
+		
 		int i = 0;
 		if (ReadDay != null) {
 			for (String str : ReadDay) {
@@ -159,13 +161,13 @@ public class Calendar {
 					if (availableTimes.contains(str)) {
 
 						availableTimes.remove(str);
-						availableBlock = Integer.parseInt(str);
+						
 					}
 				}
 				i++;
 			}
 		}
-		System.out.println(Arrays.toString(availableTimes.toArray()));
+		//System.out.println(Arrays.toString(availableTimes.toArray()));
 		return availableTimes;
 	}
 
@@ -219,6 +221,8 @@ public class Calendar {
 		return availableDates;
 	}
 	
+
+	
 	public static void createURIFile(String name, String uri) throws Exception {
 		String fileName = name;
 		File file = new File(fileName + "URI.txt");
@@ -235,7 +239,6 @@ public class Calendar {
 				String inputLine;
 				while ((inputLine = br.readLine()) != null) {
 					printWriter.println(inputLine);
-					// System.out.println(inputLine);
 				}
 				printWriter.close();
 				br.close();
@@ -245,6 +248,7 @@ public class Calendar {
 		}
 	}
 
+	//Metodo a testar
 	public static int nextDay(int day) {
 		if (day == 20220930)
 			return 20221001;
@@ -271,6 +275,7 @@ public class Calendar {
 		return day + 1;
 	}
 
+	//Metodo a testar
 	public static int nextWeek(int day) {
 		int nextWeek = day + 7;
 
@@ -299,11 +304,14 @@ public class Calendar {
 		return nextWeek;
 	}
 
+
 	public static JSONObject getJsonWeek(String uri, int fistDay) {
 
 		return null;
 	}
 	
+
+
 
 
 	public static void gerarHorarioSemana(String nome, int inicioSemana, int numeroSemana) {
@@ -435,13 +443,19 @@ public class Calendar {
 //		compareAvailable2Days(oi,ola);
 //		// List<String> i =readDay("grURI.txt",20220926);
 //		// searchAvailability(i);
+
 		List<String> i = availabilityOneWeek("gr","Luis", 20220926);
+
+		//List<String> i = availabilityOneWeek("gr", 20220926);
+
 //		List<String> j = new ArrayList<String>(Arrays.asList("20220926", "800", "930", "1100", "1730", "1800", "1930",
 //				"20220927", "800", "930", "1800", "1930"));
 //		System.out.println("_____________________________");
 //		
 		System.out.println(i);
 
+		
+		
 	}
 
 }
