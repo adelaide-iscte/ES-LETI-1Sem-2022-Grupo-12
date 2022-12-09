@@ -141,13 +141,16 @@ public class Calendar {
 		availableTimes.add("800");
 		availableTimes.add("930");
 		availableTimes.add("1100");
+		availableTimes.add("1230");
+		
 		availableTimes.add("1300");
 		availableTimes.add("1430");
 		availableTimes.add("1600");
 		availableTimes.add("1730");
 		
-		availableTimes.add("1900");
-		availableTimes.add("2030");
+		availableTimes.add("1800");
+		availableTimes.add("1930");
+		availableTimes.add("2100");
 		int availableBlock;
 		int i = 0;
 		if (ReadDay != null) {
