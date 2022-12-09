@@ -62,6 +62,20 @@ public class Semanas {
 			frame.add(semana);
 			dia = Calendar.nextWeek(dia);
 		}
+		for (int i=0;i<8;i++) {
+			frame.add(new JLabel());
+		}
+		JButton ok = new JButton("Ok");
+		ok.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				
+			}
+		});
+		
+		frame.add(ok);
 	}
 		
 		private void addSegundoSemestre () {
@@ -88,7 +102,23 @@ public class Semanas {
 				
 			}
 		
-		
+			for (int i=0;i<11;i++) {
+				frame.add(new JLabel());
+			}
+			
+			JButton ok = new JButton("Ok");
+			ok.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					frame.dispose();
+					
+				}
+			});
+			
+			frame.add(ok);
+			
+			
 	}
 		
 		private void addPesquisar () {
@@ -123,6 +153,18 @@ public class Semanas {
 			});
 			
 			frame.add(pesquisar);
+			
+			JButton cancelar = new JButton("Cancelar");
+			cancelar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					frame.dispose();
+					
+				}
+			});
+			
+			frame.add(cancelar);
 			
 		}
 		
