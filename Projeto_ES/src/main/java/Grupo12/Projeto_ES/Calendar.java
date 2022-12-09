@@ -133,7 +133,6 @@ public class Calendar {
 
 		if (organizedDate != null)
 			aulas.add(organizedDate);
-		System.out.println(Arrays.toString(aulas.toArray()));
 		return aulas;
 	}
 
@@ -165,7 +164,7 @@ public class Calendar {
 				i++;
 			}
 		}
-		System.out.println(Arrays.toString(availableTimes.toArray()));
+		//System.out.println(Arrays.toString(availableTimes.toArray()));
 		return availableTimes;
 	}
 
@@ -187,8 +186,8 @@ public class Calendar {
 
 	}
 
-	public static List<String> availabilityOneWeek(String name, int weekStart) {
-		List<String> availableDates = new ArrayList<String>();
+	public static JSONObject availabilityOneWeek(String name, int weekStart) {
+		JSONObject availableDates = new JSONObject();
 		List<String> availableHours = new ArrayList<String>();
 		int weekDay = weekStart;
 		int j = 0;
@@ -196,10 +195,8 @@ public class Calendar {
 			if (readDay(name + "URI.txt", weekDay) != null) {
 				List<String> day = new ArrayList<String>(readDay(name + "URI.txt", weekDay));
 				availableHours = searchAvailability(day);
-				availableDates.add(Integer.toString(weekDay));
+				availableDates.put(Integer.toString(weekDay), availableHours);
 
-				availableDates.addAll(availableHours);
-				System.out.println(availableHours);
 
 			}
 			j++;
@@ -226,7 +223,6 @@ public class Calendar {
 				String inputLine;
 				while ((inputLine = br.readLine()) != null) {
 					printWriter.println(inputLine);
-					// System.out.println(inputLine);
 				}
 				printWriter.close();
 				br.close();
@@ -290,10 +286,6 @@ public class Calendar {
 		return nextWeek;
 	}
 
-	public static JSONObject getJsonWeek(String uri, int fistDay) {
-
-		return null;
-	}
 
 	public static void gerarHorarioSemana(String nome, int inicioSemana, int numeroSemana) {
 
@@ -424,12 +416,14 @@ public class Calendar {
 //		compareAvailable2Days(oi,ola);
 //		// List<String> i =readDay("grURI.txt",20220926);
 //		// searchAvailability(i);
-		List<String> i = availabilityOneWeek("gr", 20220926);
+		//List<String> i = availabilityOneWeek("gr", 20220926);
 //		List<String> j = new ArrayList<String>(Arrays.asList("20220926", "800", "930", "1100", "1730", "1800", "1930",
 //				"20220927", "800", "930", "1800", "1930"));
 //		System.out.println("_____________________________");
 //		
 
+		availabilityOneWeek("Luis Fraga", 20221010);
+		
 	}
 
 }
