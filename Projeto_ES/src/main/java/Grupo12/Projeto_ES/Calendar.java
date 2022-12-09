@@ -34,6 +34,7 @@ import java.lang.Object;
 
 public class Calendar {
 
+	//Metodo a testar
 	public static String getURI(String name) {
 		File file = new File("calendarios.txt");
 
@@ -136,6 +137,7 @@ public class Calendar {
 		return aulas;
 	}
 
+	//Metodo a testar
 	public static List<String> searchAvailability(List<String> ReadDay) {
 		List<String> availableTimes = new ArrayList<String>();
 		availableTimes.add("800");
@@ -235,6 +237,7 @@ public class Calendar {
 		}
 	}
 
+	//Metodo a testar
 	public static int nextDay(int day) {
 		if (day == 20220930)
 			return 20221001;
@@ -261,6 +264,7 @@ public class Calendar {
 		return day + 1;
 	}
 
+	//Metodo a testar
 	public static int nextWeek(int day) {
 		int nextWeek = day + 7;
 
