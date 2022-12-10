@@ -124,7 +124,8 @@ public class CalDisp {
 			marcarreunioes.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					cal.dispose();					
+					ReuniãoInterface reunião = new ReuniãoInterface();	
+					reunião.open();
 				}
 			});
 
