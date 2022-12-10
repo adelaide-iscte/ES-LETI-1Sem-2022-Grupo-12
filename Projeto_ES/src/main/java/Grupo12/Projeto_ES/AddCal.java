@@ -16,7 +16,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -120,16 +119,16 @@ public class AddCal {
 				}
 			} else {
 				try {
-					List<String> nova_pessoa = new ArrayList<String>();
-					nova_pessoa.add("Nome:" + textFieldName.getText() + "\r\n" + "URI:" + textFieldURI.getText());
+					List<String> novaPessoaLista = new ArrayList<String>();
+					novaPessoaLista.add("Nome:" + textFieldName.getText() + "\r\n" + "URI:" + textFieldURI.getText());
 					Scanner texto = new Scanner(lista);
 					while (texto.hasNextLine()) {
 						String aux = texto.nextLine();
-						nova_pessoa.add(aux);
+						novaPessoaLista.add(aux);
 					}
 					PrintWriter printWriter = new PrintWriter(lista);
 
-					for (String i : nova_pessoa) {
+					for (String i : novaPessoaLista) {
 						printWriter.println(i);
 					}
 
