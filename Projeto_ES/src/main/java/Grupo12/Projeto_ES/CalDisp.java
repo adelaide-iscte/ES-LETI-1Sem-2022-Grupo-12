@@ -30,11 +30,11 @@ public class CalDisp {
 
 		cal.setLocation((width / 2) - 300, (height / 2) - 500);
 
-		readCalendario();
+		lerCalendario();
 
 	}
 
-	public void readCalendario() {
+	public void lerCalendario() {
 
 		File file = new File("calendarios.txt");
 
@@ -120,8 +120,8 @@ public class CalDisp {
 					cal.dispose();
 				}
 			});
-			JButton marcarreunioes = new JButton("Data/Hora Reunião");
-			marcarreunioes.addActionListener(new ActionListener() {
+			JButton marcarReunioes = new JButton("Data/Hora Reunião");
+			marcarReunioes.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					cal.dispose();					
@@ -129,7 +129,7 @@ public class CalDisp {
 			});
 
 			cal.add(ok);
-			cal.add(marcarreunioes);
+			cal.add(marcarReunioes);
 
 			sc.close();
 		} catch (FileNotFoundException e) {
