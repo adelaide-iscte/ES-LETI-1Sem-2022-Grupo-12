@@ -26,7 +26,7 @@ public class MainWindow {
 		
 		frame.setSize(300, 200);
 		
-		frame.setLocation((width/2)-frame.getWidth(), (height/2)-frame.getHeight());
+		frame.setLocation(0, 200);
 		
 		addFrameContents();
 
