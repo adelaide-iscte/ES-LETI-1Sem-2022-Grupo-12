@@ -169,6 +169,7 @@ public class Calendar {
 				finalList.add(s);
 			}
 		}
+		System.out.println(finalList);
 		return finalList;
 	}
 
@@ -193,6 +194,25 @@ public class Calendar {
 			weekDay = nextDay(weekDay);
 		}
 		return availableDates;
+	}
+	
+	public static List<String> availabilityOneMonth(String calName1,String calName2,int monthStart){
+		List<String> availableDates = new ArrayList<String>();
+		int monthDay = monthStart;
+		int j=0;
+		
+		while(j <= 3){
+			if(isItMonthStart(monthStart)==true){
+			availableDates.addAll(availabilityOneWeek(calName1,calName2,monthDay));
+			monthDay =nextWeek(monthDay);
+			j++;
+			}
+		}
+		System.out.println(availableDates);
+		return availableDates;
+		
+		
+		
 	}
 
 
@@ -276,6 +296,12 @@ public class Calendar {
 			return 20230801 + (nextWeek - 20230731 - 1);
 		return nextWeek;
 	}
+	public static boolean isItMonthStart (int day){
+		if(day==20220912 || day==20221003||day==20221107||day==20221205||day==20230206||day==20230306||day==20230403||day==20230501)
+			return true;
+		return false;
+	}
+	
 
 
 	public static JSONObject getJsonWeek(String uri, int fistDay) {
@@ -391,25 +417,26 @@ public class Calendar {
 
 	public static void main(String[] args) {
 
-		//		// DisponibilidadeSemana("gr",20220929);
-		//		String job= "1000";
-		//		String job1= "1500";
-		//		String job2= "1600";
-		//		String job3= "1700";
-		//		String job4= "1100";
-		//		List<String> oi = new ArrayList<String>();
-		//		oi.add(job);
-		//		oi.add(job2);
-		//		List<String> ola = new ArrayList<String>();
-		//		ola.add(job3);
-		//		ola.add(job4);
-		//		ola.add(job);
-		//		ola.add(job2);
-		//		compareAvailable2Days(oi,ola);
+				 //DisponibilidadeSemana("gr",20220929);
+//				String job= "1000";
+//				String job1= "1500";
+//				String job2= "1600";
+//				String job3= "1700";
+//				String job4= "1100";
+//				List<String> oi = new ArrayList<String>();
+//				oi.add(job);
+//				oi.add(job2);
+//				List<String> ola = new ArrayList<String>();
+//				ola.add(job3);
+//				ola.add(job4);
+//				ola.add(job);
+//				ola.add(job2);
+//				compareAvailable2Days(oi,ola);
 		//		// List<String> i =readDay("grURI.txt",20220926);
 		//		// searchAvailability(i);
 
 		List<String> i = availabilityOneWeek("gr","Luis", 20220926);
+		List<String> j = availabilityOneMonth("gr","Luis",20220912);
 
 		//List<String> i = availabilityOneWeek("gr", 20220926);
 
@@ -417,7 +444,7 @@ public class Calendar {
 		//				"20220927", "800", "930", "1800", "1930"));
 		//		System.out.println("_____________________________");
 		//		
-		System.out.println(i);
+		System.out.println(j);
 
 
 
