@@ -164,9 +164,9 @@ public class Calendar {
 		availableHoursList.addAll(day1List);
 		availableHoursList.addAll(day2List);
 		Set<String> set1 = new HashSet<>();
-		for (String s : availableHoursList) {
-			if (!set1.add(s)) {
-				finalList.add(s);
+		for (String availableHours : availableHoursList) {
+			if (!set1.add(availableHours)) {
+				finalList.add(availableHours);
 			}
 		}
 		System.out.println(finalList);
@@ -177,7 +177,7 @@ public class Calendar {
 		List<String> availableDates = new ArrayList<String>();
 		List<String> availableHoursCal1 = new ArrayList<String>();
 		List<String> availableHoursCal2 = new ArrayList<String>();
-		List<String> aux = new ArrayList<String>();
+		List<String> comparedAvailableHours = new ArrayList<String>();
 		int weekDay = weekStart;
 		int j = 0;
 		while (j <= 4) {
@@ -186,9 +186,9 @@ public class Calendar {
 				List<String> calDay2 = new ArrayList<String>(readDay(calName2 + "URI.txt", weekDay));
 				availableHoursCal1 = searchAvailability(calDay1);
 				availableHoursCal2 = searchAvailability(calDay2);
-				aux =compareAvailable2Days(availableHoursCal1,availableHoursCal2);
+				comparedAvailableHours =compareAvailable2Days(availableHoursCal1,availableHoursCal2);
 				availableDates.add(Integer.toString(weekDay));
-				availableDates.addAll(aux);
+				availableDates.addAll(comparedAvailableHours);
 			}
 			j++;
 			weekDay = nextDay(weekDay);
@@ -208,11 +208,8 @@ public class Calendar {
 			j++;
 			}
 		}
-		System.out.println(availableDates);
+	
 		return availableDates;
-		
-		
-		
 	}
 
 
@@ -380,9 +377,7 @@ public class Calendar {
 			if (listaDia.size() > 0)
 				day.put(listaDia.get(listaDia.size() - 1), hora);
 		}
-
 		return day;
-
 	}
 
 	public static void DisponibilidadeSemana(String nome, int dia) {
@@ -432,24 +427,7 @@ public class Calendar {
 
 	public static void main(String[] args) {
 
-				 //DisponibilidadeSemana("gr",20220929);
-//				String job= "1000";
-//				String job1= "1500";
-//				String job2= "1600";
-//				String job3= "1700";
-//				String job4= "1100";
-//				List<String> oi = new ArrayList<String>();
-//				oi.add(job);
-//				oi.add(job2);
-//				List<String> ola = new ArrayList<String>();
-//				ola.add(job3);
-//				ola.add(job4);
-//				ola.add(job);
-//				ola.add(job2);
-//				compareAvailable2Days(oi,ola);
-		//		// List<String> i =readDay("grURI.txt",20220926);
-		//		// searchAvailability(i);
-
+		
 		List<String> i = availabilityOneWeek("gr","Luis", 20220926);
 		List<String> j = availabilityOneMonth("gr","Luis",20220912);
 
