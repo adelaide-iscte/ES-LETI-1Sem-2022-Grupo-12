@@ -66,7 +66,10 @@ public class Calendar {
 		System.out.println("Nome introduzido não econtrado");
 		return null;
 	}
-
+	
+	/** Este metodo dado uma string que é o nome do fichiro URI e um dia em formato (aaaammdd),
+	 * vai procurar no ficherio URI: a hora de começo a de fim o professor da cadeira, a cadeira,
+	 * e a sala colocando estas Strings numa lista. */
 	public static List<String> readDay(String string, int day) {
 
 		File uri = new File(string);
@@ -129,6 +132,9 @@ public class Calendar {
 	}
 
 	//Metodo a testar
+	/** Este metodo cria uma lista de todos os tempos disponiveis possiveis,Além disso este metodo também recebe a informação do metedo
+	 *  readDay (readDay() devolve uma lista de informação),e procura nessa lista pelos tempos de começo de cada aula e compara com a lista anterior
+	 *  devolvendo uma lista de tempos disponiveis */
 	public static List<String> searchAvailability(List<String> ReadDay) {
 		List<String> availableTimes = new ArrayList<String>();
 		availableTimes.add("800");
@@ -157,6 +163,8 @@ public class Calendar {
 		
 		return availableTimes;
 	}
+	
+	/** Este metodo recebe duas Listas de horas disponiveis e devolve uma lista de horas disponiveis comuns entre as listas anteriores */
 
 	public static List<String> compareAvailable2Days(List<String> day1List, List<String> day2List) {
 		List<String> availableHoursList = new ArrayList<String>();
@@ -172,7 +180,8 @@ public class Calendar {
 		System.out.println(finalList);
 		return finalList;
 	}
-
+    /** O metodo recebe duas listas de horas disponiveis(cada uma de 1 utilizador diferente) e um dia de inicio de semana
+     *  e devolve as horas disponiveis comuns entre os dois utilizadores ao longo de uma semana em foramto de lista  */
 	public static List<String> availabilityOneWeek(String calName1,String calName2, int weekStart) {
 		List<String> availableDates = new ArrayList<String>();
 		List<String> availableHoursCal1 = new ArrayList<String>();
