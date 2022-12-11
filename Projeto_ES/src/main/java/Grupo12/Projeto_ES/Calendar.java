@@ -35,6 +35,7 @@ import java.lang.Object;
 public class Calendar {
 
 	//Metodo a testar
+	
 	public static String getURI(String name) {
 		File file = new File("calendarios.txt");
 
@@ -205,6 +206,8 @@ public class Calendar {
 		return availableDates;
 	}
 	
+    /** O metodo recebe duas listas de horas disponiveis(cada uma de 1 utilizador diferente) e um dia de inicio de um mês
+     *  e devolve as horas disponiveis comuns entre os dois utilizadores ao longo de um mês em foramto de lista */
 	public static List<String> availabilityOneMonth(String calName1,String calName2,int monthStart){
 		List<String> availableDates = new ArrayList<String>();
 		int monthDay = monthStart;
@@ -222,7 +225,7 @@ public class Calendar {
 	}
 
 
-
+    /** A partir deste metodo dado o nome do ficheriro e uma string para o URI o metodo cria o ficheiro URI*/
 	public static void createURIFile(String name, String uri) throws Exception {
 		String fileName = name;
 		File file = new File(fileName + "URI.txt");
@@ -248,6 +251,7 @@ public class Calendar {
 	}
 
 	//Metodo a testar
+	/** Este Método dado um dia (aaaammdd) devolve o proximo dia */
 	public static int nextDay(int day) {
 		if (day == 20220930)
 			return 20221001;
@@ -275,6 +279,8 @@ public class Calendar {
 	}
 
 	//Metodo a testar
+	/** Este Método dado um dia (aaaammdd) devolve-nos o dia correspondente à semana seguinte */
+	
 	public static int nextWeek(int day) {
 		int nextWeek = day + 7;
 
@@ -302,19 +308,25 @@ public class Calendar {
 			return 20230801 + (nextWeek - 20230731 - 1);
 		return nextWeek;
 	}
+	
+	/** Verifica se este dia é correspondente ao primeiro dia do mês */
 	public static boolean isItMonthStart (int day){
 		if(day==20220912 || day==20221003||day==20221107||day==20221205||day==20230206||day==20230306||day==20230403||day==20230501)
 			return true;
 		return false;
 	}
 	
-
-
+     // ------------------------------------------------------------------------------------
+    /** Help  */
+	// --------------------------------------------------
+	//----------------------------------------------------
 	public static JSONObject getJsonWeek(String uri, int fistDay) {
 
 		return null;
 	}
-
+	
+	/** Este método recebe o nome do URI e a data do inicio da semana e cria os objetos JSON necessarios 
+	 * para gerar o horario para uma semana */
 	public static JSONObject gerarHorarioSemana(String nome, int inicioSemana) {
 		try {
 			createURIFile(nome, getURI(nome));
@@ -354,6 +366,8 @@ public class Calendar {
 		
 		return semana;
 	}
+	/** Este método recebe o nome do URI e a data do inicio da semana e cria os objetos JSON necessarios 
+	 * para gerar o horario para um dia */
 
 	public static JSONObject gerarHoarioDia(String nome, int dia) {
 		try {
@@ -390,13 +404,14 @@ public class Calendar {
 	}
 
 
-	
+	/** Este Método gera o Html de uma semana */
 	public static void gerarHTMLSemana(String nome, int inicioSemana, int numeroSemana, ArrayList<String> nomes) {
 		JSONObject semana = gerarHorarioSemana(nome, inicioSemana);
 		
 		Html.visualizarSemana(numeroSemana, inicioSemana, semana, nomes);
 	}
 	
+	/**Este Método gera o Html relativo a um dia  */
 	public static void gerarHTMLDia (String nome, int dia, ArrayList<String> nomes) {
 		JSONObject day = gerarHoarioDia(nome, dia);
 		
