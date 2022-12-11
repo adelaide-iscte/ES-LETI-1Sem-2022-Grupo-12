@@ -104,7 +104,7 @@ public class Semanas {
 		createCheckBoxes();
 
 		for (int i = 1; i <= 16; i++) {
-			final int day = dia;
+			final int primeiroDiaSegundoSemestre = dia;
 			final int numeroSemana = i;
 
 			JButton semana = new JButton(Integer.toString(i));
@@ -112,12 +112,12 @@ public class Semanas {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ArrayList<String> names = new ArrayList<String>();
+					ArrayList<String> nomes = new ArrayList<String>();
 					for (JCheckBox boxNames : nomesBox) {
 						if (boxNames.isSelected())
-							names.add(boxNames.getText());
+							nomes.add(boxNames.getText());
 					}
-					Calendar.gerarHTMLSemana(nome, day, numeroSemana, names);
+					Calendar.gerarHTMLSemana(nome, primeiroDiaSegundoSemestre, numeroSemana, nomes);
 				}
 
 			});

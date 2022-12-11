@@ -56,6 +56,7 @@ public class ReuniãoInterface {
 				}
 			}
 			
+			
 			for (String nome : contents) {
 				JCheckBox box = new JCheckBox(nome);
 				frame.add(box);
@@ -98,13 +99,8 @@ public class ReuniãoInterface {
 		} catch (FileNotFoundException e) {
 			System.out.println("O ficheiro não foi econtrado");
 		}
-		
-		
-		
-		
+			
 	}
-	
-	
 	
 	public void open() {
 		frame.setVisible(true);

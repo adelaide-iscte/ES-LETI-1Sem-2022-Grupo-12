@@ -42,8 +42,9 @@ public class MainWindow {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CalDisp cal = new CalDisp();
-				cal.open();
+				CalDisp calendario = new CalDisp();
+				calendario.open();
+				
 				
 			}
 			
@@ -78,8 +79,6 @@ public class MainWindow {
 		});
 		
 		frame.add(terminar);
-		
-		
 		
 	}
 	
