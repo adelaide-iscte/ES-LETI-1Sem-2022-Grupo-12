@@ -389,16 +389,16 @@ public class Calendar {
 
 	}
 	
-	public static void gerarHTMLSemana(String nome, int inicioSemana, int numeroSemana) {
+	public static void gerarHTMLSemana(String nome, int inicioSemana, int numeroSemana, ArrayList<String> nomes) {
 		JSONObject semana = gerarHorarioSemana(nome, inicioSemana);
 		
-		Html.visualizarSemana(numeroSemana, inicioSemana, semana);
+		Html.visualizarSemana(numeroSemana, inicioSemana, semana, nomes);
 	}
 	
-	public static void gerarHTMLDia (String nome, int dia) {
+	public static void gerarHTMLDia (String nome, int dia, ArrayList<String> nomes) {
 		JSONObject day = gerarHoarioDia(nome, dia);
 		
-		Html.visualizarDia(dia, day);
+		Html.visualizarDia(dia, day, nomes);
 	}
 	
 	

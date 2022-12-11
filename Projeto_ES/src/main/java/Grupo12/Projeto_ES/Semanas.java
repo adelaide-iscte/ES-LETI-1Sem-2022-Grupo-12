@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -48,6 +49,8 @@ public class Semanas {
 	private void addPrimeiroSemestre() {
 		frame.setLayout(new GridLayout(0, 5));
 		int dia = 20220912;
+		
+		createCheckBoxes();
 
 		for (int i = 1; i <= 14; i++) {
 			final int day = dia;
@@ -58,7 +61,12 @@ public class Semanas {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Calendar.gerarHTMLSemana(nome, day, numeroSemana);
+					ArrayList<String> names = new ArrayList<String>();
+					for (JCheckBox boxNames : nomesBox) {
+						if (boxNames.isSelected())
+							names.add(boxNames.getText());
+					}
+					Calendar.gerarHTMLSemana(nome, day, numeroSemana, names);
 				}
 
 			});
@@ -92,6 +100,8 @@ public class Semanas {
 	private void addSegundoSemestre() {
 		frame.setLayout(new GridLayout(0, 5));
 		int dia = 20230206;
+		
+		createCheckBoxes();
 
 		for (int i = 1; i <= 16; i++) {
 			final int day = dia;
@@ -102,8 +112,12 @@ public class Semanas {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println(day);
-					Calendar.gerarHTMLSemana(nome, day, numeroSemana);
+					ArrayList<String> names = new ArrayList<String>();
+					for (JCheckBox boxNames : nomesBox) {
+						if (boxNames.isSelected())
+							names.add(boxNames.getText());
+					}
+					Calendar.gerarHTMLSemana(nome, day, numeroSemana, names);
 				}
 
 			});
@@ -159,10 +173,10 @@ public class Semanas {
 					JOptionPane.showMessageDialog(frame, "Nehuma data foi selecionada");
 				} else {
 					if (check.isSelected()) {
-						Calendar.gerarHTMLDia(nome, Integer.parseInt(data.getText()));
+						Calendar.gerarHTMLDia(nome, Integer.parseInt(data.getText()), null);
 					} else {
 						Calendar.gerarHTMLSemana(nome, Integer.parseInt(data.getText()),
-								Integer.parseInt(data.getText()));
+								Integer.parseInt(data.getText()), null);
 					}
 					frame.dispose();
 				}
@@ -187,12 +201,17 @@ public class Semanas {
 	}
 
 	private void addCheckBoxes() {
-		for (final String nome : nomes) {
-			JCheckBox boxName = new JCheckBox(nome);
+		for (JCheckBox boxName : nomesBox) {
 			frame.add(boxName);
-			nomesBox.add(boxName);
 		}
 
+	}
+	
+	private void createCheckBoxes() {
+		for (String nome : nomes) {
+			JCheckBox boxName = new JCheckBox(nome);
+			nomesBox.add(boxName);
+		}
 	}
 
 	private int alinhar() {
