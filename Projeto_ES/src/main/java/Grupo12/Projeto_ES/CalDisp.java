@@ -71,7 +71,7 @@ public class CalDisp {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						Semanas semana = new Semanas(1, i);
+						Semanas semana = new Semanas(1, i, contents);
 						semana.open();
 
 					}
@@ -81,7 +81,7 @@ public class CalDisp {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						Semanas semana = new Semanas(2, i);
+						Semanas semana = new Semanas(2, i, contents);
 						semana.open();
 
 					}
@@ -92,7 +92,7 @@ public class CalDisp {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						Semanas semana = new Semanas (3,i);
+						Semanas semana = new Semanas (3,i, contents);
 						semana.open();
 						
 					}

@@ -309,7 +309,7 @@ public class Calendar {
 		return null;
 	}
 
-	public static void gerarHorarioSemana(String nome, int inicioSemana, int numeroSemana) {
+	public static JSONObject gerarHorarioSemana(String nome, int inicioSemana) {
 		try {
 			createURIFile(nome, getURI(nome));
 		} catch (Exception e) {
@@ -345,11 +345,11 @@ public class Calendar {
 			j++;
 			diaDaSemana = nextDay(diaDaSemana);
 		}
-
-		Html.visualizarSemana(numeroSemana, inicioSemana, semana);
+		
+		return semana;
 	}
 
-	public static void gerarHoarioDia(String nome, int dia) {
+	public static JSONObject gerarHoarioDia(String nome, int dia) {
 		try {
 			createURIFile(nome, getURI(nome));
 		} catch (Exception e) {
@@ -381,7 +381,7 @@ public class Calendar {
 				day.put(listaDia.get(listaDia.size() - 1), hora);
 		}
 
-		Html.visualizarDia(dia, day);
+		return day;
 
 	}
 
@@ -414,6 +414,21 @@ public class Calendar {
 		// Html.visualizarDia(dia, day);
 
 	}
+	
+	public static void gerarHTMLSemana(String nome, int inicioSemana, int numeroSemana, ArrayList<String> nomes) {
+		JSONObject semana = gerarHorarioSemana(nome, inicioSemana);
+		
+		Html.visualizarSemana(numeroSemana, inicioSemana, semana, nomes);
+	}
+	
+	public static void gerarHTMLDia (String nome, int dia, ArrayList<String> nomes) {
+		JSONObject day = gerarHoarioDia(nome, dia);
+		
+		Html.visualizarDia(dia, day, nomes);
+	}
+	
+	
+	
 
 	public static void main(String[] args) {
 
