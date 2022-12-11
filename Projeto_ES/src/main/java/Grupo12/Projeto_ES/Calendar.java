@@ -42,8 +42,8 @@ public class Calendar {
 			try {
 				Scanner sc = new Scanner(file);
 				while (sc.hasNextLine()) {
-					String[] aux = sc.nextLine().split(":");
-					if (aux[1].equals(name)) {
+					String[] fileSplit = sc.nextLine().split(":");
+					if (fileSplit[1].equals(name)) {
 						String[] uri = sc.nextLine().split(":");
 						if (uri[1].equals("webcal"))
 							if (uri[2].split("//").length > 1) {
@@ -90,14 +90,14 @@ public class Calendar {
 					if (disciplinas[0].equals("SUMMARY")) {
 						disciplina = disciplinas[1];
 					}
-					String sala;
-					while (!(sala = sc.nextLine()).split(":")[0].equals("LOCATION")) {
+					String salaDeAula;
+					while (!(salaDeAula = sc.nextLine()).split(":")[0].equals("LOCATION")) {
 					}
 
-					if (sala.split(":|\\ - |\\,")[0].equals("LOCATION")) {
-						if (sala.split(":|\\ - |\\,").length > 1) {
+					if (salaDeAula.split(":|\\ - |\\,")[0].equals("LOCATION")) {
+						if (salaDeAula.split(":|\\ - |\\,").length > 1) {
 							aulas.add(disciplina);
-							aulas.add(sala.split(":|\\ - |\\,")[1]);
+							aulas.add(salaDeAula.split(":|\\ - |\\,")[1]);
 							if (day < 20221031 || day >= 20230327) {
 								aulas.add(Integer.toString((startTime + 100)));
 							} else {

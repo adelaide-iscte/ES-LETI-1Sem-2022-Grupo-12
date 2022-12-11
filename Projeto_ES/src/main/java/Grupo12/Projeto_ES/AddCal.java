@@ -128,8 +128,8 @@ public class AddCal {
 					}
 					PrintWriter printWriter = new PrintWriter(lista);
 
-					for (String i : novaPessoaLista) {
-						printWriter.println(i);
+					for (String novaPessoa : novaPessoaLista) {
+						printWriter.println(novaPessoa);
 					}
 
 					texto.close();
