@@ -55,7 +55,7 @@ public class ReuniãoInterface {
 
 				}
 			}
-			
+
 			
 			for (String nome : contents) {
 				JCheckBox box = new JCheckBox(nome);
@@ -69,6 +69,30 @@ public class ReuniãoInterface {
 			
 			JComboBox<String> opcoes = new JComboBox<String>(opcao);
 			frame.add(opcoes);
+			
+			ArrayList<String> inicioDasReunioes = new ArrayList<String>(); 
+			
+			for (int i=1;i<=2;i++) {
+				for (int j=1;j<=14;j++) {
+					inicioDasReunioes.add("Semestre" + i + "/Semana " + j);
+				}
+			}
+			
+			frame.add(new JLabel ("Semana em que começam as reuniões"));
+			
+			String [] comecoReuniao = new String[inicioDasReunioes.size()+2];
+			
+			for (int i=0;i<inicioDasReunioes.size();i++) {
+				comecoReuniao[i]=inicioDasReunioes.get(i);
+			}
+			
+			comecoReuniao[inicioDasReunioes.size()]= "Semestre2/Semana15";
+			comecoReuniao[inicioDasReunioes.size()+1]= "Semestre2/Semana16";
+			
+			JComboBox<String> inicio = new JComboBox<String>(comecoReuniao);
+			frame.add(inicio);
+			
+			
 			
 			frame.add(new JLabel());
 			
