@@ -48,12 +48,12 @@ public class Semanas {
 
 	private void addPrimeiroSemestre() {
 		frame.setLayout(new GridLayout(0, 5));
-		int dia = 20220912;
+		int primeiroDiaSemestre = 20220912;
 		
 		createCheckBoxes();
 
 		for (int i = 1; i <= 14; i++) {
-			final int day = dia;
+			final int dia = primeiroDiaSemestre;
 			final int numeroSemana = i;
 
 			JButton semana = new JButton(Integer.toString(i));
@@ -61,17 +61,17 @@ public class Semanas {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ArrayList<String> names = new ArrayList<String>();
+					ArrayList<String> nomes = new ArrayList<String>();
 					for (JCheckBox boxNames : nomesBox) {
 						if (boxNames.isSelected())
-							names.add(boxNames.getText());
+							nomes.add(boxNames.getText());
 					}
-					Calendar.gerarHTMLSemana(nome, day, numeroSemana, names);
+					Calendar.gerarHTMLSemana(nome, dia, numeroSemana, nomes);
 				}
 
 			});
 			frame.add(semana);
-			dia = Calendar.nextWeek(dia);
+			primeiroDiaSemestre = Calendar.nextWeek(primeiroDiaSemestre);
 		}
 
 		frame.add(new JLabel());
