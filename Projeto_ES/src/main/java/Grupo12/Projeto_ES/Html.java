@@ -102,7 +102,11 @@ public class Html {
 					+ bloco((horaCerta * 100), (diaSeguinte = Calendar.nextDay(diaSeguinte)), semana, disp)
 					+ bloco((horaCerta * 100), (diaSeguinte = Calendar.nextDay(diaSeguinte)), semana, disp)
 					+ bloco((horaCerta * 100), (diaSeguinte = Calendar.nextDay(diaSeguinte)), semana, disp)
-					+ "        </tr>\r\n" + "    </table>\r\n" + "</body>\r\n" + " \r\n" + "</html>";
+					+ "        </tr>\r\n" + "    </table>\r\n" +"    <tr>\r\n"
+							+ "    <font color=\"blue\"></<b>AZUL</b></font> A disponibilidade dos utilizadores está livre.</font></td><br>\r\n"
+							+ "    <font color=\"orange\"></<b>LARANJA</b></font> A disponibilidade dos utilizadores está parcialmente ocupada.</font></td></br>\r\n"
+							+ "    <font color=\"red\"></<b>VERMELHO</b></font> A disponibilidade dos utilizadores está ocupada.</font></td></br>\r\n"
+							+ "    </tr> </body>\r\n" + " \r\n" + "</html>";
 
 			printWriter.println(html);
 			printWriter.close();
@@ -162,7 +166,11 @@ public class Html {
 					+ bloco(((horaEmeia * 100) + 30), day, semana, disp) + "        </tr>\r\n" + "        <tr>\r\n"
 					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + horaCerta
 					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n" + bloco((horaCerta * 100), day, semana, disp)
-					+ "        </tr>\r\n" + "    </table>\r\n" + "</body>\r\n" + " \r\n" + "</html>";
+					+ "        </tr>\r\n" + "    </table>\r\n" + "    <tr>\r\n"
+							+ "    <font color=\"blue\"></<b>AZUL</b></font> A disponibilidade dos utilizadores está livre.</font></td><br>\r\n"
+							+ "    <font color=\"orange\"></<b>LARANJA</b></font> A disponibilidade dos utilizadores está parcialmente ocupada.</font></td></br>\r\n"
+							+ "    <font color=\"red\"></<b>VERMELHO</b></font> A disponibilidade dos utilizadores está ocupada.</font></td></br>\r\n"
+							+ "    </tr>" + "</body>\r\n" + " \r\n" + "</html>";
 			printWriter.println(html);
 			printWriter.close();
 
