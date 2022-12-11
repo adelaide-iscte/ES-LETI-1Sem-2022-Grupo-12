@@ -55,6 +55,8 @@ public class ReuniãoInterface {
 
 				}
 			}
+			
+			sc.close();
 
 			
 			for (String nome : contents) {
