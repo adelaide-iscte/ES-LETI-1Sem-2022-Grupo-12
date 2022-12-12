@@ -165,6 +165,7 @@ public class ReuniaoInterface {
 		String regularidade = (String) opcoesDeRegularidade.getSelectedItem();
 		
 		Reuniao reuniao = new Reuniao(dia,nomes,perferencia,regularidade);
+		reuniao.gerarReuniao();
 		
 
 	}
