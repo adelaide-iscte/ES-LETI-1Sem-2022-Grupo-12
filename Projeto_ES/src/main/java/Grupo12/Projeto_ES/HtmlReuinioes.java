@@ -35,15 +35,15 @@ public class HtmlReuinioes {
 					+ "                width=\"100\">\r\n"
 					+ "                <b><font color=\"red\">Participantes</font></b>\r\n"
 					+ "            </td>\r\n"
-					+ "            <td align=\"center\" height=\"50\"\r\n"
-					+ "                width=\"100\">\r\n"
-					+ "                <b><font color=\"blue\">Periodicidade</font></b>\r\n"
-					+ "            </td>\r\n"
-					+ "            \r\n"
-					+ "            <td align=\"center\" height=\"50\"\r\n"
-					+ "                width=\"100\">\r\n"
-					+ "                <b><font color=\"blue\">Dia da Semana</font></b>\r\n"
-					+ "            </td>\r\n"
+//					+ "            <td align=\"center\" height=\"50\"\r\n"
+//					+ "                width=\"100\">\r\n"
+//					+ "                <b><font color=\"blue\">Periodicidade</font></b>\r\n"
+//					+ "            </td>\r\n"
+//					+ "            \r\n"
+//					+ "            <td align=\"center\" height=\"50\"\r\n"
+//					+ "                width=\"100\">\r\n"
+//					+ "                <b><font color=\"blue\">Dia da Semana</font></b>\r\n"
+//					+ "            </td>\r\n"
 					+ "        </tr>\r\n"
 					+ row(reunioes , participantes)
 					+ "       </table>\r\n"
@@ -80,12 +80,20 @@ public class HtmlReuinioes {
 			String dia = jsonItr.next();
 			JSONArray horas = (JSONArray) reunioes.get(dia);
 			for (Object hora: horas) {
+//				resultado+= "        <tr>\r\n"
+//						+ "        	<td align=\"center\" height=\"100\">" + dia + "</td>\r\n"
+//						+ "            <td align=\"center\" height=\"100\">" + hora + "</td>\r\n"
+//						+ "            <td align=\"center\" height=\"100\"><button type=\"button\" onclick=\"alert('" + participantes + "')\">Ver Detalhes</button></td>\r\n"
+//						+ "            <td align=\"center\" height=\"100\">" + periodicidade + "</td>\r\n"
+//						+ "            <td align=\"center\" height=\"100\">" + semana + "</td>\r\n"
+//						+ "        </tr>\r\n";
+//			}
+//		}
+				
 				resultado+= "        <tr>\r\n"
 						+ "        	<td align=\"center\" height=\"100\">" + dia + "</td>\r\n"
 						+ "            <td align=\"center\" height=\"100\">" + hora + "</td>\r\n"
 						+ "            <td align=\"center\" height=\"100\"><button type=\"button\" onclick=\"alert('" + participantes + "')\">Ver Detalhes</button></td>\r\n"
-						+ "            <td align=\"center\" height=\"100\">" + periodicidade + "</td>\r\n"
-						+ "            <td align=\"center\" height=\"100\">" + semana + "</td>\r\n"
 						+ "        </tr>\r\n";
 			}
 		}
