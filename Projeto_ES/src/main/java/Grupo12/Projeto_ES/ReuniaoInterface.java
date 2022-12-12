@@ -23,7 +23,11 @@ public class ReuniaoInterface {
 
 	private JFrame frame;
 	private final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();;
-	private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();;
+	private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+	private JComboBox<String> inicioDasReunioes;
+	private JComboBox<String> opcoes;
+	private JRadioButton manha;
+	private JRadioButton tarde;;
 
 	public ReuniaoInterface() {
 		frame = new JFrame("Reuniões");
@@ -66,8 +70,8 @@ public class ReuniaoInterface {
 				frame.add(box);
 			}
 			
-			JRadioButton manha = new JRadioButton("Manhã");
-			JRadioButton tarde = new JRadioButton("Tarde");
+			manha = new JRadioButton("Manhã");
+			tarde = new JRadioButton("Tarde");
 			
 			ButtonGroup group = new ButtonGroup();
 			group.add(manha);
@@ -86,30 +90,30 @@ public class ReuniaoInterface {
 			String [] opcao = {"Nenhuma", "Diária", "Semanal", "Mensal"};
 			frame.add(new JLabel("Regularidade das reuniões"));
 			
-			JComboBox<String> opcoes = new JComboBox<String>(opcao);
+			opcoes = new JComboBox<String>(opcao);
 			frame.add(opcoes);
 			
-			ArrayList<String> inicioDasReunioes = new ArrayList<String>(); 
+			ArrayList<String> inicioReunioes = new ArrayList<String>(); 
 			
 			for (int i=1;i<=2;i++) {
 				for (int j=1;j<=14;j++) {
-					inicioDasReunioes.add("Semestre" + i + "/Semana " + j);
+					inicioReunioes.add("Semestre" + i + "/Semana " + j);
 				}
 			}
 			
 			frame.add(new JLabel ("Semana em que começam as reuniões"));
 			
-			String [] comecoReuniao = new String[inicioDasReunioes.size()+2];
+			String [] comecoReuniao = new String[inicioReunioes.size()+2];
 			
-			for (int i=0;i<inicioDasReunioes.size();i++) {
-				comecoReuniao[i]=inicioDasReunioes.get(i);
+			for (int i=0;i<inicioReunioes.size();i++) {
+				comecoReuniao[i]=inicioReunioes.get(i);
 			}
 			
-			comecoReuniao[inicioDasReunioes.size()]= "Semestre2/Semana15";
-			comecoReuniao[inicioDasReunioes.size()+1]= "Semestre2/Semana16";
+			comecoReuniao[inicioReunioes.size()]= "Semestre2/Semana15";
+			comecoReuniao[inicioReunioes.size()+1]= "Semestre2/Semana16";
 			
-			JComboBox<String> inicio = new JComboBox<String>(comecoReuniao);
-			frame.add(inicio);
+			inicioDasReunioes = new JComboBox<String>(comecoReuniao);
+			frame.add(inicioDasReunioes);
 			
 			
 			
@@ -144,6 +148,11 @@ public class ReuniaoInterface {
 		}
 			
 	}
+	
+	
+	
+	
+	
 	
 	public void open() {
 		frame.setVisible(true);
