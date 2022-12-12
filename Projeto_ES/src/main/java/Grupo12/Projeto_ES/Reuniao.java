@@ -33,6 +33,8 @@ public class Reuniao {
 		JSONObject reunioes = turnToJson(datas);
 
 		System.out.println(reunioes);
+		
+		HtmlReuinioes.reunioesHtml(reunioes, nomes);
 
 	}
 	

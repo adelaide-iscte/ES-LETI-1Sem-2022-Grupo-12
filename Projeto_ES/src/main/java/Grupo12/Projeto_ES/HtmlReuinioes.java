@@ -2,17 +2,17 @@ package Grupo12.Projeto_ES;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.awt.Desktop;
 import java.io.FileNotFoundException;
 
 public class HtmlReuinioes {
-	public static void main(String[] arg) {
-		int hour = 1340;
-		int day = 20202022;
-		ArrayList<String> participantes = new ArrayList<>();
-		String periodicidade = "semanal";
-		String semana ="sexta-feira";
-		
+	public static void reunioesHtml(JSONObject reunioes, ArrayList<String> participantes) {		
 		File file = new File("reunioes.html");
 		try {
 			PrintWriter printWriter = new PrintWriter(file);
@@ -45,7 +45,7 @@ public class HtmlReuinioes {
 					+ "                <b><font color=\"blue\">Dia da Semana</font></b>\r\n"
 					+ "            </td>\r\n"
 					+ "        </tr>\r\n"
-					+ row(hour,day, participantes,periodicidade,semana)
+					+ row(reunioes , participantes)
 					+ "       </table>\r\n"
 					+ "</body>\r\n"
 					+ "</html>";
@@ -69,16 +69,31 @@ public class HtmlReuinioes {
 		}
 		file.delete();
 	}
-	public static String row(int hour, int day, ArrayList<String> participantes, String periodicidade, String semana) {
-		String hora = Integer.toString(hour);
-		String dia = Integer.toString(day);
-		return "        <tr>\r\n"
-		+ "        	<td align=\"center\" height=\"100\">" + dia + "</td>\r\n"
-		+ "            <td align=\"center\" height=\"100\">" + hora + "</td>\r\n"
-		+ "            <td align=\"center\" height=\"100\"><button type=\"button\" onclick=\"alert('" + participantes + "')\">Ver Detalhes</button></td>\r\n"
-		+ "            <td align=\"center\" height=\"100\">" + periodicidade + "</td>\r\n"
-		+ "            <td align=\"center\" height=\"100\">" + semana + "</td>\r\n"
-		+ "        </tr>\r\n";
+	public static String row(JSONObject reunioes,  ArrayList<String> participantes) {
+		String periodicidade = "sexta-feira";
+		String semana = "Semana1";
+		String resultado = null;
+		
+		Iterator<String> jsonItr = reunioes.keys();
+		
+		while (jsonItr.hasNext()) {
+			String dia = jsonItr.next();
+			JSONArray horas = (JSONArray) reunioes.get(dia);
+			for (Object hora: horas) {
+				resultado+= "        <tr>\r\n"
+						+ "        	<td align=\"center\" height=\"100\">" + dia + "</td>\r\n"
+						+ "            <td align=\"center\" height=\"100\">" + hora + "</td>\r\n"
+						+ "            <td align=\"center\" height=\"100\"><button type=\"button\" onclick=\"alert('" + participantes + "')\">Ver Detalhes</button></td>\r\n"
+						+ "            <td align=\"center\" height=\"100\">" + periodicidade + "</td>\r\n"
+						+ "            <td align=\"center\" height=\"100\">" + semana + "</td>\r\n"
+						+ "        </tr>\r\n";
+			}
+		}
+		
+		
+		
+		
+		return resultado;
 	}
 	
 
