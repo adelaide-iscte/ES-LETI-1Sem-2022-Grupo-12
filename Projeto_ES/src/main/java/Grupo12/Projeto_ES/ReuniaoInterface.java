@@ -10,11 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.WindowConstants;
 
 public class ReuniaoInterface {
@@ -28,7 +30,7 @@ public class ReuniaoInterface {
 
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-		frame.setSize(500, 300);
+		frame.setSize(500, 400);
 
 		frame.setLocation((WIDTH / 2) - frame.getWidth()-300, (HEIGHT / 2) - frame.getHeight()+200);
 
@@ -63,6 +65,21 @@ public class ReuniaoInterface {
 				JCheckBox box = new JCheckBox(nome);
 				frame.add(box);
 			}
+			
+			JRadioButton manha = new JRadioButton("Manhã");
+			JRadioButton tarde = new JRadioButton("Tarde");
+			
+			ButtonGroup group = new ButtonGroup();
+			group.add(manha);
+			group.add(tarde);
+			
+			frame.add(new JLabel());
+			
+			frame.add(new JLabel("Preferencia na parte do dia"));
+			frame.add(manha);
+			frame.add(tarde);
+			
+			
 			
 			frame.add(new JLabel());
 			
