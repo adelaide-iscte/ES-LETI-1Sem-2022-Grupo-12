@@ -60,11 +60,11 @@ public class Calendar {
 				sc.close();
 
 			} catch (FileNotFoundException e) {
-				System.out.println("Não é possivel aceder ao ficheiro");
+				//System.out.println("Não é possivel aceder ao ficheiro");
 			}
 
 		}
-		System.out.println("Nome introduzido não econtrado");
+		//System.out.println("Nome introduzido não econtrado");
 		return null;
 	}
 	
@@ -178,7 +178,6 @@ public class Calendar {
 				finalList.add(availableHours);
 			}
 		}
-		System.out.println(finalList);
 		return finalList;
 	}
     /** O metodo recebe duas listas de horas disponiveis(cada uma de 1 utilizador diferente) e um dia de inicio de semana
@@ -416,6 +415,16 @@ public class Calendar {
 		JSONObject day = gerarHoarioDia(nome, dia);
 		
 		Html.visualizarDia(dia, day, nomes);
+	}
+	
+	public static List<String> compareTwoWeeks ( List<String> weekOne, List<String> weekTwo){
+		List<String> finalList = new ArrayList<String>();
+		
+		for (String dayHour : weekTwo) {
+			if (weekOne.contains(dayHour));
+				finalList.add(dayHour);
+		}
+		return finalList;
 	}
 	
 	

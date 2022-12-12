@@ -2,6 +2,7 @@ package Grupo12.Projeto_ES;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.json.JSONObject;
 
@@ -85,7 +86,27 @@ public class Reuniao {
 		return reunioes;
 	}
 	
-	
+	private ArrayList<String> allmembersAvailability (){
+		ArrayList<String> marcacoes = new ArrayList<String>();
+		
+		if (nomes.size()==1) {
+			marcacoes.addAll(Calendar.availabilityOneWeek(nomes.get(0), null, beginDay));
+		} else {
+			marcacoes = (ArrayList<String>) Calendar.availabilityOneWeek(nomes.get(0), nomes.get(1), beginDay);
+			for (int i=2;i<nomes.size();i++) {
+				ArrayList<String> semanaParticipante = (ArrayList<String>) Calendar.availabilityOneWeek(nomes.get(i), null, beginDay);
+				ArrayList<String> aux = marcacoes;
+				marcacoes = (ArrayList<String>) Calendar.compareAvailable2Days(aux, semanaParticipante);
+			}
+		}
+		
+		
+		
+		
+		
+		
+		return marcacoes;
+	}
 	
 	
 	
