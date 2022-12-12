@@ -17,13 +17,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-public class ReuniãoInterface {
+public class ReuniaoInterface {
 
 	private JFrame frame;
 	private final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();;
 	private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();;
 
-	public ReuniãoInterface() {
+	public ReuniaoInterface() {
 		frame = new JFrame("Reuniões");
 
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
