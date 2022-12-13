@@ -49,8 +49,6 @@ public class AddCal {
 
 	public void addFrameContents() {
 		
-		Container painel = new Container();
-
 		frame.setLayout(new GridLayout(7, 1));
 
 		labelName = new JLabel("Coloque o nome de quem pertenceo calendario");

@@ -43,10 +43,8 @@ public class CalDisp {
 
 			contents = new ArrayList<String>();
 
-			int num = 2;
 
 			while (sc.hasNextLine()) {
-				num++;
 				String[] aux = sc.nextLine().split(":");
 				if (aux[0].equals("Nome")) {
 					contents.add(aux[1]);
@@ -55,82 +53,18 @@ public class CalDisp {
 			}
 
 			cal.setLayout(new GridLayout(0, 4));
-
-			JLabel nomes = new JLabel("Nome");
-			cal.add(nomes);
-			cal.add(new JLabel());
-			cal.add(new JLabel());
-			cal.add(new JLabel());
-
-			for (final String i : contents) {
-				JLabel nome = new JLabel(i);
-				cal.add(nome);
-				JButton semestre1 = new JButton("Semestre 1");
-
-				semestre1.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Semanas semana = new Semanas(1, i, contents);
-						semana.open();
-
-					}
-				});
-				JButton semestre2 = new JButton("Semestre 2");
-				semestre2.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Semanas semana = new Semanas(2, i, contents);
-						semana.open();
-
-					}
-				});
-				
-				JButton pesquisar = new JButton ("Pesquisar");
-				pesquisar.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Semanas semana = new Semanas (3,i, contents);
-						semana.open();
-						
-					}
-				});
-
-
-				cal.add(semestre1);
-				cal.add(semestre2);
-				cal.add(pesquisar);
-				
-			}
+			
+			addOpcoes();
 
 			cal.add(new JLabel());
 			cal.add(new JLabel());
 			cal.add(new JLabel());
 			cal.add(new JLabel());
-
 			cal.add(new JLabel());
+			
+			addButtons();
 
-			JButton ok = new JButton("OK");
-			ok.addActionListener(new ActionListener() {
 
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					cal.dispose();
-				}
-			});
-			JButton marcarReunioes = new JButton("Data/Hora Reunião");
-			marcarReunioes.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					ReuniaoInterface reunião = new ReuniaoInterface();	
-					reunião.open();
-				}
-			});
-
-			cal.add(ok);
-			cal.add(marcarReunioes);
 
 			sc.close();
 		} catch (FileNotFoundException e) {
@@ -140,6 +74,82 @@ public class CalDisp {
 		}
 
 	}
+	
+	private void addButtons() {
+		JButton ok = new JButton("OK");
+		ok.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cal.dispose();
+			}
+		});
+		JButton marcarReunioes = new JButton("Data/Hora Reunião");
+		marcarReunioes.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ReuniaoInterface reunião = new ReuniaoInterface();	
+				reunião.open();
+			}
+		});
+
+		cal.add(ok);
+		cal.add(marcarReunioes);
+	}
+	
+	private void addOpcoes() {
+		JLabel nomes = new JLabel("Nome");
+		cal.add(nomes);
+		cal.add(new JLabel());
+		cal.add(new JLabel());
+		cal.add(new JLabel());
+
+		for (final String i : contents) {
+			JLabel nome = new JLabel(i);
+			cal.add(nome);
+			JButton semestre1 = new JButton("Semestre 1");
+
+			semestre1.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Semanas semana = new Semanas(1, i, contents);
+					semana.open();
+
+				}
+			});
+			JButton semestre2 = new JButton("Semestre 2");
+			semestre2.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Semanas semana = new Semanas(2, i, contents);
+					semana.open();
+
+				}
+			});
+			
+			JButton pesquisar = new JButton ("Pesquisar");
+			pesquisar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Semanas semana = new Semanas (3,i, contents);
+					semana.open();
+					
+				}
+			});
+
+
+			cal.add(semestre1);
+			cal.add(semestre2);
+			cal.add(pesquisar);
+			
+		}
+	}
+	
+	
+	
 
 	public void open() {
 		cal.setVisible(true);
