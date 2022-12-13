@@ -26,13 +26,15 @@ public class Reuniao {
 
 		ArrayList<String> marcacoes = new ArrayList<String>();
 
-		marcacoes = allmembersAvailability(beginDay);
+		if (regularidade.equals("Unica vez"))
+			marcacoes = allmembersAvailability(beginDay);
+		
+		if (regularidade.equals("Semanal"))
+			marcacoes = allMemberAvailabilityWeekly();
 
 		ArrayList<String> datas = filtrarDatas(marcacoes);
 
 		JSONObject reunioes = turnToJson(datas);
-
-		System.out.println(reunioes);
 
 		int duracao = getDuracao();
 
@@ -92,10 +94,10 @@ public class Reuniao {
 		if (nomes.size() == 1) {
 			marcacoes.addAll(Calendar.availabilityOneWeek(nomes.get(0), null, beginWeek));
 		} else {
-			marcacoes = (ArrayList<String>) Calendar.availabilityOneWeek(nomes.get(0), nomes.get(1), beginDay);
+			marcacoes = (ArrayList<String>) Calendar.availabilityOneWeek(nomes.get(0), nomes.get(1), beginWeek);
 			for (int i = 2; i < nomes.size(); i++) {
 				ArrayList<String> semanaParticipante = (ArrayList<String>) Calendar.availabilityOneWeek(nomes.get(i),
-						null, beginDay);
+						null, beginWeek);
 				ArrayList<String> aux = marcacoes;
 				marcacoes = (ArrayList<String>) Calendar.compareAvailable2Days(aux, semanaParticipante);
 			}
@@ -115,6 +117,27 @@ public class Reuniao {
 			return 100;
 
 		return 0;
+	}
+
+	private ArrayList<String> allMemberAvailabilityWeekly() {
+		ArrayList<String> semanal = new ArrayList<String>();
+		int thisWeek = beginDay;
+
+		if (beginDay < 20221216) {
+			while (thisWeek <= 20221216) {
+				int newWeek = thisWeek;
+				semanal.addAll(allmembersAvailability(newWeek));
+				thisWeek = Calendar.nextWeek(thisWeek);
+			}
+		} else {
+			while (thisWeek <= 20230526) {
+				semanal.addAll(allmembersAvailability(thisWeek));
+				thisWeek = Calendar.nextWeek(thisWeek);
+			}
+		}
+
+		return semanal;
+
 	}
 
 }

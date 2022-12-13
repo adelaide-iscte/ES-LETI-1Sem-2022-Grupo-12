@@ -125,7 +125,7 @@ public class Calendar {
 			}
 			sc.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("Não é possivel aceder ao ficheiro");
+			//System.out.println("Não é possivel aceder ao ficheiro");
 		}
 		if (organizedDate != null)
 			aulas.add(organizedDate);
