@@ -30,7 +30,8 @@ public class ReuniaoInterface {
 	private JComboBox<String> inicioDasReunioes;
 	private JComboBox<String> opcoesDeRegularidade;
 	private JRadioButton manha;
-	private JRadioButton tarde;;
+	private JRadioButton tarde;
+	private JComboBox<String> duracao;;
 
 	public ReuniaoInterface() {
 		frame = new JFrame("Reuniões");
@@ -88,7 +89,7 @@ public class ReuniaoInterface {
 
 			frame.add(new JLabel());
 
-			String[] opcao = { "Nenhuma", "Diária", "Semanal", "Mensal" };
+			String[] opcao = { "Unica vez", "Semanal"};
 			frame.add(new JLabel("Regularidade das reuniões"));
 
 			opcoesDeRegularidade = new JComboBox<String>(opcao);
@@ -116,6 +117,14 @@ public class ReuniaoInterface {
 			inicioDasReunioes = new JComboBox<String>(comecoReuniao);
 			frame.add(inicioDasReunioes);
 
+			frame.add(new JLabel ("Duração da reunião"));
+			
+			String[] duracoes = {"15min", "30min", "60min"};
+			duracao = new JComboBox<String>(duracoes);
+			frame.add(duracao);
+			
+			
+			
 			frame.add(new JLabel());
 
 			JButton ok = new JButton("OK");

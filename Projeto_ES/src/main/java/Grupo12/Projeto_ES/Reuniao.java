@@ -21,15 +21,11 @@ public class Reuniao {
 	}
 
 	public void gerarReuniao() {
-
-		String aux1 = nomes.get(0);
-		String aux2 = nomes.get(1);
-
 		
 
-		ArrayList<String> auxString = new ArrayList<String>(Calendar.availabilityOneWeek(aux1, aux2, beginDay));
+		ArrayList<String> marcacoes = allmembersAvailability();
 
-		ArrayList<String> datas = filtrarDatas(auxString);
+		ArrayList<String> datas = filtrarDatas(marcacoes);
 
 		JSONObject reunioes = turnToJson(datas);
 
