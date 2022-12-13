@@ -10,7 +10,15 @@ import org.json.JSONObject;
 import java.awt.Desktop;
 import java.io.FileNotFoundException;
 
+/** Classe estática que cria os HTML para visualizar os horários */
 public class Html {
+
+	/**
+	 * Método que cria o HTML para visualizar uma semana. Recebe como argumentos o
+	 * numero da semana, o dia do inicio da semana, o objeto JSON com o horário, e
+	 * uma lista com os nomes dos hoários que seram comparados com este para
+	 * calcular a disponibilidade
+	 */
 	public static void visualizarSemana(int numeroSemana, int day, JSONObject semana, ArrayList<String> nomes) {
 		File file = new File("agenda.html");
 		try {
@@ -129,6 +137,10 @@ public class Html {
 		file.delete();
 	}
 
+	/**
+	 * Método que cria o HTML para visualizar um dia. Recebe como argumentos o dia
+	 * do inicio da semana, o objeto JSON com o horário, e uma lista com nomes
+	 */
 	public static void visualizarDia(int day, JSONObject semana, ArrayList<String> nomes) {
 		File file = new File("agenda.html");
 		try {
@@ -195,6 +207,7 @@ public class Html {
 		file.delete();
 	}
 
+	/** Método que devolve uma String para demonstrar blocos vazios no HTML */
 	public static String multBlocoVazio(int horaInicio, int horaFim) {
 		return "<td align=\"center\" height=\"50\">\r\n" + "                <b>" + horaInicio + ":30-" + horaFim
 				+ ":00</b></td>\r\n" + "            <td align=\"center\" height=\"50\"></td>\r\n"
@@ -205,11 +218,16 @@ public class Html {
 
 	}
 
+	/** Método que devolve uma String para demonstrar um bloco vazio no HTML */
 	public static String umBlocoVazio(int horaInicio, int horaFim) {
 		return "<td align=\"center\" height=\"50\">\r\n" + "                <b>" + horaInicio + ":30-" + horaFim
 				+ ":00</b></td>\r\n" + "<td align=\"center\" height=\"100\"\r\n></td>\r\n";
 	}
 
+	/**
+	 * Método que devolve uma String para demonstrar um bloco que demonstra uma aula
+	 * marcada ou um bloco vazio no HTML
+	 */
 	public static String bloco(int hour, int day, JSONObject semana, Disponibilidade disp) {
 		String hora = Integer.toString(hour);
 		String dia = Integer.toString(day);
