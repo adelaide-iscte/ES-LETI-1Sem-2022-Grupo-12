@@ -60,11 +60,9 @@ public class Calendar {
 				sc.close();
 
 			} catch (FileNotFoundException e) {
-				//System.out.println("Não é possivel aceder ao ficheiro");
 			}
 
 		}
-		//System.out.println("Nome introduzido não econtrado");
 		return null;
 	}
 	
@@ -125,7 +123,6 @@ public class Calendar {
 			}
 			sc.close();
 		} catch (FileNotFoundException e) {
-			//System.out.println("Não é possivel aceder ao ficheiro");
 		}
 		if (organizedDate != null)
 			aulas.add(organizedDate);
@@ -315,14 +312,6 @@ public class Calendar {
 		return false;
 	}
 	
-     // ------------------------------------------------------------------------------------
-    /** Help  */
-	// --------------------------------------------------
-	//----------------------------------------------------
-	public static JSONObject getJsonWeek(String uri, int fistDay) {
-
-		return null;
-	}
 	
 	/** Este método recebe o nome do URI e a data do inicio da semana e cria os objetos JSON necessarios 
 	 * para gerar o horario para uma semana */
@@ -425,27 +414,6 @@ public class Calendar {
 				finalList.add(dayHour);
 		}
 		return finalList;
-	}
-	
-	
-	
-
-	public static void main(String[] args) {
-
-		
-		List<String> i = availabilityOneWeek("gr","Luis", 20220926);
-		List<String> j = availabilityOneMonth("gr","Luis",20220912);
-
-		//List<String> i = availabilityOneWeek("gr", 20220926);
-
-		//		List<String> j = new ArrayList<String>(Arrays.asList("20220926", "800", "930", "1100", "1730", "1800", "1930",
-		//				"20220927", "800", "930", "1800", "1930"));
-		//		System.out.println("_____________________________");
-		//		
-		System.out.println(j);
-
-
-
 	}
 
 }

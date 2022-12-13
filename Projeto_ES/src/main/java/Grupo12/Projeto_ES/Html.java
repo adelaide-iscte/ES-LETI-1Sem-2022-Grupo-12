@@ -19,8 +19,8 @@ public class Html {
 			Disponibilidade disp = new Disponibilidade(nomes, day, semana);
 			int diaSeguinte = day;
 			PrintWriter printWriter = new PrintWriter(file);
-			String html = "<!DOCTYPE html>\r\n" + "<html>\r\n" + " \r\n" + "<body>\r\n"
-					+ "    <h1>Horário Semana " + numeroSemana +"</h1>\r\n"
+			String html = "<!DOCTYPE html>\r\n" + "<html>\r\n" + " \r\n" + "<body>\r\n" + "    <h1>Horário Semana "
+					+ numeroSemana + "</h1>\r\n"
 					+ "    <table border=\"8\" cellspacing=\"0\" align=\"center\" bordercolor=\"blue\">\r\n"
 					+ "        <tr>\r\n" + "            <td align=\"center\" height=\"50\"\r\n"
 					+ "                width=\"300\"><br>\r\n" + "                <b>Hora/Dia</b></br>\r\n"
@@ -102,11 +102,11 @@ public class Html {
 					+ bloco((horaCerta * 100), (diaSeguinte = Calendar.nextDay(diaSeguinte)), semana, disp)
 					+ bloco((horaCerta * 100), (diaSeguinte = Calendar.nextDay(diaSeguinte)), semana, disp)
 					+ bloco((horaCerta * 100), (diaSeguinte = Calendar.nextDay(diaSeguinte)), semana, disp)
-					+ "        </tr>\r\n" + "    </table>\r\n" +"    <tr>\r\n"
-							+ "    <font color=\"blue\"></<b>AZUL</b></font> A disponibilidade dos utilizadores está livre.</font></td><br>\r\n"
-							+ "    <font color=\"orange\"></<b>LARANJA</b></font> A disponibilidade dos utilizadores está parcialmente ocupada.</font></td></br>\r\n"
-							+ "    <font color=\"red\"></<b>VERMELHO</b></font> A disponibilidade dos utilizadores está ocupada.</font></td></br>\r\n"
-							+ "    </tr> </body>\r\n" + " \r\n" + "</html>";
+					+ "        </tr>\r\n" + "    </table>\r\n" + "    <tr>\r\n"
+					+ "    <font color=\"blue\"></<b>AZUL</b></font> A disponibilidade dos utilizadores está livre.</font></td><br>\r\n"
+					+ "    <font color=\"orange\"></<b>LARANJA</b></font> A disponibilidade dos utilizadores está parcialmente ocupada.</font></td></br>\r\n"
+					+ "    <font color=\"red\"></<b>VERMELHO</b></font> A disponibilidade dos utilizadores está ocupada.</font></td></br>\r\n"
+					+ "    </tr> </body>\r\n" + " \r\n" + "</html>";
 
 			printWriter.println(html);
 			printWriter.close();
@@ -147,30 +147,33 @@ public class Html {
 					+ ":30-" + (horaCerta = horaEmeia + 2) + ":00</b></td>\r\n"
 					+ bloco(((horaEmeia * 100) + 30), day, semana, disp) + "        </tr>\r\n" + "        <tr>\r\n"
 					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + horaCerta
-					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n" + bloco((horaCerta * 100), day, semana, disp)
-					+ "        </tr>\r\n" + "        <tr>\r\n" + umBlocoVazio(12, 13) + "        </tr>\r\n"
-					+ "        <tr>\r\n" + "            <td align=\"center\" height=\"100\">\r\n"
-					+ "                <b>" + (horaCerta += 2) + ":00-" + (horaEmeia = horaCerta + 1)
-					+ ":30</b></td>\r\n" + bloco((horaCerta * 100), day, semana, disp) + "        </tr>\r\n"
-					+ "        <tr>\r\n" + "            <td align=\"center\" height=\"100\">\r\n"
-					+ "                <b>" + horaEmeia + ":30-" + (horaCerta = horaEmeia + 2) + ":00</b></td>\r\n"
+					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n"
+					+ bloco((horaCerta * 100), day, semana, disp) + "        </tr>\r\n" + "        <tr>\r\n"
+					+ umBlocoVazio(12, 13) + "        </tr>\r\n" + "        <tr>\r\n"
+					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + (horaCerta += 2)
+					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n"
+					+ bloco((horaCerta * 100), day, semana, disp) + "        </tr>\r\n" + "        <tr>\r\n"
+					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + horaEmeia
+					+ ":30-" + (horaCerta = horaEmeia + 2) + ":00</b></td>\r\n"
 					+ bloco(((horaEmeia * 100) + 30), day, semana, disp) + "        </tr>\r\n" + "        <tr>\r\n"
 					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + horaCerta
-					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n" + bloco((horaCerta * 100), day, semana, disp)
-					+ "        </tr>\r\n" + "        <tr>\r\n" + umBlocoVazio(17, 18) + "        </tr>\r\n"
-					+ "        <tr>\r\n" + "            <td align=\"center\" height=\"100\">\r\n"
-					+ "                <b>" + (horaCerta += 2) + ":00-" + (horaEmeia = horaCerta + 1)
-					+ ":30</b></td>\r\n" + bloco((horaCerta * 100), day, semana, disp) + "        </tr>\r\n"
-					+ "        <tr>\r\n" + "            <td align=\"center\" height=\"100\">\r\n"
-					+ "                <b>" + horaEmeia + ":30-" + (horaCerta = horaEmeia + 2) + ":00</b></td>\r\n"
+					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n"
+					+ bloco((horaCerta * 100), day, semana, disp) + "        </tr>\r\n" + "        <tr>\r\n"
+					+ umBlocoVazio(17, 18) + "        </tr>\r\n" + "        <tr>\r\n"
+					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + (horaCerta += 2)
+					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n"
+					+ bloco((horaCerta * 100), day, semana, disp) + "        </tr>\r\n" + "        <tr>\r\n"
+					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + horaEmeia
+					+ ":30-" + (horaCerta = horaEmeia + 2) + ":00</b></td>\r\n"
 					+ bloco(((horaEmeia * 100) + 30), day, semana, disp) + "        </tr>\r\n" + "        <tr>\r\n"
 					+ "            <td align=\"center\" height=\"100\">\r\n" + "                <b>" + horaCerta
-					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n" + bloco((horaCerta * 100), day, semana, disp)
-					+ "        </tr>\r\n" + "    </table>\r\n" + "    <tr>\r\n"
-							+ "    <font color=\"blue\"></<b>AZUL</b></font> A disponibilidade dos utilizadores está livre.</font></td><br>\r\n"
-							+ "    <font color=\"orange\"></<b>LARANJA</b></font> A disponibilidade dos utilizadores está parcialmente ocupada.</font></td></br>\r\n"
-							+ "    <font color=\"red\"></<b>VERMELHO</b></font> A disponibilidade dos utilizadores está ocupada.</font></td></br>\r\n"
-							+ "    </tr>" + "</body>\r\n" + " \r\n" + "</html>";
+					+ ":00-" + (horaEmeia = horaCerta + 1) + ":30</b></td>\r\n"
+					+ bloco((horaCerta * 100), day, semana, disp) + "        </tr>\r\n" + "    </table>\r\n"
+					+ "    <tr>\r\n"
+					+ "    <font color=\"blue\"></<b>AZUL</b></font> A disponibilidade dos utilizadores está livre.</font></td><br>\r\n"
+					+ "    <font color=\"orange\"></<b>LARANJA</b></font> A disponibilidade dos utilizadores está parcialmente ocupada.</font></td></br>\r\n"
+					+ "    <font color=\"red\"></<b>VERMELHO</b></font> A disponibilidade dos utilizadores está ocupada.</font></td></br>\r\n"
+					+ "    </tr>" + "</body>\r\n" + " \r\n" + "</html>";
 			printWriter.println(html);
 			printWriter.close();
 
@@ -212,11 +215,12 @@ public class Html {
 		String dia = Integer.toString(day);
 
 		try {
-			return "<td align=\"center\" height=\"100\"><font color=\"" + disp.getDisponibilidade(day,hour) + "\">Cadeira:</font>"
+			return "<td align=\"center\" height=\"100\"><font color=\"" + disp.getDisponibilidade(day, hour)
+					+ "\">Cadeira:</font>"
 					+ ((JSONObject) (((JSONObject) (semana.get(dia))).get(hora))).get("Disciplina")
-					+ "<br><font color=\"" + disp.getDisponibilidade(day,hour) + "\">Sala:</font> "
-					+ ((JSONObject) (((JSONObject) (semana.get(dia))).get(hora))).get("Sala")
-					+ "<br><font color=\"" + disp.getDisponibilidade(day,hour) + "\"></td>\r\n";
+					+ "<br><font color=\"" + disp.getDisponibilidade(day, hour) + "\">Sala:</font> "
+					+ ((JSONObject) (((JSONObject) (semana.get(dia))).get(hora))).get("Sala") + "<br><font color=\""
+					+ disp.getDisponibilidade(day, hour) + "\"></td>\r\n";
 
 		} catch (org.json.JSONException e) {
 			return "<td align=\"center\" height=\"100\"\r\n></td>\r\n";
