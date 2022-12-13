@@ -32,10 +32,11 @@ import org.json.JSONObject;
 
 import java.lang.Object;
 
+/**Classe dos  métodos estáticos utilizados nas outras clases*/
 public class Calendar {
 
 	//Metodo a testar
-	
+	/**Método que devolve a String do URI relacionado com nome dado como argumento*/
 	public static String getURI(String name) {
 		File file = new File("calendarios.txt");
 
@@ -163,7 +164,6 @@ public class Calendar {
 	}
 	
 	/** Este metodo recebe duas Listas de horas disponiveis e devolve uma lista de horas disponiveis comuns entre as listas anteriores */
-
 	public static List<String> compareAvailable2Days(List<String> day1List, List<String> day2List) {
 		List<String> availableHoursList = new ArrayList<String>();
 		List<String> finalList = new ArrayList<String>();
@@ -177,6 +177,7 @@ public class Calendar {
 		}
 		return finalList;
 	}
+	
     /** O metodo recebe duas listas de horas disponiveis(cada uma de 1 utilizador diferente) e um dia de inicio de semana
      *  e devolve as horas disponiveis comuns entre os dois utilizadores ao longo de uma semana em foramto de lista  */
 	public static List<String> availabilityOneWeek(String calName1,String calName2, int weekStart) {
@@ -276,7 +277,6 @@ public class Calendar {
 
 	//Metodo a testar
 	/** Este Método dado um dia (aaaammdd) devolve-nos o dia correspondente à semana seguinte */
-	
 	public static int nextWeek(int day) {
 		int nextWeek = day + 7;
 
@@ -354,9 +354,9 @@ public class Calendar {
 		
 		return semana;
 	}
+	
 	/** Este método recebe o nome do URI e a data do inicio da semana e cria os objetos JSON necessarios 
 	 * para gerar o horario para um dia */
-
 	public static JSONObject gerarHoarioDia(String nome, int dia) {
 		try {
 			createURIFile(nome, getURI(nome));
@@ -406,6 +406,8 @@ public class Calendar {
 		Html.visualizarDia(dia, day, nomes);
 	}
 	
+	/**Devolve uma lista dos dias e horas que aparecem em ambas as listas 
+	 * dadas como argumentos*/
 	public static List<String> compareTwoWeeks ( List<String> weekOne, List<String> weekTwo){
 		List<String> finalList = new ArrayList<String>();
 		

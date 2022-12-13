@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
+/**Classe para criar a interface com o utilizador visualizar os calendários disponiveis  */
 public class CalDisp {
 
 	private JFrame cal;
@@ -21,6 +22,7 @@ public class CalDisp {
 	private final int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	private ArrayList<String> contents;
 
+	/**Construtor da classe*/
 	public CalDisp() {
 		cal = new JFrame("Calendarios");
 
@@ -34,6 +36,7 @@ public class CalDisp {
 
 	}
 
+	/**Método principal para adicionar os elementos da interface*/
 	public void lerCalendario() {
 
 		File file = new File("calendarios.txt");
@@ -75,6 +78,7 @@ public class CalDisp {
 
 	}
 	
+	/**Adiciona os butões finais na interface*/
 	private void addButtons() {
 		JButton ok = new JButton("OK");
 		ok.addActionListener(new ActionListener() {
@@ -97,6 +101,7 @@ public class CalDisp {
 		cal.add(marcarReunioes);
 	}
 	
+	/**Adiciona os buões para visualizar as semanas na interface */
 	private void addOpcoes() {
 		JLabel nomes = new JLabel("Nome");
 		cal.add(nomes);
@@ -150,7 +155,7 @@ public class CalDisp {
 	
 	
 	
-
+	/**Método para abrir a janela */
 	public void open() {
 		cal.setVisible(true);
 	}

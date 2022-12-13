@@ -7,13 +7,17 @@ import org.json.JSONObject;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
 
+/**Classe que demonstra a disponibilidade de quem pertence o hórario a ser demonstrado
+ * em relação aos outros escolhidos
+ * */
 public class Disponibilidade {
 
 	private ArrayList<String> nomes;
 	private JSONObject json;
 	private int inicioSemana;
 	private ArrayList<JSONObject> jsons = new ArrayList<JSONObject>();
-
+	
+	/**Construtor da classe*/
 	public Disponibilidade(ArrayList<String> nomes, int inicioSemana, JSONObject json) {
 		this.nomes = nomes;
 		this.json = json;
@@ -22,7 +26,7 @@ public class Disponibilidade {
 		juntarHorarios();
 	}
 	
-	
+	/**Junta os horários escolhidos para comparar e demonstrar a disponibilidade*/
 	public void juntarHorarios () {
 		if (nomes!= null) {
 			for (String nome : nomes) {
@@ -32,7 +36,9 @@ public class Disponibilidade {
 		}
 	}
 	
-	
+	/**Devolve um String com o nome da cor a ser utilizada no HTML, qunto mais perto da cor vermelho
+	 * menor a disponibilidade
+	 * */
 	public String getDisponibilidade(int day, int hour) {
 		String dia = Integer.toString(day);
 		String hora = Integer.toString(hour);
