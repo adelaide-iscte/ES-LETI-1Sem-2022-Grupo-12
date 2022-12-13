@@ -12,7 +12,7 @@ import java.awt.Desktop;
 import java.io.FileNotFoundException;
 
 public class HtmlReuinioes {
-	public static void reunioesHtml(JSONObject reunioes, ArrayList<String> participantes) {		
+	public static void reunioesHtml(JSONObject reunioes, ArrayList<String> participantes, int duracao) {		
 		File file = new File("reunioes.html");
 		try {
 			PrintWriter printWriter = new PrintWriter(file);
@@ -45,7 +45,7 @@ public class HtmlReuinioes {
 //					+ "                <b><font color=\"blue\">Dia da Semana</font></b>\r\n"
 //					+ "            </td>\r\n"
 					+ "        </tr>\r\n"
-					+ row(reunioes , participantes)
+					+ row(reunioes , participantes, duracao)
 					+ "       </table>\r\n"
 					+ "</body>\r\n"
 					+ "</html>";
@@ -69,10 +69,11 @@ public class HtmlReuinioes {
 		}
 		file.delete();
 	}
-	public static String row(JSONObject reunioes,  ArrayList<String> participantes) {
+	public static String row(JSONObject reunioes,  ArrayList<String> participantes, int duracao) {
 		String periodicidade = "sexta-feira";
 		String semana = "Semana1";
 		String resultado = null;
+		
 		
 		Iterator<String> jsonItr = reunioes.keys();
 		
@@ -80,6 +81,7 @@ public class HtmlReuinioes {
 			String dia = jsonItr.next();
 			JSONArray horas = (JSONArray) reunioes.get(dia);
 			for (Object hora: horas) {
+				int finalReuniao = Integer.parseInt((String) hora) + duracao;
 //				resultado+= "        <tr>\r\n"
 //						+ "        	<td align=\"center\" height=\"100\">" + dia + "</td>\r\n"
 //						+ "            <td align=\"center\" height=\"100\">" + hora + "</td>\r\n"
@@ -92,7 +94,7 @@ public class HtmlReuinioes {
 				
 				resultado+= "        <tr>\r\n"
 						+ "        	<td align=\"center\" height=\"100\">" + dia + "</td>\r\n"
-						+ "            <td align=\"center\" height=\"100\">" + hora + "</td>\r\n"
+						+ "            <td align=\"center\" height=\"100\">" + hora + "-" + finalReuniao + "</td>\r\n"
 						+ "            <td align=\"center\" height=\"100\"><button type=\"button\" onclick=\"alert('" + participantes + "')\">Ver Detalhes</button></td>\r\n"
 						+ "        </tr>\r\n";
 			}

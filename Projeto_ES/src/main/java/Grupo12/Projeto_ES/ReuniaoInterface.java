@@ -31,7 +31,7 @@ public class ReuniaoInterface {
 	private JComboBox<String> opcoesDeRegularidade;
 	private JRadioButton manha;
 	private JRadioButton tarde;
-	private JComboBox<String> duracao;;
+	private JComboBox<String> opcoesDeDuracao;;
 
 	public ReuniaoInterface() {
 		frame = new JFrame("Reuniões");
@@ -119,9 +119,9 @@ public class ReuniaoInterface {
 
 			frame.add(new JLabel ("Duração da reunião"));
 			
-			String[] duracoes = {"15min", "30min", "60min"};
-			duracao = new JComboBox<String>(duracoes);
-			frame.add(duracao);
+			String[] duracoes = {"15min", "30min", "1hora"};
+			opcoesDeDuracao = new JComboBox<String>(duracoes);
+			frame.add(opcoesDeDuracao);
 			
 			
 			
@@ -142,7 +142,6 @@ public class ReuniaoInterface {
 
 						} else {
 							criarReuniao();
-							frame.dispose();
 						}
 					}
 				}
@@ -172,8 +171,9 @@ public class ReuniaoInterface {
 		int dia = getDia(semestreSemana);
 		boolean perferencia = getPerferencia();
 		String regularidade = (String) opcoesDeRegularidade.getSelectedItem();
+		String duracao = (String) opcoesDeDuracao.getSelectedItem();
 		
-		Reuniao reuniao = new Reuniao(dia,nomes,perferencia,regularidade);
+		Reuniao reuniao = new Reuniao(dia,nomes,perferencia,regularidade,duracao);
 		reuniao.gerarReuniao();
 		
 
