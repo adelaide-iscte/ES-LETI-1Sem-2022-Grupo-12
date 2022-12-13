@@ -89,7 +89,7 @@ public class ReuniaoInterface {
 
 			frame.add(new JLabel());
 
-			String[] opcao = { "Unica vez", "Semanal"};
+			String[] opcao = { "Unica vez", "Semanal (Funcionalidade não implementada"};
 			frame.add(new JLabel("Regularidade das reuniões"));
 
 			opcoesDeRegularidade = new JComboBox<String>(opcao);

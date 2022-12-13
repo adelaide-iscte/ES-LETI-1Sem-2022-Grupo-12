@@ -24,14 +24,16 @@ public class Reuniao {
 
 	public void gerarReuniao() {
 
-		ArrayList<String> marcacoes = allmembersAvailability();
+		ArrayList<String> marcacoes = new ArrayList<String>();
+
+		marcacoes = allmembersAvailability(beginDay);
 
 		ArrayList<String> datas = filtrarDatas(marcacoes);
 
 		JSONObject reunioes = turnToJson(datas);
 
 		System.out.println(reunioes);
-		
+
 		int duracao = getDuracao();
 
 		HtmlReuinioes.reunioesHtml(reunioes, nomes, duracao);
@@ -67,7 +69,7 @@ public class Reuniao {
 
 		for (String s : datas) {
 			if (Integer.parseInt(s) > 2400) {
-				if (horas.size() != 0) {
+				if (horas.size() != 0 && dia != null) {
 					reunioes.put(dia, horas);
 					dia = s;
 					horas = new ArrayList<String>();
@@ -83,11 +85,12 @@ public class Reuniao {
 		return reunioes;
 	}
 
-	private ArrayList<String> allmembersAvailability() {
+	private ArrayList<String> allmembersAvailability(int day) {
+		int beginWeek = day;
 		ArrayList<String> marcacoes = new ArrayList<String>();
 
 		if (nomes.size() == 1) {
-			marcacoes.addAll(Calendar.availabilityOneWeek(nomes.get(0), null, beginDay));
+			marcacoes.addAll(Calendar.availabilityOneWeek(nomes.get(0), null, beginWeek));
 		} else {
 			marcacoes = (ArrayList<String>) Calendar.availabilityOneWeek(nomes.get(0), nomes.get(1), beginDay);
 			for (int i = 2; i < nomes.size(); i++) {
@@ -110,7 +113,7 @@ public class Reuniao {
 
 		if (duracao.equals("1hora"))
 			return 100;
-		
+
 		return 0;
 	}
 
