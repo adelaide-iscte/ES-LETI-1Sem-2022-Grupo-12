@@ -15,8 +15,6 @@ public class MainWindow {
 	private JFrame frame;
 	private JButton viewCalendario;
 	private JButton addCalendario;
-	private final int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	private final int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	
 	public MainWindow() {
 		

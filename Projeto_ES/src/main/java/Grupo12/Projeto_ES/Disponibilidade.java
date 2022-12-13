@@ -11,14 +11,19 @@ public class Disponibilidade {
 
 	private ArrayList<String> nomes;
 	private JSONObject json;
-	private String inicioSemana;
+	private int inicioSemana;
 	private ArrayList<JSONObject> jsons = new ArrayList<JSONObject>();
 
 	public Disponibilidade(ArrayList<String> nomes, int inicioSemana, JSONObject json) {
 		this.nomes = nomes;
 		this.json = json;
-		this.inicioSemana = Integer.toString(inicioSemana);
+		this.inicioSemana = inicioSemana;
 		
+		juntarHorarios();
+	}
+	
+	
+	public void juntarHorarios () {
 		if (nomes!= null) {
 			for (String nome : nomes) {
 				JSONObject jsonSecundario = Calendar.gerarHorarioSemana(nome, inicioSemana);

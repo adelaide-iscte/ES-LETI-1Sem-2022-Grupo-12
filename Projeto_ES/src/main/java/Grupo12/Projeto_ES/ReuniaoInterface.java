@@ -68,103 +68,130 @@ public class ReuniaoInterface {
 
 			sc.close();
 
-			for (String nome : contents) {
-				JCheckBox box = new JCheckBox(nome);
-				boxes.add(box);
-				frame.add(box);
-			}
+			addCheckBoxe(contents);
 
-			manha = new JRadioButton("Manhã");
-			tarde = new JRadioButton("Tarde");
-
-			ButtonGroup group = new ButtonGroup();
-			group.add(manha);
-			group.add(tarde);
-
-			frame.add(new JLabel());
-
-			frame.add(new JLabel("Preferencia na parte do dia"));
-			frame.add(manha);
-			frame.add(tarde);
-
-			frame.add(new JLabel());
-
-			String[] opcao = { "Unica vez", "Semanal"};
-			frame.add(new JLabel("Regularidade das reuniões"));
-
-			opcoesDeRegularidade = new JComboBox<String>(opcao);
-			frame.add(opcoesDeRegularidade);
-
-			ArrayList<String> inicioReunioes = new ArrayList<String>();
-
-			for (int i = 1; i <= 2; i++) {
-				for (int j = 1; j <= 14; j++) {
-					inicioReunioes.add("Semestre" + i + "/Semana" + j);
-				}
-			}
-
-			frame.add(new JLabel("Semana em que começam as reuniões"));
-
-			String[] comecoReuniao = new String[inicioReunioes.size() + 2];
-
-			for (int i = 0; i < inicioReunioes.size(); i++) {
-				comecoReuniao[i] = inicioReunioes.get(i);
-			}
-
-			comecoReuniao[inicioReunioes.size()] = "Semestre2/Semana15";
-			comecoReuniao[inicioReunioes.size() + 1] = "Semestre2/Semana16";
-
-			inicioDasReunioes = new JComboBox<String>(comecoReuniao);
-			frame.add(inicioDasReunioes);
-
-			frame.add(new JLabel ("Duração da reunião"));
+			addPerferencia();
 			
-			String[] duracoes = {"15min", "30min", "1hora"};
-			opcoesDeDuracao = new JComboBox<String>(duracoes);
-			frame.add(opcoesDeDuracao);
+			addRegularidade();
 			
+			addInicioDasReunioes();
 			
+			addDuracoes();
 			
-			frame.add(new JLabel());
+			addButtons();
 
-			JButton ok = new JButton("OK");
-			ok.addActionListener(new ActionListener() {
 
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (!tarde.isSelected() && !manha.isSelected()) {
-						JOptionPane.showMessageDialog(frame, "Prencha todos os campos");
-
-					} else {
-						participantes();
-						if (nomes.size() == 0) {
-							JOptionPane.showMessageDialog(frame, "Prencha todos os campos");
-
-						} else {
-							criarReuniao();
-						}
-					}
-				}
-			});
-
-			frame.add(ok);
-
-			JButton cancelar = new JButton("Cancelar");
-			cancelar.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					frame.dispose();
-
-				}
-			});
-			frame.add(cancelar);
 
 		} catch (FileNotFoundException e) {
 			System.out.println("O ficheiro não foi econtrado");
 		}
 
 	}
+	
+	
+	private void addCheckBoxe (List<String> contents) {
+		for (String nome : contents) {
+			JCheckBox box = new JCheckBox(nome);
+			boxes.add(box);
+			frame.add(box);
+		}
+	}
+	
+	private void addPerferencia() {
+		manha = new JRadioButton("Manhã");
+		tarde = new JRadioButton("Tarde");
+
+		ButtonGroup group = new ButtonGroup();
+		group.add(manha);
+		group.add(tarde);
+
+		frame.add(new JLabel());
+
+		frame.add(new JLabel("Preferencia na parte do dia"));
+		frame.add(manha);
+		frame.add(tarde);
+
+		frame.add(new JLabel());
+	}
+	
+	private void addRegularidade() {
+		String[] opcao = { "Unica vez", "Semanal"};
+		frame.add(new JLabel("Regularidade das reuniões"));
+
+		opcoesDeRegularidade = new JComboBox<String>(opcao);
+		frame.add(opcoesDeRegularidade);
+	}
+	
+	private void addInicioDasReunioes() {
+		ArrayList<String> inicioReunioes = new ArrayList<String>();
+
+		for (int i = 1; i <= 2; i++) {
+			for (int j = 1; j <= 14; j++) {
+				inicioReunioes.add("Semestre" + i + "/Semana" + j);
+			}
+		}
+
+		frame.add(new JLabel("Semana em que começam as reuniões"));
+
+		String[] comecoReuniao = new String[inicioReunioes.size() + 2];
+
+		for (int i = 0; i < inicioReunioes.size(); i++) {
+			comecoReuniao[i] = inicioReunioes.get(i);
+		}
+
+		comecoReuniao[inicioReunioes.size()] = "Semestre2/Semana15";
+		comecoReuniao[inicioReunioes.size() + 1] = "Semestre2/Semana16";
+
+		inicioDasReunioes = new JComboBox<String>(comecoReuniao);
+		frame.add(inicioDasReunioes);
+	}
+	
+	private void addDuracoes() {
+		frame.add(new JLabel ("Duração da reunião"));
+		
+		String[] duracoes = {"15min", "30min", "1hora"};
+		opcoesDeDuracao = new JComboBox<String>(duracoes);
+		frame.add(opcoesDeDuracao);
+	}
+	
+	
+	private void addButtons() {
+		frame.add(new JLabel());
+
+		JButton ok = new JButton("OK");
+		ok.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (!tarde.isSelected() && !manha.isSelected()) {
+					JOptionPane.showMessageDialog(frame, "Prencha todos os campos");
+
+				} else {
+					participantes();
+					if (nomes.size() == 0) {
+						JOptionPane.showMessageDialog(frame, "Prencha todos os campos");
+
+					} else {
+						criarReuniao();
+					}
+				}
+			}
+		});
+
+		frame.add(ok);
+
+		JButton cancelar = new JButton("Cancelar");
+		cancelar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+
+			}
+		});
+		frame.add(cancelar);
+	}
+	
 
 	private void criarReuniao() {
 		String [] semestreSemana = ((String) inicioDasReunioes.getSelectedItem()).split("Semestre|\\/|\\Semana");
