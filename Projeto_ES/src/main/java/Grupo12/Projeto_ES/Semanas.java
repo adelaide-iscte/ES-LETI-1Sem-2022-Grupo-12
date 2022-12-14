@@ -17,7 +17,7 @@ import javax.swing.WindowConstants;
 
 /**
  * Classe que cria a interface para escolher a semana a ser visualizada como
- * horário ou para pesquisar a semana ou o dia
+ * horario ou para pesquisar a semana ou o dia
  */
 public class Semanas {
 
@@ -213,7 +213,7 @@ public class Semanas {
 
 	}
 
-	/** Método para adicionar os CheckBoxes na interface */
+	/** Metodo para adicionar os CheckBoxes na interface */
 	private void addCheckBoxes() {
 		for (JCheckBox boxName : nomesBox) {
 			frame.add(boxName);
@@ -221,7 +221,7 @@ public class Semanas {
 
 	}
 
-	/** Método para cirar as CheckBoxes para colocar na interface */
+	/** Metodo para cirar as CheckBoxes para colocar na interface */
 	private void createCheckBoxes() {
 		for (String nome : nomes) {
 			JCheckBox boxName = new JCheckBox(nome);
@@ -229,7 +229,7 @@ public class Semanas {
 		}
 	}
 
-	/** Método para alinhar o butão "ok" na interface */
+	/** Metodo para alinhar o botao "ok" na interface */
 	private int alinhar() {
 
 		int aux = 5 - nomesBox.size();
@@ -240,14 +240,14 @@ public class Semanas {
 		return aux;
 	}
 
-	/** Método para adicionar uma linha vazia na interface */
+	/** Metodo para adicionar uma linha vazia na interface */
 	private void addOneLine() {
 		for (int i = 0; i < 7; i++) {
 			frame.add(new JLabel());
 		}
 	}
 
-	/** Método para abrir a interface */
+	/** Metodo para abrir a interface */
 	public void open() {
 		frame.setVisible(true);
 	}
