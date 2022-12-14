@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
  * Classe com métodos estáticos para criar os HTML para visualizar os as horas
  * sugeridas para reuniões
  */
-public class HtmlReuinioes {
+public class HtmlReunioes {
 
 	/**
 	 * Método estático para cirar o HTML para visualizar as horas sugeridas para a

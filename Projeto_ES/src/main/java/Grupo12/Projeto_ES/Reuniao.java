@@ -41,7 +41,7 @@ public class Reuniao {
 
 		int duracao = getDuracao();
 
-		HtmlReuinioes.reunioesHtml(reunioes, nomes, duracao);
+		HtmlReunioes.reunioesHtml(reunioes, nomes, duracao);
 
 	}
 
