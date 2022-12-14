@@ -9,5 +9,4 @@ Funcionalidades não implementadas/incompletas:
  - Acontece um bug no qual quando ocorrem exames/testes, eles poderão não aparecer no horário.
  - Não foi implementada a apresentação do horário em modo texto ou gráfico. Apenas em tabelas.
  - Não é possivel visualizar o horário para um período de tempo de meses. 
- - A duração da reunião não foi um parâmetro considerado.
- - A organização da interface relativa às reuniões não está bem organizada
+ - A organização da interface relativa às reuniões não está bem organizada.
