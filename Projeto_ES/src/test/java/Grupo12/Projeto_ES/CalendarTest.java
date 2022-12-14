@@ -49,16 +49,16 @@ class CalendarTest {
 
 	@Test
 	void testNextDay() {
-		int resultado = 20221101;
-		int teste = Calendar.nextDay(20221031);
+		int resultado = 20230801;
+		int teste = Calendar.nextDay(20230731);
 		
 		assertEquals(resultado, teste);
 	}
 
 	@Test
 	void testNextWeek() {
-		int resultado = 20221106;
-		int teste = Calendar.nextWeek(20221030);
+		int resultado = 20230806;
+		int teste = Calendar.nextWeek(20230730);
 		
 		assertEquals(resultado, teste);
 	}
