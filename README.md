@@ -10,3 +10,4 @@ Funcionalidades não implementadas/incompletas:
  - Não foi implementada a apresentação do horário em modo texto ou gráfico. Apenas em tabelas.
  - Não é possivel visualizar o horário para um período de tempo de meses. 
  - A duração da reunião não foi um parâmetro considerado.
+ - A organização da interface relativa às reuniões não está bem organizada
