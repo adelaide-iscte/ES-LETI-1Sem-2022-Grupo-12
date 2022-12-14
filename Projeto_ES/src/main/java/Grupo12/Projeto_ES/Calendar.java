@@ -37,7 +37,7 @@ public class Calendar {
 
 	// Metodo a testar
 	/**
-	 * Método que devolve a String do URI relacionado com nome dado como argumento
+	 * Metodo que devolve a String do URI relacionado com nome dado como argumento
 	 */
 	public static String getURI(String name) {
 		File file = new File("calendarios.txt");
@@ -138,7 +138,7 @@ public class Calendar {
 	/**
 	 * Este metodo cria uma lista de todos os tempos disponiveis possiveis,Alem
 	 * disso este metodo tambem recebe a informaçao do metedo readDay (readDay()
-	 * devolve uma lista de informação),e procura nessa lista pelos tempos de comeco
+	 * devolve uma lista de informacao),e procura nessa lista pelos tempos de comeco
 	 * de cada aula e compara com a lista anterior devolvendo uma lista de tempos
 	 * disponiveis
 	 */

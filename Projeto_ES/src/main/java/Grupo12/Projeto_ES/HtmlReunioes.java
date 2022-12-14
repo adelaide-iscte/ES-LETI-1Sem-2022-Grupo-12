@@ -13,14 +13,14 @@ import java.awt.Desktop;
 import java.io.FileNotFoundException;
 
 /**
- * Classe com métodos estáticos para criar os HTML para visualizar os as horas
- * sugeridas para reuniões
+ * Classe com metodos estáticos para criar os HTML para visualizar os as horas
+ * sugeridas para reunioes
  */
 public class HtmlReunioes {
 
 	/**
-	 * Método estático para cirar o HTML para visualizar as horas sugeridas para a
-	 * reunião
+	 * Metodo estatico para cirar o HTML para visualizar as horas sugeridas para a
+	 * reuniao
 	 */
 	public static void reunioesHtml(JSONObject reunioes, ArrayList<String> participantes, int duracao) {
 		File file = new File("reunioes.html");
@@ -59,7 +59,7 @@ public class HtmlReunioes {
 		file.delete();
 	}
 
-	/** Método estático que devolve a String para demonstrar as reuniões */
+	/** Metodo estatico que devolve a String para demonstrar as reunioes */
 	public static String row(JSONObject reunioes, ArrayList<String> participantes, int duracao) {
 		String resultado = null;
 

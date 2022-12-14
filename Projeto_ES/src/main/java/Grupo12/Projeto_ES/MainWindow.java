@@ -32,7 +32,7 @@ public class MainWindow {
 
 	}
 
-	/** Método para colocar os elementos da interface */
+	/** Metodo para colocar os elementos da interface */
 	public void addFrameContents() {
 
 		frame.setLayout(new GridLayout(0, 1));
@@ -81,7 +81,7 @@ public class MainWindow {
 
 	}
 
-	/**Método para abrir a janela */
+	/**Metodo para abrir a janela */
 	public void open() {
 		frame.setVisible(true);
 	}

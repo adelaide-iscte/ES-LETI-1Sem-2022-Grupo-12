@@ -8,8 +8,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
 
 /**
- * Classe que demonstra a disponibilidade de quem pertence o hórario a ser
- * demonstrado em relação aos outros escolhidos
+ * Classe que demonstra a disponibilidade de quem pertence o horario a ser
+ * demonstrado em relacao aos outros escolhidos
  */
 public class Disponibilidade {
 
@@ -27,7 +27,7 @@ public class Disponibilidade {
 		juntarHorarios();
 	}
 
-	/** Junta os horários escolhidos para comparar e demonstrar a disponibilidade */
+	/** Junta os horarios escolhidos para comparar e demonstrar a disponibilidade */
 	public void juntarHorarios() {
 		if (nomes != null) {
 			for (String nome : nomes) {

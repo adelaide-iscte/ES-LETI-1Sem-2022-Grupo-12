@@ -21,7 +21,7 @@ import javax.swing.JRadioButton;
 import javax.swing.WindowConstants;
 
 /**
- * Classe que cria a interface para criar e dar os argumentos para as reuniões
+ * Classe que cria a interface para criar e dar os argumentos para as reunioes
  */
 public class ReuniaoInterface {
 
@@ -50,7 +50,7 @@ public class ReuniaoInterface {
 
 	}
 
-	/** Método que adiciona os elementso da interface */
+	/** Metodo que adiciona os elementos da interface */
 	private void addFrameContents() {
 		frame.setLayout(new GridLayout(0, 1));
 
@@ -91,7 +91,7 @@ public class ReuniaoInterface {
 
 	}
 
-	/** Método que adiciona as opções dos participantes das reuniões */
+	/** Metodo que adiciona as opcoes dos participantes das reunioes */
 	private void addCheckBoxe(List<String> contents) {
 		for (String nome : contents) {
 			JCheckBox box = new JCheckBox(nome);
@@ -100,7 +100,7 @@ public class ReuniaoInterface {
 		}
 	}
 
-	/** Método que coloca as opções da perferencia na interface */
+	/** Metodo que coloca as opcoes da perferencia na interface */
 	private void addPerferencia() {
 		manha = new JRadioButton("Manhã");
 		tarde = new JRadioButton("Tarde");
@@ -118,7 +118,7 @@ public class ReuniaoInterface {
 		frame.add(new JLabel());
 	}
 
-	/** Método que coloca as opções da regularidade na interface */
+	/** Metodo que coloca as opcoes da regularidade na interface */
 	private void addRegularidade() {
 		String[] opcao = { "Unica vez", "Semanal" };
 		frame.add(new JLabel("Regularidade das reuniões"));
@@ -127,7 +127,7 @@ public class ReuniaoInterface {
 		frame.add(opcoesDeRegularidade);
 	}
 
-	/** Método que coloca as opções do inicio das reuniões na interface */
+	/** Metodo que coloca as opcoes do inicio das reunioes na interface */
 	private void addInicioDasReunioes() {
 		ArrayList<String> inicioReunioes = new ArrayList<String>();
 
@@ -152,7 +152,7 @@ public class ReuniaoInterface {
 		frame.add(inicioDasReunioes);
 	}
 
-	/** Método que coloca as opções da duração da reunião na interface */
+	/** Metodo que coloca as opcoes da duração da reuniao na interface */
 	private void addDuracoes() {
 		frame.add(new JLabel("Duração da reunião"));
 
@@ -161,7 +161,7 @@ public class ReuniaoInterface {
 		frame.add(opcoesDeDuracao);
 	}
 
-	/** Método que coloca os butões para interagir na interface */
+	/** Metodo que coloca os botoes para interagir na interface */
 	private void addButtons() {
 		frame.add(new JLabel());
 
@@ -199,7 +199,7 @@ public class ReuniaoInterface {
 		frame.add(cancelar);
 	}
 
-	/** Método que cria um objeto Reuniao e gera a reunião */
+	/** Metodo que cria um objeto Reuniao e gera a reuniao */
 	private void criarReuniao() {
 		String[] semestreSemana = ((String) inicioDasReunioes.getSelectedItem()).split("Semestre|\\/|\\Semana");
 		int dia = getDia(semestreSemana);
@@ -212,7 +212,7 @@ public class ReuniaoInterface {
 
 	}
 
-	/** Método que devolve o dia para começar a criar as reuniões */
+	/** Metodo que devolve o dia para comecar a criar as reunioes */
 	private int getDia(String[] semestreSemana) {
 		int dia = 0;
 
@@ -232,7 +232,7 @@ public class ReuniaoInterface {
 	}
 
 	/**
-	 * Método que coloca os nomes dos participantes numa lista para dar como
+	 * Metodo que coloca os nomes dos participantes numa lista para dar como
 	 * argumento para a classe Reuniao
 	 */
 	private void participantes() {
@@ -243,7 +243,7 @@ public class ReuniaoInterface {
 		}
 	}
 
-	/** Método que devolve a perferencia */
+	/** Metodo que devolve a perferencia */
 	private boolean getPerferencia() {
 		if (manha.isSelected())
 			return true;
@@ -251,7 +251,7 @@ public class ReuniaoInterface {
 		return false;
 	}
 
-	/** Método para abrir a interface */
+	/** Metodo para abrir a interface */
 	public void open() {
 		frame.setVisible(true);
 	}

@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 
-/** Classe para cirar e organizar as reuniões */
+/** Classe para cirar e organizar as reunioes */
 public class Reuniao {
 
 	private int beginDay;
@@ -24,7 +24,7 @@ public class Reuniao {
 		this.duracao = duracao;
 	}
 
-	/** Método principal para criar as reuniões e organiza-las em JSON */
+	/** Metodo principal para criar as reunioes e organiza-las em JSON */
 	public void gerarReuniao() {
 
 		ArrayList<String> marcacoes = new ArrayList<String>();
@@ -45,7 +45,7 @@ public class Reuniao {
 
 	}
 
-	/** Método que devolve uma lista com as datas em relação à perferencia */
+	/** Metodo que devolve uma lista com as datas em relacao a perferencia */
 	public ArrayList<String> filtrarDatas(ArrayList<String> datasSugeridas) {
 		ArrayList<String> datas = datasSugeridas;
 		Iterator<String> itr = datas.iterator();
@@ -68,8 +68,8 @@ public class Reuniao {
 	}
 
 	/**
-	 * Método que devolve um objeto JSON a partir da lista das datas para as
-	 * reuniões
+	 * Metodo que devolve um objeto JSON a partir da lista das datas para as
+	 * reunioes
 	 */
 	private JSONObject turnToJson(ArrayList<String> datas) {
 		JSONObject reunioes = new JSONObject();
@@ -96,7 +96,7 @@ public class Reuniao {
 	}
 
 	/**
-	 * Método que compara as listas dos participantes da reunião para uma unica
+	 * Metodo que compara as listas dos participantes da reuniao para uma unica
 	 * semana
 	 */
 	private ArrayList<String> allmembersAvailability(int day) {
@@ -118,7 +118,7 @@ public class Reuniao {
 		return marcacoes;
 	}
 
-	/** Método que devolve um inteiro em relação à data dada */
+	/** Metodo que devolve um inteiro em relacao a data dada */
 	public int getDuracao() {
 		if (duracao.equals("15min"))
 			return 15;
@@ -133,7 +133,7 @@ public class Reuniao {
 	}
 
 	/**
-	 * Método que compara as listas dos participantes da reunião para várias semanas
+	 * Metodo que compara as listas dos participantes da reuniao para varias semanas
 	 */
 	private ArrayList<String> allMemberAvailabilityWeekly() {
 		ArrayList<String> semanal = new ArrayList<String>();
