@@ -46,7 +46,7 @@ public class Reuniao {
 	}
 
 	/** Método que devolve uma lista com as datas em relação à perferencia */
-	private ArrayList<String> filtrarDatas(ArrayList<String> datasSugeridas) {
+	public ArrayList<String> filtrarDatas(ArrayList<String> datasSugeridas) {
 		ArrayList<String> datas = datasSugeridas;
 		Iterator<String> itr = datas.iterator();
 
@@ -119,7 +119,7 @@ public class Reuniao {
 	}
 
 	/** Método que devolve um inteiro em relação à data dada */
-	private int getDuracao() {
+	public int getDuracao() {
 		if (duracao.equals("15min"))
 			return 15;
 

@@ -1,0 +1,8 @@
+Nome:Adelaide Djalo
+URI:webcal://fenix.iscte-iul.pt/publico/publicPersonICalendar.do?method=iCalendar&username=aadoa@iscte.pt&password=alBC2CS6FVNgaUMbGgW2vihBSUO2yX9lfTjOPAcz06DRY7QkFrrnzsQweRkuXfCPMMAlBEtcye1jSaRgEPeCFjOXwEzITQvi3GhMM2rYp21wKDTXk8ATzbUNtwK1N6Xz
+Nome:Teste
+URI:Resultado
+Nome:joao Freire
+URI:webcal://fenix.iscte-iul.pt/publico/publicPersonICalendar.do?method=iCalendar&username=jphjf@iscte.pt&password=N2JEV6rxyZ1B6LFFBqWIWWXJM8yj8pMjXvjFkf2PnIQTBZUVfg0HJRP1aM4YbjwMZyPfHxFIHcVHpYPubsNcvseuRlA178S6L5piil8pAJ23nkJFt14nVKs62D8Lncqb
+Nome:Luis Fraga
+URI:webcal://fenix.iscte-iul.pt/publico/publicPersonICalendar.do?method=iCalendar&username=ldmfa@iscte.pt&password=WO0G8YATTP1tDnHcsadLlOXY7DVzzCFtAWEPoynnnwrrXisaK5XWziFEPrQWRBumQEpCAyhUtOLfEs9Q1qQncKseCMnNMVAf6LZd71erh2tDbygT5lJ9TENQKdiepPlN
