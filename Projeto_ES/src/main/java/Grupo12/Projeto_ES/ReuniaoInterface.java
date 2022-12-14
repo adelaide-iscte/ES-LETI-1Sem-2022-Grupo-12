@@ -20,6 +20,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.WindowConstants;
 
+/**
+ * Classe que cria a interface para criar e dar os argumentos para as reuniões
+ */
 public class ReuniaoInterface {
 
 	private JFrame frame;
@@ -33,6 +36,7 @@ public class ReuniaoInterface {
 	private JRadioButton tarde;
 	private JComboBox<String> opcoesDeDuracao;;
 
+	/** Construtor a classe */
 	public ReuniaoInterface() {
 		frame = new JFrame("Reuniões");
 
@@ -46,6 +50,7 @@ public class ReuniaoInterface {
 
 	}
 
+	/** Método que adiciona os elementso da interface */
 	private void addFrameContents() {
 		frame.setLayout(new GridLayout(0, 1));
 
@@ -71,32 +76,31 @@ public class ReuniaoInterface {
 			addCheckBoxe(contents);
 
 			addPerferencia();
-			
+
 			addRegularidade();
-			
+
 			addInicioDasReunioes();
-			
+
 			addDuracoes();
-			
+
 			addButtons();
-
-
 
 		} catch (FileNotFoundException e) {
 			System.out.println("O ficheiro não foi econtrado");
 		}
 
 	}
-	
-	
-	private void addCheckBoxe (List<String> contents) {
+
+	/** Método que adiciona as opções dos participantes das reuniões */
+	private void addCheckBoxe(List<String> contents) {
 		for (String nome : contents) {
 			JCheckBox box = new JCheckBox(nome);
 			boxes.add(box);
 			frame.add(box);
 		}
 	}
-	
+
+	/** Método que coloca as opções da perferencia na interface */
 	private void addPerferencia() {
 		manha = new JRadioButton("Manhã");
 		tarde = new JRadioButton("Tarde");
@@ -113,15 +117,17 @@ public class ReuniaoInterface {
 
 		frame.add(new JLabel());
 	}
-	
+
+	/** Método que coloca as opções da regularidade na interface */
 	private void addRegularidade() {
-		String[] opcao = { "Unica vez", "Semanal"};
+		String[] opcao = { "Unica vez", "Semanal" };
 		frame.add(new JLabel("Regularidade das reuniões"));
 
 		opcoesDeRegularidade = new JComboBox<String>(opcao);
 		frame.add(opcoesDeRegularidade);
 	}
-	
+
+	/** Método que coloca as opções do inicio das reuniões na interface */
 	private void addInicioDasReunioes() {
 		ArrayList<String> inicioReunioes = new ArrayList<String>();
 
@@ -145,16 +151,17 @@ public class ReuniaoInterface {
 		inicioDasReunioes = new JComboBox<String>(comecoReuniao);
 		frame.add(inicioDasReunioes);
 	}
-	
+
+	/** Método que coloca as opções da duração da reunião na interface */
 	private void addDuracoes() {
-		frame.add(new JLabel ("Duração da reunião"));
-		
-		String[] duracoes = {"15min", "30min", "1hora"};
+		frame.add(new JLabel("Duração da reunião"));
+
+		String[] duracoes = { "15min", "30min", "1hora" };
 		opcoesDeDuracao = new JComboBox<String>(duracoes);
 		frame.add(opcoesDeDuracao);
 	}
-	
-	
+
+	/** Método que coloca os butões para interagir na interface */
 	private void addButtons() {
 		frame.add(new JLabel());
 
@@ -191,42 +198,43 @@ public class ReuniaoInterface {
 		});
 		frame.add(cancelar);
 	}
-	
 
+	/** Método que cria um objeto Reuniao e gera a reunião */
 	private void criarReuniao() {
-		String [] semestreSemana = ((String) inicioDasReunioes.getSelectedItem()).split("Semestre|\\/|\\Semana");
+		String[] semestreSemana = ((String) inicioDasReunioes.getSelectedItem()).split("Semestre|\\/|\\Semana");
 		int dia = getDia(semestreSemana);
 		boolean perferencia = getPerferencia();
 		String regularidade = (String) opcoesDeRegularidade.getSelectedItem();
 		String duracao = (String) opcoesDeDuracao.getSelectedItem();
-		
-		Reuniao reuniao = new Reuniao(dia,nomes,perferencia,regularidade,duracao);
+
+		Reuniao reuniao = new Reuniao(dia, nomes, perferencia, regularidade, duracao);
 		reuniao.gerarReuniao();
-		
 
 	}
-	
-	
-	private int getDia(String [] semestreSemana) {
-		int dia=0;
-		
-		if (Integer.parseInt(semestreSemana[1])==1)
+
+	/** Método que devolve o dia para começar a criar as reuniões */
+	private int getDia(String[] semestreSemana) {
+		int dia = 0;
+
+		if (Integer.parseInt(semestreSemana[1]) == 1)
 			dia = 20220912;
-		if (Integer.parseInt(semestreSemana[1])==2)
+		if (Integer.parseInt(semestreSemana[1]) == 2)
 			dia = 20230206;
-		
+
 		int semana = Integer.parseInt(semestreSemana[3]);
-		
-		for (int i=0;i<semana-1;i++) {
-			int semanaAnterior=dia;
-			dia=Calendar.nextWeek(semanaAnterior);
+
+		for (int i = 0; i < semana - 1; i++) {
+			int semanaAnterior = dia;
+			dia = Calendar.nextWeek(semanaAnterior);
 		}
-		
-		
+
 		return dia;
 	}
-	
 
+	/**
+	 * Método que coloca os nomes dos participantes numa lista para dar como
+	 * argumento para a classe Reuniao
+	 */
 	private void participantes() {
 		for (JCheckBox box : boxes) {
 			if (box.isSelected()) {
@@ -234,15 +242,16 @@ public class ReuniaoInterface {
 			}
 		}
 	}
-	
+
+	/** Método que devolve a perferencia */
 	private boolean getPerferencia() {
 		if (manha.isSelected())
 			return true;
-		
+
 		return false;
 	}
-	
 
+	/** Método para abrir a interface */
 	public void open() {
 		frame.setVisible(true);
 	}

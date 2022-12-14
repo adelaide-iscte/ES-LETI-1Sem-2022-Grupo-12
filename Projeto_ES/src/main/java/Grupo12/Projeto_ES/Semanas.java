@@ -15,6 +15,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+/**
+ * Classe que cria a interface para escolher a semana a ser visualizada como
+ * horário ou para pesquisar a semana ou o dia
+ */
 public class Semanas {
 
 	public int semestre;
@@ -25,6 +29,10 @@ public class Semanas {
 	private ArrayList<String> nomes;
 	private ArrayList<JCheckBox> nomesBox = new ArrayList<JCheckBox>();
 
+	/**
+	 * Construtor da classe que abre a interface consoante o semestre escolhido ou
+	 * se se pretende pesquisar
+	 */
 	public Semanas(int semestre, String nome, ArrayList<String> nomes) {
 		this.semestre = semestre;
 		this.nome = nome;
@@ -46,10 +54,11 @@ public class Semanas {
 			addPesquisar();
 	}
 
+	/** Cria a interface para pesquisar as semanas para o primeiro semestre */
 	private void addPrimeiroSemestre() {
 		frame.setLayout(new GridLayout(0, 5));
 		int primeiroDiaSemestre = 20220912;
-		
+
 		createCheckBoxes();
 
 		for (int i = 1; i <= 14; i++) {
@@ -97,10 +106,11 @@ public class Semanas {
 		frame.add(ok);
 	}
 
+	/** Cria a interface para pesquisar as semanas para o segundo semestre */
 	private void addSegundoSemestre() {
 		frame.setLayout(new GridLayout(0, 5));
 		int dia = 20230206;
-		
+
 		createCheckBoxes();
 
 		for (int i = 1; i <= 16; i++) {
@@ -152,6 +162,9 @@ public class Semanas {
 
 	}
 
+	/**
+	 * Cria a interface para pesquisar a semana ou o dia selecionado pelo utilizador
+	 */
 	private void addPesquisar() {
 		frame.setLayout(new GridLayout(0, 1));
 
@@ -200,13 +213,15 @@ public class Semanas {
 
 	}
 
+	/** Método para adicionar os CheckBoxes na interface */
 	private void addCheckBoxes() {
 		for (JCheckBox boxName : nomesBox) {
 			frame.add(boxName);
 		}
 
 	}
-	
+
+	/** Método para cirar as CheckBoxes para colocar na interface */
 	private void createCheckBoxes() {
 		for (String nome : nomes) {
 			JCheckBox boxName = new JCheckBox(nome);
@@ -214,6 +229,7 @@ public class Semanas {
 		}
 	}
 
+	/** Método para alinhar o butão "ok" na interface */
 	private int alinhar() {
 
 		int aux = 5 - nomesBox.size();
@@ -224,12 +240,14 @@ public class Semanas {
 		return aux;
 	}
 
+	/** Método para adicionar uma linha vazia na interface */
 	private void addOneLine() {
 		for (int i = 0; i < 7; i++) {
 			frame.add(new JLabel());
 		}
 	}
 
+	/** Método para abrir a interface */
 	public void open() {
 		frame.setVisible(true);
 	}

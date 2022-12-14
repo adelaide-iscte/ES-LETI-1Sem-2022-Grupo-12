@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+/** Classe para cirar e organizar as reuniões */
 public class Reuniao {
 
 	private int beginDay;
@@ -14,6 +15,7 @@ public class Reuniao {
 	private String regularidade;
 	private String duracao;
 
+	/** Construtuor da classe */
 	public Reuniao(int beginDay, ArrayList<String> nomes, boolean perferencia, String regularidade, String duracao) {
 		this.beginDay = beginDay;
 		this.nomes = nomes;
@@ -22,13 +24,14 @@ public class Reuniao {
 		this.duracao = duracao;
 	}
 
+	/** Método principal para criar as reuniões e organiza-las em JSON */
 	public void gerarReuniao() {
 
 		ArrayList<String> marcacoes = new ArrayList<String>();
 
 		if (regularidade.equals("Unica vez"))
 			marcacoes = allmembersAvailability(beginDay);
-		
+
 		if (regularidade.equals("Semanal"))
 			marcacoes = allMemberAvailabilityWeekly();
 
@@ -42,6 +45,7 @@ public class Reuniao {
 
 	}
 
+	/** Método que devolve uma lista com as datas em relação à perferencia */
 	private ArrayList<String> filtrarDatas(ArrayList<String> datasSugeridas) {
 		ArrayList<String> datas = datasSugeridas;
 		Iterator<String> itr = datas.iterator();
@@ -63,6 +67,10 @@ public class Reuniao {
 
 	}
 
+	/**
+	 * Método que devolve um objeto JSON a partir da lista das datas para as
+	 * reuniões
+	 */
 	private JSONObject turnToJson(ArrayList<String> datas) {
 		JSONObject reunioes = new JSONObject();
 
@@ -87,6 +95,10 @@ public class Reuniao {
 		return reunioes;
 	}
 
+	/**
+	 * Método que compara as listas dos participantes da reunião para uma unica
+	 * semana
+	 */
 	private ArrayList<String> allmembersAvailability(int day) {
 		int beginWeek = day;
 		ArrayList<String> marcacoes = new ArrayList<String>();
@@ -106,6 +118,7 @@ public class Reuniao {
 		return marcacoes;
 	}
 
+	/** Método que devolve um inteiro em relação à data dada */
 	private int getDuracao() {
 		if (duracao.equals("15min"))
 			return 15;
@@ -119,6 +132,9 @@ public class Reuniao {
 		return 0;
 	}
 
+	/**
+	 * Método que compara as listas dos participantes da reunião para várias semanas
+	 */
 	private ArrayList<String> allMemberAvailabilityWeekly() {
 		ArrayList<String> semanal = new ArrayList<String>();
 		int thisWeek = beginDay;

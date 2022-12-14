@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-/**Classe para criar a interface com o utilizador para acrescentar hórarios*/
+/** Classe para criar a interface com o utilizador para acrescentar hórarios */
 public class AddCal {
 	private JFrame frame;
 	private JButton addUrl;
@@ -34,7 +34,7 @@ public class AddCal {
 	private final int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	private final int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-	/**Construtor da classe*/
+	/** Construtor da classe */
 	public AddCal() {
 
 		this.frame = new JFrame("addCalWindow");
@@ -49,9 +49,9 @@ public class AddCal {
 
 	}
 
-	/**Método principal para adicionar os elementos da interface*/
+	/** Método principal para adicionar os elementos da interface */
 	public void addFrameContents() {
-		
+
 		frame.setLayout(new GridLayout(7, 1));
 
 		labelName = new JLabel("Coloque o nome de quem pertenceo calendario");
@@ -65,9 +65,8 @@ public class AddCal {
 
 		textFieldURI = new JTextField();
 		frame.add(textFieldURI);
-		
+
 		frame.add(new JLabel());
-		
 
 		addUrl = new JButton("Adicionar calendario");
 		addUrl.addActionListener(new ActionListener() {
@@ -97,15 +96,15 @@ public class AddCal {
 			}
 		});
 		frame.add(cancelar);
-		
+
 	}
 
-	/**Método para abrir a janela */
+	/** Método para abrir a janela */
 	public void open() {
 		frame.setVisible(true);
 	}
 
-	/**Método para criar um ficheiro de texto para guardar os nomes e o s URIs */
+	/** Método para criar um ficheiro de texto para guardar os nomes e o s URIs */
 	public void calendarList(String nome, String uri) {
 		File lista = new File("calendarios.txt");
 		if (!textFieldName.getText().equals("") || !textFieldURI.getText().equals("")) {

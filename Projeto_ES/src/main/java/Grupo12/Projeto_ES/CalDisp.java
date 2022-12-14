@@ -14,7 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-/**Classe para criar a interface com o utilizador visualizar os calendários disponiveis  */
+/**
+ * Classe para criar a interface com o utilizador visualizar os calendários
+ * disponiveis
+ */
 public class CalDisp {
 
 	private JFrame cal;
@@ -22,7 +25,7 @@ public class CalDisp {
 	private final int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	private ArrayList<String> contents;
 
-	/**Construtor da classe*/
+	/** Construtor da classe */
 	public CalDisp() {
 		cal = new JFrame("Calendarios");
 
@@ -36,7 +39,7 @@ public class CalDisp {
 
 	}
 
-	/**Método principal para adicionar os elementos da interface*/
+	/** Método principal para adicionar os elementos da interface */
 	public void lerCalendario() {
 
 		File file = new File("calendarios.txt");
@@ -45,7 +48,6 @@ public class CalDisp {
 			Scanner sc = new Scanner(file);
 
 			contents = new ArrayList<String>();
-
 
 			while (sc.hasNextLine()) {
 				String[] aux = sc.nextLine().split(":");
@@ -56,7 +58,7 @@ public class CalDisp {
 			}
 
 			cal.setLayout(new GridLayout(0, 4));
-			
+
 			addOpcoes();
 
 			cal.add(new JLabel());
@@ -64,10 +66,8 @@ public class CalDisp {
 			cal.add(new JLabel());
 			cal.add(new JLabel());
 			cal.add(new JLabel());
-			
+
 			addButtons();
-
-
 
 			sc.close();
 		} catch (FileNotFoundException e) {
@@ -77,8 +77,8 @@ public class CalDisp {
 		}
 
 	}
-	
-	/**Adiciona os butões finais na interface*/
+
+	/** Adiciona os butões finais na interface */
 	private void addButtons() {
 		JButton ok = new JButton("OK");
 		ok.addActionListener(new ActionListener() {
@@ -92,7 +92,7 @@ public class CalDisp {
 		marcarReunioes.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ReuniaoInterface reunião = new ReuniaoInterface();	
+				ReuniaoInterface reunião = new ReuniaoInterface();
 				reunião.open();
 			}
 		});
@@ -100,8 +100,8 @@ public class CalDisp {
 		cal.add(ok);
 		cal.add(marcarReunioes);
 	}
-	
-	/**Adiciona os buões para visualizar as semanas na interface */
+
+	/** Adiciona os buões para visualizar as semanas na interface */
 	private void addOpcoes() {
 		JLabel nomes = new JLabel("Nome");
 		cal.add(nomes);
@@ -133,29 +133,26 @@ public class CalDisp {
 
 				}
 			});
-			
-			JButton pesquisar = new JButton ("Pesquisar");
+
+			JButton pesquisar = new JButton("Pesquisar");
 			pesquisar.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					Semanas semana = new Semanas (3,i, contents);
+					Semanas semana = new Semanas(3, i, contents);
 					semana.open();
-					
+
 				}
 			});
-
 
 			cal.add(semestre1);
 			cal.add(semestre2);
 			cal.add(pesquisar);
-			
+
 		}
 	}
-	
-	
-	
-	/**Método para abrir a janela */
+
+	/** Método para abrir a janela */
 	public void open() {
 		cal.setVisible(true);
 	}
