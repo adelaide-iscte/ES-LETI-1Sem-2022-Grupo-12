@@ -1,0 +1,19 @@
+Code Smells
+
+--legenda-- 0/5 0-menos relevante
+                5-muito relevante 
+
+
+Existem smells de God Class na classe Semanas referente aos atributos defenidos fora dos metodos
+no entanto estas variaveis são essenciais á classe logo avaliamos este smell com um 1/5 pouco relevante
+Também existem vários smells de long Method sobretudo na classe calendar apsar de também existirem nas 
+classes CalDisp e Disponibilidade. Estes metodos são identificados como Bad Smells no entanto acontecem pois estamos,
+não só a utilizar o swing, e este precisa de muitas linhas para implementar a interface ,mas também por causa da classe calendar 
+onde colocámos maior parte dos metodos estaticos.Assim avaliamos este smell com um 0/5 muito pouco relevante.
+
+
+
+
+
+
+
