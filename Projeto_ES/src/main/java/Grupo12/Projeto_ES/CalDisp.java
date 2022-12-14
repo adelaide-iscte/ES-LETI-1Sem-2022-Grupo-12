@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
 /**
- * Classe para criar a interface com o utilizador visualizar os calendários
+ * Classe para criar a interface com o utilizador visualizar os calendarios
  * disponiveis
  */
 public class CalDisp {
@@ -39,7 +39,7 @@ public class CalDisp {
 
 	}
 
-	/** Método principal para adicionar os elementos da interface */
+	/** Metodo principal para adicionar os elementos da interface */
 	public void lerCalendario() {
 
 		File file = new File("calendarios.txt");
@@ -78,7 +78,7 @@ public class CalDisp {
 
 	}
 
-	/** Adiciona os butões finais na interface */
+	/** Adiciona os butoes finais na interface */
 	private void addButtons() {
 		JButton ok = new JButton("OK");
 		ok.addActionListener(new ActionListener() {
@@ -101,7 +101,7 @@ public class CalDisp {
 		cal.add(marcarReunioes);
 	}
 
-	/** Adiciona os buões para visualizar as semanas na interface */
+	/** Adiciona os butoes para visualizar as semanas na interface */
 	private void addOpcoes() {
 		JLabel nomes = new JLabel("Nome");
 		cal.add(nomes);

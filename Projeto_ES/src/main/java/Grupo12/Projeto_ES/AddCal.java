@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-/** Classe para criar a interface com o utilizador para acrescentar hórarios */
+/** Classe para criar a interface com o utilizador para acrescentar horarios */
 public class AddCal {
 	private JFrame frame;
 	private JButton addUrl;
@@ -49,7 +49,7 @@ public class AddCal {
 
 	}
 
-	/** Método principal para adicionar os elementos da interface */
+	/** Metodo principal para adicionar os elementos da interface */
 	public void addFrameContents() {
 
 		frame.setLayout(new GridLayout(7, 1));
@@ -99,12 +99,12 @@ public class AddCal {
 
 	}
 
-	/** Método para abrir a janela */
+	/** Metodo para abrir a janela */
 	public void open() {
 		frame.setVisible(true);
 	}
 
-	/** Método para criar um ficheiro de texto para guardar os nomes e o s URIs */
+	/** Metodo para criar um ficheiro de texto para guardar os nomes e o s URIs */
 	public void calendarList(String nome, String uri) {
 		File lista = new File("calendarios.txt");
 		if (!textFieldName.getText().equals("") || !textFieldURI.getText().equals("")) {

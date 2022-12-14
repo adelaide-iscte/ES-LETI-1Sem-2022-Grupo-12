@@ -32,7 +32,7 @@ import org.json.JSONObject;
 
 import java.lang.Object;
 
-/** Classe dos métodos estáticos utilizados nas outras clases */
+/** Classe dos metodos estaticos utilizados nas outras clases */
 public class Calendar {
 
 	// Metodo a testar
@@ -70,8 +70,8 @@ public class Calendar {
 	}
 
 	/**
-	 * Este metodo dado uma string que é o nome do fichiro URI e um dia em formato
-	 * (aaaammdd), vai procurar no ficherio URI: a hora de começo a de fim o
+	 * Este metodo dado uma string que e o nome do fichiro URI e um dia em formato
+	 * , vai procurar no ficherio URI: a hora de começo a de fim o
 	 * professor da cadeira, a cadeira, e a sala colocando estas Strings numa lista.
 	 */
 	public static List<String> readDay(String string, int day) {
@@ -136,9 +136,9 @@ public class Calendar {
 
 	// Metodo a testar
 	/**
-	 * Este metodo cria uma lista de todos os tempos disponiveis possiveis,Além
-	 * disso este metodo também recebe a informação do metedo readDay (readDay()
-	 * devolve uma lista de informação),e procura nessa lista pelos tempos de começo
+	 * Este metodo cria uma lista de todos os tempos disponiveis possiveis,Alem
+	 * disso este metodo tambem recebe a informaçao do metedo readDay (readDay()
+	 * devolve uma lista de informação),e procura nessa lista pelos tempos de comeco
 	 * de cada aula e compara com a lista anterior devolvendo uma lista de tempos
 	 * disponiveis
 	 */
@@ -219,8 +219,8 @@ public class Calendar {
 
 	/**
 	 * O metodo recebe duas listas de horas disponiveis(cada uma de 1 utilizador
-	 * diferente) e um dia de inicio de um mês e devolve as horas disponiveis comuns
-	 * entre os dois utilizadores ao longo de um mês em foramto de lista
+	 * diferente) e um dia de inicio de um mes e devolve as horas disponiveis comuns
+	 * entre os dois utilizadores ao longo de um mes em foramto de lista
 	 */
 	public static List<String> availabilityOneMonth(String calName1, String calName2, int monthStart) {
 		List<String> availableDates = new ArrayList<String>();
@@ -267,7 +267,7 @@ public class Calendar {
 	}
 
 	// Metodo a testar
-	/** Este Método dado um dia (aaaammdd) devolve o proximo dia */
+	/** Este metodo dado um dia (aaaammdd) devolve o proximo dia */
 	public static int nextDay(int day) {
 		if (day == 20220930)
 			return 20221001;
@@ -296,7 +296,7 @@ public class Calendar {
 
 	// Metodo a testar
 	/**
-	 * Este Método dado um dia (aaaammdd) devolve-nos o dia correspondente à semana
+	 * Este Metodo dado um dia (aaaammdd) devolve-nos o dia correspondente a semana
 	 * seguinte
 	 */
 	public static int nextWeek(int day) {
@@ -327,7 +327,7 @@ public class Calendar {
 		return nextWeek;
 	}
 
-	/** Verifica se este dia é correspondente ao primeiro dia do mês */
+	/** Verifica se este dia é correspondente ao primeiro dia do mes */
 	public static boolean isItMonthStart(int day) {
 		if (day == 20220912 || day == 20221003 || day == 20221107 || day == 20221205 || day == 20230206
 				|| day == 20230306 || day == 20230403 || day == 20230501)
@@ -336,7 +336,7 @@ public class Calendar {
 	}
 
 	/**
-	 * Este método recebe o nome do URI e a data do inicio da semana e cria os
+	 * Este metodo recebe o nome do URI e a data do inicio da semana e cria os
 	 * objetos JSON necessarios para gerar o horario para uma semana
 	 */
 	public static JSONObject gerarHorarioSemana(String nome, int inicioSemana) {
@@ -380,7 +380,7 @@ public class Calendar {
 	}
 
 	/**
-	 * Este método recebe o nome do URI e a data do inicio da semana e cria os
+	 * Este metodo recebe o nome do URI e a data do inicio da semana e cria os
 	 * objetos JSON necessarios para gerar o horario para um dia
 	 */
 	public static JSONObject gerarHoarioDia(String nome, int dia) {
@@ -417,14 +417,14 @@ public class Calendar {
 		return day;
 	}
 
-	/** Este Método gera o Html de uma semana */
+	/** Este Metodo gera o Html de uma semana */
 	public static void gerarHTMLSemana(String nome, int inicioSemana, int numeroSemana, ArrayList<String> nomes) {
 		JSONObject semana = gerarHorarioSemana(nome, inicioSemana);
 
 		Html.visualizarSemana(numeroSemana, inicioSemana, semana, nomes);
 	}
 
-	/** Este Método gera o Html relativo a um dia */
+	/** Este Metodo gera o Html relativo a um dia */
 	public static void gerarHTMLDia(String nome, int dia, ArrayList<String> nomes) {
 		JSONObject day = gerarHoarioDia(nome, dia);
 
