@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AllTests (1)" project="Projeto_ES" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="Grupo12.Projeto_ES.AllTests" time="0.144">
+    <testsuite name="JUnit Jupiter" time="0.102">
+      <testsuite name="CalendarTest" time="0.088">
+        <testcase name="testSearchAvailability()" classname="CalendarTest" time="0.047"/>
+        <testcase name="testGetURI()" classname="CalendarTest" time="0.036"/>
+        <testcase name="testNextDay()" classname="CalendarTest" time="0.002"/>
+        <testcase name="testNextWeek()" classname="CalendarTest" time="0.001"/>
+      </testsuite>
+      <testsuite name="ReuniaoTest" time="0.006">
+        <testcase name="testGetDuracao()" classname="ReuniaoTest" time="0.002"/>
+        <testcase name="testFiltrarDatas()" classname="ReuniaoTest" time="0.003"/>
+      </testsuite>
+    </testsuite>
+    <testcase name="JUnit Platform Suite" classname="JUnit Platform Suite" time="0.005"/>
+    <testcase name="JUnit Vintage" classname="JUnit Vintage" time="0.012"/>
+  </testsuite>
+</testrun>
